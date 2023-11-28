@@ -49,6 +49,7 @@ const Scanner = ({
         const err = getMedianOfCodeErrors(result.codeResult.decodedCodes);
         // if Quagga is at least 75% certain that it read correctly, then accept the code.
         if (err < 0.25) {
+            navigator.vibrate([1, 5, 10, 5, 10, 5, 10]);
             onDetected(result.codeResult.code);
         }
     }, [onDetected]);

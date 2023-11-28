@@ -20,7 +20,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "push": "yarn build && firebase deploy",
-    "fireco": "npm i // yarn install // npm install firebase-tool &&  && firebase login && firebase init"
+    "fireco": "npm i // yarn install // npm install firebase-tool && firebase login && firebase init"
   },
   "browserslist": [
     ">0.2%",

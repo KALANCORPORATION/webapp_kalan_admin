@@ -12,20 +12,13 @@ const App = () => {
     const [torchOn, setTorch] = useState(false); // toggleable state for "should torch be on"
     const scannerRef = useRef(null); // reference to the scanner element in the DOM
 
-    // at start, we need to get a list of the available cameras.  We can do that with Quagga.CameraAccess.enumerateVideoDevices.
-    // HOWEVER, Android will not allow enumeration to occur unless the user has granted camera permissions to the app/page.
-    // AS WELL, Android will not ask for permission until you actually try to USE the camera, just enumerating the devices is not enough to trigger the permission prompt.
-    // THEREFORE, if we're going to be running in Android, we need to first call Quagga.CameraAccess.request() to trigger the permission prompt.
-    // AND THEN, we need to call Quagga.CameraAccess.release() to release the camera so that it can be used by the scanner.
-    // AND FINALLY, we can call Quagga.CameraAccess.enumerateVideoDevices() to get the list of cameras.
-
-    // Normally, I would place this in an application level "initialization" event, but for this demo, I'm just going to put it in a useEffect() hook in the App component.
-
     useEffect(() => {
         const enableCamera = async () => {
+            navigator.vibrate([1, 5, 100]);
             await Quagga.CameraAccess.request(null, {});
         };
         const disableCamera = async () => {
+            navigator.vibrate([1, 5, 100]);
             await Quagga.CameraAccess.release();
         };
         const enumerateCameras = async () => {
@@ -48,6 +41,7 @@ const App = () => {
         setTorch(torch);
         if (torch) {
             Quagga.CameraAccess.enableTorch();
+            navigator.vibrate([1, 5, 100]);
         } else {
             Quagga.CameraAccess.disableTorch();
         }
