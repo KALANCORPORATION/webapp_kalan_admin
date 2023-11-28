@@ -2,6 +2,10 @@
 
 Ce projet a été créé avec Create React App.
 
+## FIREBASE
+1. rejoindre le projet sur firebase
+2. faire la commande `npm run fireco` ou `yarn fireco` pour install et se connecter à firebase (c'est magique tout fonctionne tout seul)
+
 ## Installation
 
 1. Clonez le dépôt.
@@ -16,7 +20,7 @@ Ce projet a été créé avec Create React App.
 
 ## Auteur
 
-John Doe
+Houssam LAGHZIL
 
 ## Licence
 
