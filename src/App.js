@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+// import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import {
   Routes,
   Route,
@@ -11,6 +12,8 @@ function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
+  const [data, setData] = React.useState("Not Found");
+  const [torchOn, setTorchOn] = React.useState(false);
 
   useEffect(() => {
     if (action !== "POP") {
