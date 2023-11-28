@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-barlow: Barlow;
+  --font-lexend-deca: "Lexend Deca";
+  --font-poppins: Poppins;
+
+  /* font sizes */
+  --font-size-sm: 14px;
+  --font-size-lg: 18px;
+  --font-size-xs: 12px;
+
+  /* Colors */
+  --blanc: #fff;
+  --text-formulaire: #8e8e8e;
+  --gris-fonc: #212121;
+  --color-gray-100: rgba(33, 33, 33, 0.8);
+  --noir: #0c1340;
+  --bleu-scanner: #31b2ba;
+
+  /* Border radiuses */
+  --br-8xs: 5px;
+}
