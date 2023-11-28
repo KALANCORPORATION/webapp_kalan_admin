@@ -1,6 +1,15 @@
-import "./ConnexionAdminApp.css";
+import "../../styles/ConnexionAdminApp.css";
+import React, { useState } from 'react';
+import AuthController from '../../controllers/authController';
 
 const ConnexionAdminApp = () => {
+    const [pseudo, setPseudo] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleLogin = () => {
+        AuthController.handleLogin(pseudo, password);
+    };
+
   return (
     <div className="connexion-adminapp">
       <div className="footer">
@@ -8,7 +17,7 @@ const ConnexionAdminApp = () => {
         <div className="button">
           <div className="button-child" />
           <b className="se-connecter">
-            <p className="se-connecter1">Se connecter</p>
+            <button className="se-connecter1" onClick={handleLogin}>Se connecter</button>
           </b>
         </div>
       </div>
@@ -66,14 +75,25 @@ const ConnexionAdminApp = () => {
       <div className="connexion-adminapp-child" />
       <div className="connexion-adminapp-item" />
       <div className="connexion-adminapp-inner" />
-      <div className="identifiant">identifiant</div>
+      <div className="identifiant">
+        <input
+            type="text"
+            placeholder="identifiant"
+            value={pseudo}
+            onChange={(e) => setPseudo(e.target.value)}
+        />
+      </div>
       <div className="div">@</div>
-      <div className="div1">************</div>
-      <b className="identifiant1">Identifiant</b>
-      <b className="mot-de-passe1">Mot de passe</b>
-      <img className="oeil2-3-icon" alt="" src="/oeil2-3@2x.png" />
-      <div className="oeil1-2" />
-      <div className="oeil1-3" />
+      <div className="div1">
+        <input
+            type="password"
+            placeholder="************"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+        <b className="identifiant1">Identifiant</b>
+        <b className="mot-de-passe1">Mot de passe</b>
     </div>
   );
 };

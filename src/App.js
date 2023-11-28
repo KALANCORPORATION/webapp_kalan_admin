@@ -6,14 +6,14 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import ConnexionAdminApp from "./pages/ConnexionAdminApp";
+import ConnexionAdminApp from "./views/login/ConnexionAdminApp";
 
 function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
-  const [data, setData] = React.useState("Not Found");
-  const [torchOn, setTorchOn] = React.useState(false);
+  // const [data, setData] = React.useState("Not Found");
+  // const [torchOn, setTorchOn] = React.useState(false);
 
   useEffect(() => {
     if (action !== "POP") {
