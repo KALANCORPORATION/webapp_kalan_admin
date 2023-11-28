@@ -5,9 +5,10 @@ import AuthController from '../../controllers/authController';
 const ConnexionAdminApp = () => {
     const [pseudo, setPseudo] = useState('');
     const [password, setPassword] = useState('');
+    const [accessToken, setAccessToken] = useState(null);
 
     const handleLogin = () => {
-        AuthController.handleLogin(pseudo, password);
+        AuthController.handleLogin(pseudo, password, setAccessToken);
     };
 
   return (
