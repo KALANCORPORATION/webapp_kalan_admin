@@ -1,6 +1,5 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
-import './asset/index.css';
 import reportWebVitals from "./reportWebVitals";
 import "./global.css";
 import { BrowserRouter } from "react-router-dom";

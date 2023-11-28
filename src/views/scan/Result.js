@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Quagga from '@ericblade/quagga2';
-import Scanner from './controller/Scanner';
-import Result from './vue/scan/Result';
+import Scanner from '../../controllers/Scanner';
+import Result from '../../views/scan/Result';
 
 const App = () => {
     const [scanning, setScanning] = useState(false); // toggleable state for "should render scanner"
