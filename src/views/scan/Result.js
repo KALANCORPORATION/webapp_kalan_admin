@@ -9,8 +9,8 @@ const App = () => {
     const [cameraId, setCameraId] = useState(null); // id of the active camera device
     const [cameraError, setCameraError] = useState(null); // error message from failing to access the camera
     const [results, setResults] = useState([]); // list of scanned results
-    const [torchOn, setTorch] = useState(false); // toggleable state for "should torch be on"
     const scannerRef = useRef(null); // reference to the scanner element in the DOM
+
 
     useEffect(() => {
         const enableCamera = async () => {
@@ -24,6 +24,7 @@ const App = () => {
         const enumerateCameras = async () => {
             const cameras = await Quagga.CameraAccess.enumerateVideoDevices();
             console.log('Cameras Detected: ', cameras);
+            setScanning(!scanning)
             return cameras;
         };
         enableCamera()
@@ -35,17 +36,6 @@ const App = () => {
         return () => disableCamera();
     }, []);
 
-    // provide a function to toggle the torch/flashlight
-    const onTorchClick = useCallback(() => {
-        const torch = !torchOn;
-        setTorch(torch);
-        if (torch) {
-            Quagga.CameraAccess.enableTorch();
-            navigator.vibrate([1, 5, 100]);
-        } else {
-            Quagga.CameraAccess.disableTorch();
-        }
-    }, [torchOn, setTorch]);
 
     return (
         <div>
@@ -61,7 +51,6 @@ const App = () => {
                     </select>
                 </form>
             }
-            <button onClick={onTorchClick}>{torchOn ? 'Disable Torch' : 'Enable Torch'}</button>
             <button onClick={() => setScanning(!scanning) }>{scanning ? 'Stop' : 'Start'}</button>
             <ul className="results">
                 {results.map((result) => (result.codeResult && <Result key={result.codeResult.code} result={result} />))}
