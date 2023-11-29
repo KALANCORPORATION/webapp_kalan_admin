@@ -12,11 +12,13 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<ConnexionAdminApp/>} />
                 <Route path="/adherents" element={<AdherentList/>} />
+                <Route path="/scan" element={<Result />} />
+                <Route path="/test" element={<Scan />} />
+                <Route path="/scan" element={<Result />} />
             </Routes>
         </div>
     );
 };
 
-      <Route path="/test" element={<Scan />} />
-      <Route path="/scan" element={<Result />} />
+
 export default App;

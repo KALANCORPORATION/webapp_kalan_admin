@@ -3,12 +3,15 @@ import Quagga from '@ericblade/quagga2';
 import Scanner from '../../controllers/Scanner';
 import Result from '../../views/scan/Result';
 
+import '../../styles/ScanStyle.css';
+
+
 const App = () => {
     const [scanning, setScanning] = useState(false); // toggleable state for "should render scanner"
     const [cameras, setCameras] = useState([]); // array of available cameras, as returned by Quagga.CameraAccess.enumerateVideoDevices()
     const [cameraId, setCameraId] = useState(null); // id of the active camera device
     const [cameraError, setCameraError] = useState(null); // error message from failing to access the camera
-    const [results, setResults] = useState([]); // list of scanned results
+    const [results, setResults] = useState([]);// list of scanned results
     const scannerRef = useRef(null); // reference to the scanner element in the DOM
 
 
@@ -36,6 +39,27 @@ const App = () => {
         return () => disableCamera();
     }, []);
 
+    function addResultToList(newResult) {
+        // Vérifier si le résultat existe déjà dans la liste
+        const isResultPresent = results.some((result) => result === newResult);
+
+        // Si le résultat n'est pas déjà présent, l'ajouter à la liste
+        if (!isResultPresent) {
+            const newResults = [...results, newResult];
+            console.log("Le scan a été ajouté", newResult);
+            navigator.vibrate([1, 5, 100]);
+            document.querySelector(".results").innerHTML += `<li>${newResult}</li>`;
+        } else {
+            console.log("Le scan est déjà présent", newResult);
+            alert("Code déjà scanné");
+        }
+    }
+    function addResult(result) {
+        if (results !== undefined) {
+            const updatedResults = addResultToList(result);
+            setResults(updatedResults);
+        }
+    }
 
     return (
         <div>
@@ -52,21 +76,18 @@ const App = () => {
                 </form>
             }
             <button onClick={() => setScanning(!scanning) }>{scanning ? 'Stop' : 'Start'}</button>
-            <ul className="results">
-                {results.map((result) => (result.codeResult && <Result key={result.codeResult.code} result={result} />))}
-            </ul>
-            <div ref={scannerRef} style={{position: 'relative', border: '3px solid red'}}>
+            <ul className="results"></ul>
+            <div ref={scannerRef} style={{display: "flex",position: "relative","justify-content": "center"}}>
+
                 {/* <video style={{ width: window.innerWidth, height: 480, border: '3px solid orange' }}/> */}
                 <canvas className="drawingBuffer" style={{
                     position: 'absolute',
                     top: '0px',
-                    // left: '0px',
-                    // height: '100%',
-                    // width: '100%',
                     border: '3px solid green',
                 }} width="640" height="480" />
-                {scanning ? <Scanner scannerRef={scannerRef} cameraId={cameraId} onDetected={(result) => setResults([...results, result])} /> : null}
+                {scanning ? <Scanner scannerRef={scannerRef} cameraId={cameraId} onDetected={(result) => addResult(result)} /> : null}
             </div>
+
         </div>
     );
 };
