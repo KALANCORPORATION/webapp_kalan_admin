@@ -10,8 +10,6 @@ import ConnexionAdminApp from "./views/login/ConnexionAdminApp";
 import Result from "./views/scan/Result";
 import Scan from "./views/scan/scan";
 
-import "./styles/ScanStyle.css";
-
 
 function App() {
   const action = useNavigationType();
