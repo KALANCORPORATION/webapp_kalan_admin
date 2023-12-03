@@ -77,6 +77,7 @@ const App = () => {
             }
             <button onClick={() => setScanning(!scanning) }>{scanning ? 'Stop' : 'Start'}</button>
             <ul className="results"></ul>
+            <input></input>
             <div ref={scannerRef} style={{display: "flex",position: "relative","justify-content": "center"}}>
 
                 {/* <video style={{ width: window.innerWidth, height: 480, border: '3px solid orange' }}/> */}
