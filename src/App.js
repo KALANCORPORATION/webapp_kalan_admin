@@ -7,7 +7,6 @@ function App() {
   const [torchOn, setTorchOn] = React.useState(false);
 
   return (
-<<<<<<< Updated upstream
     <>
       <BarcodeScannerComponent
         width={500}
@@ -23,12 +22,6 @@ function App() {
         Switch Torch {torchOn ? "Off" : "On"}
       </button>
     </>
-=======
-    <Routes>
-      {/* <Route path="/" element={<ConnexionAdminApp />} /> */}
-      <Route path="/" element={<CreateAdherent />} />
-    </Routes>
->>>>>>> Stashed changes
   );
 }
 

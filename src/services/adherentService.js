@@ -1,4 +1,4 @@
-class AuthService {
+class AdherentService {
     static async createAdherent(adherent) {
         try {
             const response = await fetch('http://localhost:3001/api/spaces/space_id/', {

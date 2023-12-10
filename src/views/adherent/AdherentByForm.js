@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faQrcode } from '@fortawesome/free-solid-svg-icons';
 // import { library } from '@fortawesome/fontawesome-svg-core';
-//import AdherentController from '../../controllers/adherentController';
+import AdherentController from '../../controllers/adherentController';
 import "./CreateAdherent.css"
 
 //library.add(faQrcode);
