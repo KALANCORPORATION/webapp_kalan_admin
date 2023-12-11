@@ -1,17 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import AdherentController from '../../controllers/adherentController';
+import { useLocation } from 'react-router-dom';
 
 import "../../styles/AdherentList.css";
 
 const AdherentList = () => {
     const [adherents, setAdherents] = useState([]);
     const [loading, setLoading] = useState(true);
+    const token = localStorage.getItem('accessToken');
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidHlwZSI6InJlZmVyZW50IiwiaWF0IjoxNzAyMjU2MjgyLCJleHAiOjE3MDIzNDI2ODJ9.IrRS4I1JeSk3z9qLrtJpnValEausiS2ciKwCS5rwN_M'; // Remplacez par le jeton d'accès réel
-                const adherentsData = await AdherentController.getAdherents(accessToken);
+                console.log(token);
+                const adherentsData = await AdherentController.getAdherents(token);
                 setAdherents(adherentsData);
                 setLoading(false);
             } catch (error) {
@@ -20,7 +22,7 @@ const AdherentList = () => {
             }
         };
         fetchData();
-    }, []);
+    },  [localStorage.getItem('accessToken')]);
 
     return (
         <div className="adhrent-parent">

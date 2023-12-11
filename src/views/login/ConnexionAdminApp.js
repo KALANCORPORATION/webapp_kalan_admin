@@ -1,14 +1,24 @@
 import "../../styles/ConnexionAdminApp.css";
 import React, { useState } from 'react';
 import AuthController from '../../controllers/authController';
+import { useNavigate } from 'react-router-dom';
 
 const ConnexionAdminApp = () => {
     const [pseudo, setPseudo] = useState('');
     const [password, setPassword] = useState('');
     const [accessToken, setAccessToken] = useState(null);
+    const history = useNavigate();
 
-    const handleLogin = () => {
-        AuthController.handleLogin(pseudo, password, setAccessToken);
+    const handleLogin = async () => {
+        try {
+            const response = await AuthController.handleLogin(pseudo, password, setAccessToken);
+            localStorage.setItem('accessToken', response.accessToken);
+            console.log(response.accessToken);
+            setAccessToken(response.accessToken);
+            history(`/adherents`);
+        } catch (error) {
+            console.error('Erreur de connexion:', error.message);
+        }
     };
 
   return (

@@ -1,16 +1,17 @@
 import React from 'react';
-import {BrowserRouter, Route, Routes, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Redirect, Switch } from 'react-router-dom';
 import ConnexionAdminApp from './views/login/ConnexionAdminApp';
 import AdherentList from './views/adherent/AdherentList';
 
-function App() {
+const App = () => {
     return (
-        <Routes>
-            <Route path="/" element={<ConnexionAdminApp />} />
-            <Route path="/adherents" element={<AdherentList />} />
-
-        </Routes>
+        <div className="app">
+            <Routes>
+                <Route path="/" element={<ConnexionAdminApp/>} />
+                <Route path="/adherents" element={<AdherentList/>} />
+            </Routes>
+        </div>
     );
-}
+};
 
 export default App;

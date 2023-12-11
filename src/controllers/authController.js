@@ -9,6 +9,7 @@ class AuthController {
             // Store the accessToken or perform actions after successful login
             console.log('Token:', accessToken);
             setAccessToken(accessToken);
+            return { accessToken };
         } catch (error) {
             console.error('Erreur de connexion:', error.message);
         }

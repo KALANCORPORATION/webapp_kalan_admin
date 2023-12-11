@@ -37,7 +37,7 @@
     text-align: center;
 }
 .qr-code-1-icon {
-    position: absolute;
+    position: relative;
     top: 119px;
     left: 311px;
     width: 38px;
@@ -214,7 +214,7 @@
     color: var(--blanc);
 }
 .rectangle-div {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     border-radius: var(--br-8xs);
@@ -323,7 +323,7 @@
     overflow: hidden;
 }
 .rectangle-parent {
-    position: absolute;
+    position: relative;
     top: 380px;
     left: 114px;
     width: 234px;
