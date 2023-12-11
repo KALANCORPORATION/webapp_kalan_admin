@@ -45,6 +45,53 @@ const AdherentList = () => {
                                                 </div>
                                             </div>
                                         </div>
+                                        <div className="ebook-3d-prvention-risq-ggrlo-parent">
+                                            <img
+                                                className="ebook-3d-prvention-risq-ggrlo"
+                                                alt=""
+                                                src="/ebook-3d-prvention-risq-ggrlogo-mse-5@2x.png"
+                                            />
+                                            <img
+                                                className="ebook-3d-prvention-risq-ggrlo1"
+                                                alt=""
+                                                src="/ebook-3d-prvention-risq-ggrlogo-mse-6@2x.png"
+                                            />
+                                            <img
+                                                className="ebook-3d-prvention-risq-ggrlo2"
+                                                alt=""
+                                                src="/ebook-3d-prvention-risq-ggrlogo-mse-4@2x.png"
+                                            />
+                                            <img
+                                                className="ebook-3d-prvention-risq-ggrlo3"
+                                                alt=""
+                                                src="/ebook-3d-prvention-risq-ggrlogo-mse-7@2x.png"
+                                            />
+                                            <img
+                                                className="ebook-3d-prvention-risq-ggrlo4"
+                                                alt=""
+                                                src="/ebook-3d-prvention-risq-ggrlogo-mse-2@2x.png"
+                                            />
+                                            <img
+                                                className="ebook-3d-prvention-risq-ggrlo5"
+                                                alt=""
+                                                src="/ebook-3d-prvention-risq-ggrlogo-mse-8@2x.png"
+                                            />
+                                            <img
+                                                className="ebook-3d-prvention-risq-ggrlo6"
+                                                alt=""
+                                                src="/ebook-3d-prvention-risq-ggrlogo-mse-3@2x.png"
+                                            />
+                                            <img
+                                                className="ebook-3d-prvention-risq-ggrlo7"
+                                                alt=""
+                                                src="/ebook-3d-prvention-risq-ggrlogo-mse-9@2x.png"
+                                            />
+                                            <img
+                                                className="coihczs-1-icon"
+                                                alt=""
+                                                src="/71coihczs-1@2x.png"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             ))}
