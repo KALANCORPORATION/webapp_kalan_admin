@@ -1,0 +1,149 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4; 
+  }
+
+  .header {
+    width: 400px;
+    height: 100px;
+    margin-left: -50px;
+    border-radius: 10px;
+    font-family: 'Barlow', sans-serif; ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5px;
+    color: #f4f4f4;
+    background: linear-gradient(#353F71, #a9f2ee);
+    margin-top: -50px;
+  }
+
+  .logo_kalan {
+    
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
+    margin-left: -40px;
+    
+  }
+
+  .logo-return {
+    margin-left: -30px;
+  }
+
+  .info {
+    justify-content: center;
+    margin-right: 300px;
+    display: flex;
+    font-family: 'Barlow', sans-serif; ;
+    font-size: 10px;
+  }
+
+  .divider {
+    margin-left: -30px;
+    border-color: 1px black; 
+    width: 120%;
+    margin-bottom: 20px;
+    
+    
+  }
+  
+  .container {
+    border-radius: 10px;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form {
+    
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Ajustez l'espace vertical entre les éléments du formulaire */
+  }
+  .form input {
+    font-family: 'Barlow', sans-serif; ;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+   
+  }
+  
+  .button-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    align-items: center; 
+    
+
+  }
+  
+   .add-button {
+    justify-content: center;
+    display: flex;
+    background: linear-gradient(#353F71, #AFEEEE);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    width: 100px;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .icon-add-adherent {
+    background-color: white; 
+    border-radius: 50%; 
+    width:25px;
+    height: 25px;
+    margin-top: -3px;margin-right: 10px;
+    
+    
+  }
+
+  .scan-contener {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 25px;
+    
+  }
+
+  .text-scan {
+    font-family: 'Barlow', sans-serif; 
+    font-size: 8px;
+    color: gray;
+    margin-left: 200px;
+    margin-top: -23px
+  }
+  .scan-button {
+    background-color: white;
+    margin-left: 270px;
+    margin-top: -15px;
+    color: #fff;
+     border: none;
+    
+    cursor: pointer; 
+  }
+
+  .text {
+    margin-top: -3px;
+    font-family: 'Barlow', sans-serif; 
+    font-size: 10px;
+    color: gray;
+  }
+  
+  .footer-bar {
+    margin-top: 20px; /* Ajoutez un espace entre le formulaire et le pied de page */
+  }
