@@ -18,8 +18,21 @@ body {
     align-items: center;
     font-size: 5px;
     color: #f4f4f4;
-    background: linear-gradient(#353F71, #c5efef);
+    background: linear-gradient(#353F71, #a9f2ee);
     margin-top: -50px;
+  }
+
+  .logo_kalan {
+    
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
+    margin-left: -40px;
+    
+  }
+
+  .logo-return {
+    margin-left: -30px;
   }
 
   .info {
@@ -28,14 +41,14 @@ body {
     display: flex;
     font-family: 'Barlow', sans-serif; ;
     font-size: 10px;
-    margin-bottom: -5px;
   }
 
   .divider {
     margin-left: -30px;
-    border-top: 1px gray; 
+    border-color: 1px black; 
     width: 120%;
     margin-bottom: 20px;
+    
     
   }
   
@@ -71,6 +84,8 @@ body {
     flex-direction: column;
     gap: 10px; 
     align-items: center; 
+    
+
   }
   
    .add-button {
@@ -86,64 +101,48 @@ body {
     cursor: pointer;
   }
 
-  .scan-button {
-    justify-content: center;
-    display: flex;
-    width: 50px;
-    height: 50px;
-    background-color: black;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
-    cursor: pointer;
-  }
-
-  .button-administrateur{
-    font-weight: bold;
-    justify-content: center;
-    display: flex;
-    background: black;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    width: 150px;
-    padding: 10px;
-    cursor: pointer;
-    align-items: center; 
+  .icon-add-adherent {
+    background-color: white; 
+    border-radius: 50%; 
+    width:25px;
+    height: 25px;
+    margin-top: -3px;margin-right: 10px;
+    
     
   }
 
-  .icon-suivant{
-    margin-right: 10px;
+  .scan-contener {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 25px;
+    
   }
+
+  .text-scan {
+    font-family: 'Barlow', sans-serif; 
+    font-size: 8px;
+    color: gray;
+    margin-left: 200px;
+    margin-top: -23px
+  }
+  .scan-button {
+    background-color: white;
+    margin-left: 270px;
+    margin-top: -15px;
+    color: #fff;
+     border: none;
+    
+    cursor: pointer; 
+  }
+
   .text {
     margin-top: -3px;
     font-family: 'Barlow', sans-serif; 
     font-size: 10px;
     color: gray;
   }
-  
- 
-
-  /* .button-referent {
-    font-weight: bold;
-    justify-content: center;
-    display: flex;
-    background: black;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 150px;
-    padding: 10px;
-    cursor: pointer;
-  } */
-
-  /* .icon-suivant-ref{
-    margin-right: 35px;
-   
-  } */
   
   .footer-bar {
     margin-top: 20px; /* Ajoutez un espace entre le formulaire et le pied de page */

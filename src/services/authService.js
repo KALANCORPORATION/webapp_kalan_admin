@@ -1,12 +1,12 @@
-class AdherentService {
-    static async createAdherent(adherent) {
+class AuthService {
+    static async signIn(user) {
         try {
-            const response = await fetch('http://localhost:3001/api/spaces/space_id/adherents', {
+            const response = await fetch('http://localhost:3001/api/auth/signin?type=referent', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(adherent),
+                body: JSON.stringify(user),
             });
 
             if (response.ok) {
@@ -21,3 +21,5 @@ class AdherentService {
         }
     }
 }
+
+export default AuthService;
