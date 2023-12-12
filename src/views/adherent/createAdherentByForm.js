@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQrcode } from '@fortawesome/free-solid-svg-icons';
 //import { library } from '@fortawesome/fontawesome-svg-core';
 import AdherentController from '../../controllers/adherentController';
-import "./CreateAdherent.css"
+import "../../styles/CreateAdherent.css";
 
 //library.add(faQrcode);
 
@@ -20,13 +20,22 @@ const CreateAdherent = () => {
   const [isScanning, setIsScanning] = useState(false);
 
 
-  const handleCreateAdherent = () => {
-    AdherentController.handleCreateAdherent(prenom, nom, dateNaissance, mail, telephone);
-};
+  const handleCreateAdherent = async () => {
+
+    const adherent = { prenom, nom, dateNaissance, telephone };
+
+    try {
+      const spaceId = 1; 
+      const newAdherent = await AdherentController.handleCreateAdherent(spaceId, adherent, accessToken);
+      console.log('Adhérent créé avec succès:', newAdherent);
+
+    } catch (error) {
+      console.error('Erreur lors de la création de l\'adhérent:', error.message);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Ajoutez ici la logique pour soumettre le formulaire
     console.log('Formulaire soumis :', { prenom, nom, dateNaissance, mail, telephone });
   };
 
@@ -35,7 +44,6 @@ const CreateAdherent = () => {
   };
 
   const handleCodeScan = (value) => {
-    // Vous pouvez traiter ici la valeur du code scanné si nécessaire
     console.log('Code scanné :', value);
     setScannedCode(value);
     setIsScanning(false);
@@ -60,7 +68,6 @@ const CreateAdherent = () => {
                 <div>
                     <div className="scan-contener">
                         <button className="scan-button" onClick={handleScanButtonClick}>
-                            <img className="header-child" alt="" src="/qr-code 1.png" />
                         </button>
                         <p className="text-scan">scan carte adhérent</p>
                     </div>
@@ -105,7 +112,7 @@ const CreateAdherent = () => {
             </form>
             <div className="button-container">
                 
-                <button className='add-button' onClick={handleCreateAdherent} type="submit">
+                <button className='add-button' onClick={handleCreateAdherent} type="button">
                 <img className="icon-add-adherent" alt="" src="/ajouter-un-utilisateur 2.png" />
                     Ajouter</button>
             </div>
