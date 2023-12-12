@@ -48,6 +48,9 @@ const App = () => {
             const newResults = [...results, newResult];
             console.log("Le scan a été ajouté", newResult);
             navigator.vibrate([1, 5, 100]);
+
+            CodeISBNService.code(newResult).then(r => console.log(r));
+
             document.querySelector(".results").innerHTML += `<li>${newResult}</li>`;
         } else {
             console.log("Le scan est déjà présent", newResult);
