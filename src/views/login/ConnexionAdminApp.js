@@ -15,7 +15,7 @@ const ConnexionAdminApp = () => {
             localStorage.setItem('accessToken', response.accessToken);
             console.log(response.accessToken);
             setAccessToken(response.accessToken);
-            history(`/adherents`);
+            history(`/homepage`);
         } catch (error) {
             console.error('Erreur de connexion:', error.message);
         }
@@ -94,8 +94,7 @@ const ConnexionAdminApp = () => {
             onChange={(e) => setPseudo(e.target.value)}
         />
       </div>
-      <div className="div">@</div>
-      <div className="div1">
+      <div className="div-mot-de-passe ">
         <input
             type="password"
             placeholder="************"

@@ -333,6 +333,11 @@
   width: 159.4px;
   height: 14px;
 }
+.div-mot-de-passe {
+  top: auto;
+  bottom: auto;
+  left: auto;
+}
 .div1 {
   top: calc(50% + 53px);
   left: calc(50% - 129px);

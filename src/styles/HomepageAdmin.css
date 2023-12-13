@@ -1,0 +1,742 @@
+.home-admin-child {
+    position: absolute;
+    left: -70%;
+    bottom: 0;
+    width: 95px;
+    height: 88px;
+    margin-right: 5px; /* Ajoute une marge à droite de l'image */
+}
+
+.home-admin-child-referent {
+    position: relative;
+    margin-left: 190%;
+    bottom: 100%;
+    top: 40%;
+    width: 95px;
+    height: 88px;
+    margin-right: 5px;
+}
+
+.image-4-icon {
+    top: 199px;
+    left: 69px;
+    width: 222px;
+    height: 167px;
+    object-fit: cover;
+}
+.voir-plus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 600;
+}
+.firstname {
+    position: relative;
+    top: 100%;
+    white-space: nowrap; /* Évite le passage à la ligne du texte */
+    left: 0;
+    font-weight: 600;
+}
+.firstnameReferent {
+    position: relative;
+    top: 400%;
+    white-space: nowrap; /* Évite le passage à la ligne du texte */
+    left: -200%;
+    font-weight: 600;
+}
+.tous-les-livres,
+.voir-plus-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 46px;
+    height: 14px;
+}
+.tous-les-livres {
+    top: 421px;
+    left: 298px;
+}
+.voir-plus2 {
+    position: absolute;
+    top: 203px;
+    left: 0;
+    font-weight: 600;
+}
+.voir-plus-parent {
+    position: absolute;
+    top: 0;
+    left: 237px;
+    width: 46px;
+    height: 217px;
+}
+.julien-container {
+    position: absolute;
+    top: 117px;
+    left: 0;
+    width: 33px;
+    height: 14px;
+}
+.recent-adherent-container {
+    position: relative;
+    top: 40%;
+    display: flex;
+    align-items: center;
+    margin-left: -22%;
+    width: 33px;
+    height: 14px;
+}
+
+.recent-adherent-container.odd {
+    top: 100%;
+    margin-left: 50px;
+    margin-right: 25px;
+}
+
+/* Positionnement dynamique */
+.recent-adherent-container.even {
+    top: 100%;
+    margin-left: 50px;
+    margin-right: 25px;
+}
+
+
+.recent-referent-container {
+    position: relative;
+    top: 84%;
+    display: flex;
+    align-items: center;
+    margin-left: -22%;
+    width: 33px;
+    height: 14px;
+}
+
+.recent-referent-container.odd {
+    top: 100%;
+    margin-left: 50px;
+    margin-right: 25px;
+}
+
+/* Positionnement dynamique */
+.recent-referent-container.even {
+    top: 100%;
+    margin-left: 50px;
+    margin-right: 25px;
+}
+.karla-container,
+.les-adhrents,
+.sophie-container {
+    position: absolute;
+    top: 117px;
+    left: 102px;
+    width: 37px;
+    height: 14px;
+}
+.karla-container,
+.les-adhrents {
+    left: 206px;
+    width: 28px;
+}
+.les-adhrents {
+    top: 844px;
+    left: 64px;
+    width: 283px;
+    height: 217px;
+}
+.titre-voir-plus2 {
+    position: absolute;
+    top: 0;
+    left: 275px;
+    width: 46px;
+    height: 14px;
+}
+.group-child6,
+.group-child7 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: var(--br-8xs);
+    background-color: var(--violet-scanner);
+    backdrop-filter: blur(4px);
+    width: 140px;
+    height: 106px;
+}
+.group-child7 {
+    left: 161px;
+}
+.div {
+    position: absolute;
+    top: 15px;
+    left: 199px;
+    color: var(--color-lightskyblue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 38px;
+}
+.div3 {
+    font-size: var(--font-size-lg);
+}
+.div1 {
+    top: 15px;
+    left: 196px;
+}
+.div1,
+.div2,
+.div3,
+.emprunts,
+.rservations {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 38px;
+}
+.div2 {
+    top: 17px;
+    left: 36px;
+    color: var(--color-lightskyblue);
+}
+.div3,
+.emprunts,
+.rservations {
+    top: 15px;
+    left: 33px;
+}
+.emprunts,
+.rservations {
+    top: 77px;
+    left: 20px;
+    font-size: var(--font-size-lgi);
+    font-family: var(--font-staatliches);
+    width: 104px;
+    height: 20px;
+}
+.rservations {
+    left: 177px;
+}
+.eparrow-up-bold-icon,
+.eparrow-up-bold-icon1 {
+    position: absolute;
+    top: 9px;
+    left: 108px;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+}
+.eparrow-up-bold-icon1 {
+    left: 273px;
+}
+.rectangle-parent2 {
+    position: absolute;
+    top: 33px;
+    left: 0;
+    width: 301px;
+    height: 106px;
+    font-size: var(--font-size-39xl);
+    color: var(--blanc);
+    font-family: var(--font-genos);
+}
+.frame-item,
+.les-statistiques {
+    position: absolute;
+    top: 628px;
+    left: 26px;
+    width: 321px;
+    height: 139px;
+}
+.frame-item {
+    top: 51px;
+    left: 300px;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}
+.accueil1 {
+    position: absolute;
+    top: 60px;
+    left: 154px;
+    font-weight: 600;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.justthekk-1-icon1 {
+    position: absolute;
+    top: 52px;
+    left: 14px;
+    width: 46px;
+    height: 47px;
+    object-fit: cover;
+}
+.header-item {
+    height: 70.5%;
+    width: 16.35%;
+    top: 29.5%;
+    right: 0;
+    bottom: 0;
+    left: 83.65%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.b1,
+.header-item,
+.header1 {
+    position: absolute;
+}
+.b1 {
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 50px;
+    height: 13.6px;
+}
+.header1 {
+    height: 16.81%;
+    width: 82.22%;
+    top: 7.56%;
+    right: 8.89%;
+    bottom: 75.63%;
+    left: 8.89%;
+    text-align: left;
+    font-size: var(--font-size-sm);
+    font-family: var(--font-poppins);
+}
+.ellipse-parent2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+            180deg,
+            rgba(53, 63, 113, 0.98) 15.1%,
+            rgba(49, 178, 186, 0)
+    );
+    width: 360px;
+    height: 119px;
+    overflow: hidden;
+    font-size: var(--font-size-base);
+    color: var(--blanc);
+}
+.group-child8 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: var(--br-8xs);
+    background: linear-gradient(180deg, rgba(241, 241, 241, 0.5), #e5e5e5);
+    width: 336px;
+    height: 110px;
+}
+.fleche-droite-2-icon4,
+.fleche-droite-3-icon4,
+.image-1-icon {
+    position: absolute;
+    top: 40.3px;
+    left: 0;
+    width: 14.4px;
+    height: 15.2px;
+    object-fit: cover;
+}
+.fleche-droite-3-icon4,
+.image-1-icon {
+    left: 297.2px;
+}
+.image-1-icon {
+    top: 20.7px;
+    left: 0;
+    width: 45.9px;
+    height: 51.2px;
+}
+.df7c680154c81ef43b4cc4f652a7d5-icon,
+.image-2-icon {
+    position: absolute;
+    top: 14.2px;
+    left: 23px;
+    width: 67.5px;
+    height: 62.1px;
+    object-fit: cover;
+}
+.image-2-icon {
+    top: 8px;
+    left: 51.7px;
+    width: 58.9px;
+    height: 72.6px;
+}
+.image-4-icon1,
+.r-1 {
+    position: absolute;
+    top: 16.3px;
+    left: 184px;
+    width: 55.8px;
+    height: 56px;
+}
+.image-4-icon1 {
+    top: 20.7px;
+    left: 221.1px;
+    width: 45.9px;
+    height: 51.2px;
+    object-fit: cover;
+}
+.df7c680154c81ef43b4cc4f652a7d5-icon1 {
+    position: absolute;
+    top: 14.2px;
+    left: 175.2px;
+    width: 67.5px;
+    height: 62.1px;
+    object-fit: cover;
+}
+.image-3-icon,
+.r-2-icon {
+    position: absolute;
+    object-fit: cover;
+}
+.image-3-icon {
+    top: 7.6px;
+    left: 139.6px;
+    border-radius: var(--br-8xs);
+    width: 74.3px;
+    height: 79.9px;
+}
+.r-2-icon {
+    top: 0;
+    left: 100.5px;
+    width: 74.7px;
+    height: 83.9px;
+}
+.fleche-droite-2-parent2,
+.image-1-parent {
+    position: absolute;
+    top: 0;
+    left: 23px;
+    width: 267.1px;
+    height: 83.9px;
+}
+.fleche-droite-2-parent2 {
+    top: 12px;
+    left: 11.5px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 311.6px;
+}
+.rectangle-parent3 {
+    position: absolute;
+    top: 449px;
+    left: 12px;
+    width: 336px;
+    height: 110px;
+}
+.group-child9,
+.titre-voir-plus3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 19px;
+}
+.group-child9 {
+    top: 23.5px;
+    left: -0.5px;
+    border-top: 1px solid var(--barre-separation);
+    box-sizing: border-box;
+    width: 333px;
+    height: 1px;
+}
+.titre-voir-plus-group {
+    position: absolute;
+    top: 128px;
+    left: 15px;
+    width: 332px;
+    height: 24px;
+    text-align: left;
+    font-size: var(--font-size-base);
+    color: var(--color-black);
+}
+.titre-voir-plus4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 185px;
+    height: 19px;
+}
+.titre-voir-plus-container,
+.titre-voir-plus-parent1 {
+    position: absolute;
+    top: 383px;
+    left: 15px;
+    width: 332px;
+    height: 24px;
+    text-align: left;
+    font-size: var(--font-size-base);
+    color: var(--color-black);
+}
+.titre-voir-plus-parent1 {
+    top: 594px;
+}
+.titre-voir-plus6 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 163px;
+    height: 19px;
+}
+.titre-voir-plus-parent2 {
+    position: absolute;
+    top: 805px;
+    left: 15px;
+    width: 332px;
+    height: 24px;
+    text-align: left;
+    font-size: var(--font-size-base);
+    color: var(--color-black);
+}
+.titre-voir-plus7 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 157px;
+    height: 19px;
+}
+.titre-voir-plus-parent3 {
+    position: absolute;
+    top: 1011px;
+    left: 15px;
+    width: 332px;
+    height: 24px;
+    text-align: left;
+    font-size: var(--font-size-base);
+    color: var(--color-black);
+}
+.home-admin-item {
+    position: absolute;
+    top: 1082px;
+    left: 37px;
+    width: 288px;
+    height: 88px;
+}
+.seb-fleury-container {
+    position: absolute;
+    top: 1165px;
+    left: 52px;
+    width: 56px;
+    height: 14px;
+}
+.fady-dictatrice-wrapper,
+.le-boss-wrapper,
+.notification2-1 {
+    position: absolute;
+    top: 1165px;
+    left: 141px;
+    width: 80px;
+    height: 14px;
+}
+.le-boss-wrapper,
+.notification2-1 {
+    left: 260px;
+    width: 41px;
+}
+.notification2-1 {
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+}
+.notification-2-icon1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20.7px;
+    height: 18.5px;
+    object-fit: cover;
+}
+.ellipse-div {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    border-radius: 50%;
+    background-color: var(--color-orangered);
+    width: 8px;
+    height: 8px;
+}
+.notification2-1-parent {
+    position: absolute;
+    top: 60px;
+    left: 270px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 22px;
+    height: 22px;
+}
+.tous-les-livres1 {
+    position: absolute;
+    top: 164px;
+    left: 298px;
+    width: 46px;
+    height: 14px;
+}
+.icons8-bibliothque-64-1,
+.sans-titre-6-11 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 360px;
+    height: 112px;
+    object-fit: cover;
+}
+.icons8-bibliothque-64-1 {
+    top: 55px;
+    left: 85px;
+    width: 20px;
+    height: 20px;
+}
+.group-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 360px;
+    height: 69.1px;
+}
+.bibliothque1,
+.mon-espace {
+    position: absolute;
+    top: 24px;
+    left: 147.8px;
+    display: flex;
+    align-items: center;
+    width: 55.5px;
+    height: 13px;
+}
+.mon-espace {
+    left: 0;
+}
+.ionlibrary-icon1 {
+    position: absolute;
+    top: 0;
+    left: 165.7px;
+    width: 19.8px;
+    height: 21.7px;
+    overflow: hidden;
+}
+.accueil2,
+.bibliothque-group {
+    position: absolute;
+    top: 24px;
+    left: 75.8px;
+    width: 203.4px;
+    height: 37px;
+}
+.accueil2 {
+    top: 23.3px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    width: 39px;
+    height: 13.7px;
+}
+.mingcutehome-2-fill-icon1 {
+    position: absolute;
+    top: 0;
+    left: 6.6px;
+    width: 19.2px;
+    height: 21.1px;
+    overflow: hidden;
+}
+.accueil-group {
+    position: absolute;
+    top: 26px;
+    left: 15px;
+    width: 39px;
+    height: 37px;
+    color: var(--bleu-scanner);
+}
+.silhouette-dutilisateurs-multi-icon1 {
+    position: absolute;
+    top: 0;
+    left: 12.3px;
+    width: 19.8px;
+    height: 18.6px;
+    object-fit: cover;
+}
+.adhrents2 {
+    position: absolute;
+    top: 22px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    width: 56px;
+    height: 12px;
+}
+.group-parent5,
+.silhouette-dutilisateurs-multi-parent {
+    position: absolute;
+    top: 26.1px;
+    left: 301px;
+    width: 56px;
+    height: 34px;
+}
+.group-parent5 {
+    top: 28px;
+    left: 0;
+    width: 360px;
+    height: 69.1px;
+}
+.group-child14,
+.group-parent4 {
+    position: absolute;
+    top: 0;
+    left: 149.8px;
+    width: 59.5px;
+    height: 56px;
+}
+.group-parent4 {
+    left: 0;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 360px;
+    height: 97.1px;
+}
+.icons8-bibliothque-64-11 {
+    position: absolute;
+    top: 53px;
+    left: 88px;
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}
+.group-parent3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 360px;
+    height: 97.1px;
+}
+.icons8-bibliothque-64-1-parent {
+    top: 15px;
+    height: 97.1px;
+}
+.home-admin,
+.icons8-bibliothque-64-1-parent,
+.sans-titre-6-1-group {
+    position: absolute;
+    left: 0;
+    width: 360px;
+}
+.sans-titre-6-1-group {
+    top: 1187px;
+    height: 112.1px;
+    text-align: left;
+    font-size: var(--font-size-3xs);
+    color: var(--blanc);
+}
+.home-admin {
+    top: 0;
+    background-color: var(--blanc);
+    height: 1299px;
+    overflow: hidden;
+}
+.home-admin-parent {
+    position: relative;
+    width: 100%;
+    left: 40%;
+    height: 1299px;
+    text-align: center;
+    font-size: var(--font-size-xs);
+    color: var(--violet-scanner);
+    font-family: var(--font-barlow);
+}

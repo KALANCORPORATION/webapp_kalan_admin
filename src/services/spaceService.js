@@ -1,9 +1,7 @@
-import Adherent from "../models/Adherent";
-
-class AdherentService {
-    static async getAdherents(accessToken) {
+class SpaceService {
+    static async getWeeklyStats(spaceId, accessToken) {
         try {
-            const response = await fetch('http://localhost:3001/api/adherents', {
+            const response = await fetch(`http://localhost:3001/api/spaces/${spaceId}/weekly-stats`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -13,8 +11,7 @@ class AdherentService {
             });
 
             if (response.ok) {
-                const data = await response.json();
-                return data.map(adherentData => new Adherent(adherentData));
+                return await response.json();
             } else {
                 const errorData = await response.json();
                 throw new Error(errorData.message);
@@ -24,9 +21,9 @@ class AdherentService {
         }
     }
 
-    static async getRecentAdherents(spaceId, listSize, accessToken) {
+    static async getSpace(accessToken) {
         try {
-            const response = await fetch(`http://localhost:3001/api/spaces/${spaceId}/recent-adherents?list_size=${listSize}`, {
+            const response = await fetch('http://localhost:3001/api/user/space', {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -36,12 +33,7 @@ class AdherentService {
             });
 
             if (response.ok) {
-                const data = await response.json();
-
-                return data.map(recentAdherentData => ({
-                    id: recentAdherentData.id,
-                    adherent: new Adherent(recentAdherentData.adherent),
-                }));
+                return await response.json();
             } else {
                 const errorData = await response.json();
                 throw new Error(errorData.message);
@@ -52,4 +44,4 @@ class AdherentService {
     }
 }
 
-export default AdherentService;
+export default SpaceService;
