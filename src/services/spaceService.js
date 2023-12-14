@@ -1,7 +1,8 @@
+// SpaceService.js
 class SpaceService {
     static async getWeeklyStats(spaceId, accessToken) {
         try {
-            const response = await fetch(`http://localhost:3001/api/spaces/${spaceId}/weekly-stats`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/weekly-stats`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -23,7 +24,7 @@ class SpaceService {
 
     static async getSpace(accessToken) {
         try {
-            const response = await fetch('http://localhost:3001/api/user/space', {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/user/space`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',

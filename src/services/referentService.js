@@ -1,9 +1,10 @@
+// ReferentService.js
 import Referent from "../models/Referent";
 
 class ReferentService {
     static async getRecentReferents(spaceId, listSize, accessToken) {
         try {
-            const response = await fetch(`http://localhost:3001/api/spaces/${spaceId}/recent-referents?list_size=${listSize}`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/recent-referents?list_size=${listSize}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -14,7 +15,7 @@ class ReferentService {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log('Response data:', data); // Add this line to log the response data
+                console.log('Response data:', data); // Ajoutez cette ligne pour journaliser les données de réponse
 
                 return data.map(recentReferentData => ({
                     id: recentReferentData.id,

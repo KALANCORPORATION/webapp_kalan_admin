@@ -3,7 +3,7 @@ import BookSpace from '../models/BookSpace';
 class BookSpaceService {
     static async getRecentBooks(spaceId, listSize, accessToken) {
         try {
-            const response = await fetch(`http://localhost:3001/api/spaces/${spaceId}/recent-books?list_size=${listSize}`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/recent-books?list_size=${listSize}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',

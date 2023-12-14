@@ -1,7 +1,8 @@
+// CodeISBNService.js
 class CodeISBNService {
-    static async code(isbn,accessToken) {
+    static async code(isbn, accessToken) {
         try {
-            const dataIdUser = await fetch('http://localhost:3001/api/user/space', {
+            const dataIdUser = await fetch(`${process.env.REACT_APP_URL}/api/user/space`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -9,7 +10,8 @@ class CodeISBNService {
                     'x-access-token': accessToken,
                 },
             });
-            const response = await fetch('http://localhost:3001/api/spaces/1/isbn_books', {
+
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/1/isbn_books`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -33,3 +35,5 @@ class CodeISBNService {
         }
     }
 }
+
+export default CodeISBNService;

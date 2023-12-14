@@ -1,7 +1,8 @@
+// AuthService.js
 class AuthService {
     static async signIn(user) {
         try {
-            const response = await fetch('http://localhost:3001/api/auth/signin?type=referent', {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/auth/signin?type=referent`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
