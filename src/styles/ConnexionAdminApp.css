@@ -252,8 +252,8 @@
   overflow: hidden;
 }
 .justthekk-1-icon {
-  position: absolute;
-  margin-left: -20%;
+  position: relative;
+  margin-left: 40%;
   width: 117px;
   height: 120px;
 }
@@ -334,9 +334,10 @@
   height: 14px;
 }
 .div-mot-de-passe {
-  top: auto;
+  position: relative;
+  top: 58%;
   bottom: auto;
-  left: auto;
+  left: -3%;
 }
 .div1 {
   top: calc(50% + 53px);
