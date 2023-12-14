@@ -423,14 +423,7 @@
     font-weight: 600;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
-.justthekk-1-icon {
-    position: absolute;
-    top: 52px;
-    left: 14px;
-    width: 46px;
-    height: 47px;
-    object-fit: cover;
-}
+
 .header-child {
     height: 70.5%;
     width: 16.35%;
