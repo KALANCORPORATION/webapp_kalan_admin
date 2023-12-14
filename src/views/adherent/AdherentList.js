@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import AdherentController from '../../controllers/adherentController';
-import { useLocation } from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 import "../../styles/AdherentList.css";
 
@@ -132,11 +132,13 @@ const AdherentList = () => {
                                     />
                                     <div className="accueil-parent">
                                         <div className="accueil">Accueil</div>
+                                        <Link to="/homepage">
                                         <img
                                             className="mingcutehome-2-fill-icon"
                                             alt=""
                                             src="/mingcutehome2fill.svg"
                                         />
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className="adhrents">Adhérents</div>
