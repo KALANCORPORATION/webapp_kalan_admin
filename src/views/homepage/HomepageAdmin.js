@@ -4,6 +4,8 @@ import HomeController from "../../controllers/spaceController";
 import SpaceController from "../../controllers/spaceController";
 import AdherentController from "../../controllers/adherentController";
 import ReferentController from "../../controllers/referentController";
+import BookSpaceController from "../../controllers/bookSpaceController";
+import RecentBooksComponent from "./RecentBooksComponent";
 
 const HomepageAdmin = () => {
 
@@ -18,6 +20,7 @@ const HomepageAdmin = () => {
 
     const [recentAdherents, setRecentAdherents] = useState([]);
     const [recentReferents, setRecentReferents] = useState([]);
+    const [recentBooks, setRecentBooks] = useState([]);
 
     useEffect(() => {
 
@@ -29,6 +32,7 @@ const HomepageAdmin = () => {
                 await fetchWeeklyStats(accessToken, spaceId);
                 await fetchRecentAdherents(accessToken, spaceId);
                 await fetchRecentReferents(accessToken, spaceId);
+                await fetchRecentBooks(accessToken, spaceId);
             } catch (error) {
                 console.error('Error fetching data:', error.message);
             }
@@ -40,6 +44,15 @@ const HomepageAdmin = () => {
                 setWeeklyStats(response);
             } catch (error) {
                 console.error('Error fetching data:', error.message);
+            }
+        };
+
+        const fetchRecentBooks = async (accessToken, spaceId) => {
+            try {
+                const response = await BookSpaceController.getRecentBooks(spaceId, 3, accessToken);
+                setRecentBooks(response);
+            } catch (error) {
+                console.error('Error fetching recent books:', error.message);
             }
         };
 
@@ -123,7 +136,8 @@ const HomepageAdmin = () => {
                     />
                 </div>
                 <div className="rectangle-parent3">
-                    <div className="group-child8" />
+                    <img className="image-4-icon" alt="" src="/image-4@2x.png" />
+
                     <div className="fleche-droite-2-parent2">
                         <img
                             className="fleche-droite-2-icon4"
@@ -135,24 +149,7 @@ const HomepageAdmin = () => {
                             alt=""
                             src="/flechedroite-31@2x.png"
                         />
-                        <div className="image-1-parent">
-                            <img className="image-1-icon" alt="" src="/image-1@2x.png" />
-                            <img
-                                className="df7c680154c81ef43b4cc4f652a7d5-icon"
-                                alt=""
-                                src="/df7c680154c81ef43b4cc4f652a7d575-1@2x.png"
-                            />
-                            <img className="image-2-icon" alt="" src="/image-2@2x.png" />
-                            <div className="r-1" />
-                            <img className="image-4-icon1" alt="" src="/image-41@2x.png" />
-                            <img
-                                className="df7c680154c81ef43b4cc4f652a7d5-icon1"
-                                alt=""
-                                src="/df7c680154c81ef43b4cc4f652a7d575-2@2x.png"
-                            />
-                            <img className="image-3-icon" alt="" src="/image-3@2x.png" />
-                            <img className="r-2-icon" alt="" src="/r-2@2x.png" />
-                        </div>
+                            <RecentBooksComponent recentBooks={recentBooks} />
                     </div>
                 </div>
                 <div className="titre-voir-plus-group">

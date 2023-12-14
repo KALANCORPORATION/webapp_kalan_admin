@@ -16,9 +16,14 @@
     height: 88px;
     margin-right: 5px;
 }
+.image-4-icon,
+.home-admin-child
+{
+    position: absolute;
+}
 
 .image-4-icon {
-    top: 199px;
+    top: -240%;
     left: 69px;
     width: 222px;
     height: 167px;
@@ -341,76 +346,19 @@
 .image-1-icon {
     left: 297.2px;
 }
-.image-1-icon {
-    top: 20.7px;
-    left: 0;
-    width: 45.9px;
-    height: 51.2px;
-}
-.df7c680154c81ef43b4cc4f652a7d5-icon,
-.image-2-icon {
-    position: absolute;
-    top: 14.2px;
-    left: 23px;
-    width: 67.5px;
-    height: 62.1px;
-    object-fit: cover;
-}
-.image-2-icon {
-    top: 8px;
-    left: 51.7px;
-    width: 58.9px;
-    height: 72.6px;
-}
-.image-4-icon1,
-.r-1 {
-    position: absolute;
-    top: 16.3px;
-    left: 184px;
-    width: 55.8px;
-    height: 56px;
-}
-.image-4-icon1 {
-    top: 20.7px;
-    left: 221.1px;
-    width: 45.9px;
-    height: 51.2px;
-    object-fit: cover;
-}
-.df7c680154c81ef43b4cc4f652a7d5-icon1 {
-    position: absolute;
-    top: 14.2px;
-    left: 175.2px;
-    width: 67.5px;
-    height: 62.1px;
-    object-fit: cover;
-}
-.image-3-icon,
-.r-2-icon {
-    position: absolute;
-    object-fit: cover;
-}
-.image-3-icon {
-    top: 7.6px;
-    left: 139.6px;
-    border-radius: var(--br-8xs);
-    width: 74.3px;
-    height: 79.9px;
-}
-.r-2-icon {
-    top: 0;
-    left: 100.5px;
-    width: 74.7px;
-    height: 83.9px;
-}
-.fleche-droite-2-parent2,
+
 .image-1-parent {
-    position: absolute;
-    top: 0;
-    left: 23px;
-    width: 267.1px;
-    height: 83.9px;
+    display: flex;
+    align-items: center;
 }
+
+.image-1-parent .recent-book-icon {
+    width: 130.5px;
+    height: 135.1px;
+    margin-right: 10px; /* Adjust the margin to create space between icons */
+    object-fit: cover;
+}
+
 .fleche-droite-2-parent2 {
     top: 12px;
     left: 11.5px;
