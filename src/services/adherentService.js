@@ -3,7 +3,7 @@ import Adherent from "../models/Adherent";
 class AdherentService {
     static async getAdherents(accessToken) {
         try {
-            const response = await fetch('http://localhost:3001/api/adherents', {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/adherents`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -26,7 +26,7 @@ class AdherentService {
 
     static async getRecentAdherents(spaceId, listSize, accessToken) {
         try {
-            const response = await fetch(`http://localhost:3001/api/spaces/${spaceId}/recent-adherents?list_size=${listSize}`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/recent-adherents?list_size=${listSize}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',

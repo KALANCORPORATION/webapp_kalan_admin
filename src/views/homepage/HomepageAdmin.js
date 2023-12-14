@@ -6,6 +6,7 @@ import AdherentController from "../../controllers/adherentController";
 import ReferentController from "../../controllers/referentController";
 import BookSpaceController from "../../controllers/bookSpaceController";
 import RecentBooksComponent from "./RecentBooksComponent";
+import Navbar from "../../components/NavBar";
 
 const HomepageAdmin = () => {
 
@@ -80,6 +81,7 @@ const HomepageAdmin = () => {
     return (
         <div className="home-admin-parent">
             <div className="home-admin">
+                <Navbar />
                 <div className="tous-les-livres">
                     <div className="voir-plus-wrapper">
                         <div className="voir-plus-wrapper">
@@ -95,7 +97,7 @@ const HomepageAdmin = () => {
                     <div className="recent-adherent-container">
                     {recentAdherents.map((recentAdherent, index) => (
                             <div className={`recent-adherent-container ${index % 2 === 0 ? 'even' : 'odd'}`}>
-                                <img className="home-admin-child" alt="" src="/ellipse-251@2x.png" />
+                                <img className="home-admin-child" alt="" src={recentAdherent.imagePath || "/ellipse-251@2x.png"} />
                                 <div className="firstname">{recentAdherent.adherent.firstName}</div>
                             </div>
                     ))}
@@ -185,7 +187,7 @@ const HomepageAdmin = () => {
                 <div className="recent-referent-container">
                     {recentReferents.map((recentReferent, index) => (
                         <div className={`recent-referent-container ${index % 2 === 0 ? 'even' : 'odd'}`}>
-                            <img className="home-admin-child-referent" alt="" src="/ellipse-251@2x.png" />
+                            <img className="home-admin-child-referent" alt="" src={recentReferent.imagePath || "/ellipse-251@2x.png"} />
                             <div className="firstnameReferent">{recentReferent.referent.firstName}</div>
                         </div>
                     ))}
@@ -203,57 +205,6 @@ const HomepageAdmin = () => {
                     <div className="voir-plus-wrapper">
                         <div className="voir-plus-wrapper">
                             <div className="voir-plus">Voir plus</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="sans-titre-6-1-group">
-                    <img className="sans-titre-6-11" alt="" src="/sans-titre6-1@2x.png" />
-                    <div className="icons8-bibliothque-64-1-parent">
-                        <img
-                            className="icons8-bibliothque-64-1"
-                            alt=""
-                            src="/icons8bibliothque64-1@2x.png"
-                        />
-                        <div className="group-parent3">
-                            <div className="group-parent4">
-                                <div className="group-parent5">
-                                    <div className="group-icon">
-                                        <img className="group-icon" alt="" src="/group-131.svg" />
-                                        <div className="bibliothque-group">
-                                            <div className="bibliothque1">Bibliothèque</div>
-                                            <div className="bibliothque1">Bibliothèque</div>
-                                            <div className="mon-espace">Mon espace</div>
-                                            <img
-                                                className="ionlibrary-icon1"
-                                                alt=""
-                                                src="/ionlibrary1.svg"
-                                            />
-                                        </div>
-                                        <div className="accueil-group">
-                                            <div className="accueil2">Accueil</div>
-                                            <img
-                                                className="mingcutehome-2-fill-icon1"
-                                                alt=""
-                                                src="/mingcutehome2fill1.svg"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="silhouette-dutilisateurs-multi-parent">
-                                        <img
-                                            className="silhouette-dutilisateurs-multi-icon1"
-                                            alt=""
-                                            src="/silhouettedutilisateursmultiples-1@2x.png"
-                                        />
-                                        <div className="adhrents2">Adhérents</div>
-                                    </div>
-                                </div>
-                                <img className="group-child14" alt="" src="/group-1461.svg" />
-                            </div>
-                            <img
-                                className="icons8-bibliothque-64-11"
-                                alt=""
-                                src="/icons8bibliothque64-1@2x.png"
-                            />
                         </div>
                     </div>
                 </div>
