@@ -4,6 +4,7 @@ import Scanner from '../../controllers/Scanner';
 import Result from '../../views/scan/Result';
 
 import '../../styles/ScanStyle.css';
+import CodeISBNService from "../../services/codeISBNService";
 
 
 const App = () => {
@@ -39,28 +40,20 @@ const App = () => {
         return () => disableCamera();
     }, []);
 
-    function addResultToList(newResult) {
-        // Vérifier si le résultat existe déjà dans la liste
-        const isResultPresent = results.some((result) => result === newResult);
+    const listOfIsbn = [];
 
-        // Si le résultat n'est pas déjà présent, l'ajouter à la liste
-        if (!isResultPresent) {
-            const newResults = [...results, newResult];
-            console.log("Le scan a été ajouté", newResult);
-            navigator.vibrate([1, 5, 100]);
-
-            CodeISBNService.code(newResult).then(r => console.log(r));
-
-            document.querySelector(".results").innerHTML += `<li>${newResult}</li>`;
-        } else {
-            console.log("Le scan est déjà présent", newResult);
-            alert("Code déjà scanné");
+    function addResultToList(result) {
+        if (listOfIsbn.includes(result)){
+            console.log("Le scan est déjà présent", result);
         }
-    }
-    function addResult(result) {
-        if (results !== undefined) {
-            const updatedResults = addResultToList(result);
-            setResults(updatedResults);
+        else {
+            console.log("Le scan a été ajouté", result);
+            navigator.vibrate([1, 5, 100]);
+            listOfIsbn.push(result);
+
+            CodeISBNService.code(result).then(r => console.log(r));
+
+            return document.querySelector(".results").innerHTML += `<li>${result}</li>`;
         }
     }
 
@@ -89,7 +82,7 @@ const App = () => {
                     top: '0px',
                     border: '3px solid green',
                 }} width="640" height="480" />
-                {scanning ? <Scanner scannerRef={scannerRef} cameraId={cameraId} onDetected={(result) => addResult(result)} /> : null}
+                {scanning ? <Scanner scannerRef={scannerRef} cameraId={cameraId} onDetected={(result) => addResultToList(result)} /> : null}
             </div>
 
         </div>
