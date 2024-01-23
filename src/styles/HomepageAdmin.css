@@ -666,9 +666,10 @@
     width: 360px;
 }
 .sans-titre-6-1-group {
+    z-index: 999;
     position: fixed;
     bottom: 0;
-    left: 0;
+    left: auto;
     width: 360px;
     height: 112.1px;
     text-align: left;
