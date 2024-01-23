@@ -666,12 +666,16 @@
     width: 360px;
 }
 .sans-titre-6-1-group {
-    top: 1187px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 360px;
     height: 112.1px;
     text-align: left;
     font-size: var(--font-size-3xs);
     color: var(--blanc);
 }
+
 .home-admin {
     top: 0;
     background-color: var(--blanc);
