@@ -6,54 +6,59 @@ import Result from '../../views/scan/Result';
 import '../../styles/ScanStyle.css';
 import CodeISBNService from "../../services/codeISBNService";
 
-
+// Main component App
 const App = () => {
-    const [scanning, setScanning] = useState(false); // toggleable state for "should render scanner"
-    const [cameras, setCameras] = useState([]); // array of available cameras, as returned by Quagga.CameraAccess.enumerateVideoDevices()
-    const [cameraId, setCameraId] = useState(null); // id of the active camera device
-    const [cameraError, setCameraError] = useState(null); // error message from failing to access the camera
-    const [results, setResults] = useState([]);// list of scanned results
-    const scannerRef = useRef(null); // reference to the scanner element in the DOM
+    // State variables
+    const [scanning, setScanning] = useState(false); // Toggleable state for "should render scanner"
+    const [cameras, setCameras] = useState([]); // Array of available cameras
+    const [cameraId, setCameraId] = useState(null); // ID of the active camera device
+    const [cameraError, setCameraError] = useState(null); // Error message from failing to access the camera
+    const [results, setResults] = useState([]); // List of scanned results
+    const scannerRef = useRef(null); // Reference to the scanner element in the DOM
 
-
+    // useEffect to initialize the camera and enumerate available cameras
     useEffect(() => {
         const enableCamera = async () => {
             navigator.vibrate([1, 5, 100]);
             await Quagga.CameraAccess.request(null, {});
         };
+
         const disableCamera = async () => {
             navigator.vibrate([1, 5, 100]);
             await Quagga.CameraAccess.release();
         };
+
         const enumerateCameras = async () => {
             const cameras = await Quagga.CameraAccess.enumerateVideoDevices();
             console.log('Cameras Detected: ', cameras);
-            setScanning(!scanning)
+            setScanning(!scanning);
             return cameras;
         };
+
         enableCamera()
             .then(disableCamera)
             .then(enumerateCameras)
             .then((cameras) => setCameras(cameras))
-            .then(() => Quagga.CameraAccess.disableTorch()) // disable torch at start, in case it was enabled before and we hot-reloaded
+            .then(() => Quagga.CameraAccess.disableTorch()) // Disable torch at start, in case it was enabled before and we hot-reloaded
             .catch((err) => setCameraError(err));
-        return () => disableCamera();
+
+        return () => disableCamera(); // Cleanup function to disable the camera on unmount
     }, []);
 
+    // List to store scanned ISBNs
     const listOfIsbn = [];
 
+    // Function to add a scanned result to the list
     function addResultToList(result) {
-
-        if (listOfIsbn.includes(result)){
+        if (listOfIsbn.includes(result)) {
             console.log("Le scan est déjà présent", result);
-        }
-        else {
+        } else {
             console.log("Le scan a été ajouté", result);
             navigator.vibrate([1, 5, 100]);
             listOfIsbn.push(result);
 
+            // Call the CodeISBNService to handle the scanned ISBN
             CodeISBNService.code(result).then(r => console.log(r));
-
             /**
              * c'est ici que les requetes von etre faite
              *
@@ -62,14 +67,18 @@ const App = () => {
              *
              * @param {results} c'est l'ISBN.
              */
-
+            // Display the scanned result in the UI
             return document.querySelector(".results").innerHTML += `<li>${result}</li>`;
         }
     }
 
+    // Render the component
     return (
         <div id="cam">
+            {/* Display camera initialization error, if any */}
             {cameraError ? <p>ERROR INITIALIZING CAMERA ${JSON.stringify(cameraError)} -- DO YOU HAVE PERMISSION?</p> : null}
+
+            {/* Display cameras dropdown if available */}
             {cameras.length === 0 ? <p>Enumerating Cameras, browser may be prompting for permissions beforehand</p> :
                 <form>
                     <select onChange={(event) => setCameraId(event.target.value)}>
@@ -81,19 +90,27 @@ const App = () => {
                     </select>
                 </form>
             }
-            <button onClick={() => setScanning(!scanning) }>{scanning ? 'Stop' : 'Start'}</button>
-            <ul className="results"></ul>
-            <input></input>
-            <div ref={scannerRef}>
 
-                {/* <video style={{ width: -webkit-fill-available,, width: window.innerWidth, height: 480, border: '3px solid orange' }}/> */}
+            {/* Button to start/stop scanning */}
+            <button onClick={() => setScanning(!scanning)}>{scanning ? 'Stop' : 'Start'}</button>
+
+            {/* Display scanned results in a list */}
+            <ul className="results"></ul>
+
+            {/* Input field for ISBN */}
+            <input></input>
+
+            {/* Container for the scanner */}
+            <div ref={scannerRef}>
+                {/* Canvas for drawing buffer */}
                 <canvas className="drawingBuffer" style={{
                     position: 'absolute',
                     border: '3px solid green',
                 }} width="640" height="480" />
+
+                {/* Render the scanner component if scanning is active */}
                 {scanning ? <Scanner scannerRef={scannerRef} cameraId={cameraId} onDetected={(result) => addResultToList(result)} /> : null}
             </div>
-
         </div>
     );
 };
