@@ -43,6 +43,7 @@ const App = () => {
     const listOfIsbn = [];
 
     function addResultToList(result) {
+
         if (listOfIsbn.includes(result)){
             console.log("Le scan est déjà présent", result);
         }
@@ -53,12 +54,21 @@ const App = () => {
 
             CodeISBNService.code(result).then(r => console.log(r));
 
+            /**
+             * c'est ici que les requetes von etre faite
+             *
+             *CODE DE LA REQUETE
+             *
+             *
+             * @param {results} c'est l'ISBN.
+             */
+
             return document.querySelector(".results").innerHTML += `<li>${result}</li>`;
         }
     }
 
     return (
-        <div>
+        <div id="cam">
             {cameraError ? <p>ERROR INITIALIZING CAMERA ${JSON.stringify(cameraError)} -- DO YOU HAVE PERMISSION?</p> : null}
             {cameras.length === 0 ? <p>Enumerating Cameras, browser may be prompting for permissions beforehand</p> :
                 <form>
@@ -74,12 +84,11 @@ const App = () => {
             <button onClick={() => setScanning(!scanning) }>{scanning ? 'Stop' : 'Start'}</button>
             <ul className="results"></ul>
             <input></input>
-            <div ref={scannerRef} style={{display: "flex",position: "relative","justify-content": "center"}}>
+            <div ref={scannerRef}>
 
-                {/* <video style={{ width: window.innerWidth, height: 480, border: '3px solid orange' }}/> */}
+                {/* <video style={{ width: -webkit-fill-available,, width: window.innerWidth, height: 480, border: '3px solid orange' }}/> */}
                 <canvas className="drawingBuffer" style={{
                     position: 'absolute',
-                    top: '0px',
                     border: '3px solid green',
                 }} width="640" height="480" />
                 {scanning ? <Scanner scannerRef={scannerRef} cameraId={cameraId} onDetected={(result) => addResultToList(result)} /> : null}
