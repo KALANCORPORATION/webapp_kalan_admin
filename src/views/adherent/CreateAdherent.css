@@ -22,8 +22,62 @@ body {
     margin-top: -50px;
   }
 
+  .background_style {
+    margin-left: -50px;
+    width: 400px;
+  }
+
+  .logo-return-profile {
+    position: absolute;
+    margin-left: -40px;
+    margin-top: 15px;
+  }
+
+  .logo-dropDown {
+    position: absolute;
+    margin-left: 313px;
+    margin-top: 15px;
+  }
+
+  .profile-img {
+    position: absolute;
+    margin-left: -40px;
+    margin-top: -50px;
+  }
+
+  .nom-prenom {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Barlow', sans-serif; ;
+    gap: 5px;
+    margin-top: 20px;
+    margin-left: -37px;
+
+  }
+  .email {
+    font-family: 'Barlow', sans-serif; ;
+    margin-left: -37px;
+    margin-top:-15px;
+    font-size: 10px;
+    color: gray;
+  }
+
+  .date-naissance {
+    font-family: 'Barlow', sans-serif; ;
+    margin-left: -37px;
+    margin-top:-5px;
+    font-size: 10px;
+    color: gray;
+  }
+
+  .liste-title {
+    font-family: 'Barlow', sans-serif; ;
+    margin-left: -37px;
+    margin-bottom: -20px;
+
+  }
+
   .logo_kalan {
-    
     display: flex;
     justify-content: center;
     margin-top: -50px;
@@ -44,9 +98,9 @@ body {
   }
 
   .divider {
-    margin-left: -30px;
+    margin-left: -40px;
     border-color: 1px black; 
-    width: 120%;
+    width: 125%;
     margin-bottom: 20px;
     
     

@@ -4,6 +4,8 @@ import { createRoot } from 'react-dom';
 //import { createRoot } from "react-dom/client";
 import App from "./App";
 import CreateAdherent from "./views/adherent/AdherentByForm"
+import ProfileAdherentPage from "./views/adherent/ProfileAdherentPage"
+
 //import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 //import "./global.css";
@@ -13,7 +15,8 @@ const root = createRoot(container);
 
 root.render(
   <BrowserRouter>
-    <CreateAdherent />
+    {/* <CreateAdherent /> */}
+    <ProfileAdherentPage/>
   </BrowserRouter>
 );
 
