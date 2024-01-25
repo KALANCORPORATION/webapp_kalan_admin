@@ -1,10 +1,17 @@
 
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 
 import { QrReader } from 'react-qr-reader';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQrcode } from '@fortawesome/free-solid-svg-icons';
+import CountryFlag from 'react-country-flag';
+import Calendar from 'react-calendar';
+import Select from 'react-select';
+
+
+
+
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faQrcode } from '@fortawesome/free-solid-svg-icons';
 //import { library } from '@fortawesome/fontawesome-svg-core';
 import AdherentController from '../../controllers/adherentController';
 import "./CreateAdherent.css"
@@ -12,17 +19,62 @@ import "./CreateAdherent.css"
 //library.add(faQrcode);
 
 
+
+const generateCountryOptions = () => {
+  return [
+    { value: '+33',  countryCode: 'FR' },
+    // Add other countries as needed
+  ];
+};
+
+const defaultOption = { value: '+33', countryCode: 'FR' };
+
+
+
+
+
 const CreateAdherent = () => {
   const [prenom, setPrenom] = useState('');
   const [nom, setNom] = useState('');
-  const [dateNaissance, setDateNaissance] = useState('');
+  const [dateNaissance, setDateNaissance] = useState(null);
   const [mail, setMail] = useState('');
   const [telephone, setTelephone] = useState('');
   const [isScanning, setIsScanning] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedPrefixe, setSelectedPrefixe] = useState(defaultOption);
 
+
+
+  const options = [defaultOption, ...generateCountryOptions()];
+
+  const CustomOption = ({ innerProps, data }) => (
+    <div {...innerProps}>
+      <CountryFlag countryCode={data.countryCode} svg />
+      <span>{data.label}</span>
+    </div>
+  );
+
+  const customStyles = {
+    option: (provided) => ({
+      ...provided,
+      display: 'flex',
+      alignItems: 'center',
+    }),
+  };
+
+
+  const handleCalendarIconClick = () => {
+     setShowCalendar(true);
+  };
+
+  const handleDateChange = (date) => {
+    const formattedDate = date.toLocaleDateString('fr-FR'); 
+     setDateNaissance(formattedDate);
+     setShowCalendar(false);
+  };
 
   const handleCreateAdherent = () => {
-    AdherentController.handleCreateAdherent(prenom, nom, dateNaissance, mail, telephone);
+    AdherentController.handleCreateAdherent(prenom, nom, dateNaissance, mail, `${selectedPrefixe.value}${telephone}`);
 };
 
   const handleSubmit = (e) => {
@@ -83,26 +135,61 @@ const CreateAdherent = () => {
                 placeholder="Nom"
                 />
 
+            <div className="date-container">
                 <input
-                type="text"
-                value={dateNaissance}
-                onChange={(e) => setDateNaissance(e.target.value)}
-                placeholder="Date de Naissance"
-                />  
+                    type="text"
+                    value={dateNaissance}
+                    onChange={(e) => setDateNaissance(e.target.value)}
+                    placeholder="Date de Naissance"
+                />
+                <img
+                    className="calendar-icon"
+                    alt=""
+                    src="/Group 8.png"
+                    onClick={handleCalendarIconClick}
+                />
+                {showCalendar && (
+                    <div className="calendar-popup">
+                      <Calendar onChange={handleDateChange} value={dateNaissance} />
+                    </div>
+                )}
+              </div>
 
+              <div className="phone-container">
+              <Select
+                options={options}
+                value={selectedPrefixe}
+                onChange={(selectedOption) => setSelectedPrefixe(selectedOption)}
+                placeholder={
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <CountryFlag countryCode={selectedPrefixe.countryCode} svg />
+                    <span>{selectedPrefixe.label}</span>
+                  </div>
+                }
+                styles={customStyles}
+                components={{ Option: CustomOption }}
+              />
+                <input
+                    type="tel"
+                    value={telephone}
+                    onChange={(e) => setTelephone(e.target.value)}
+                    placeholder="Téléphone"
+                />
+              </div>
+                
                 <input
                 type="email"
                 value={mail}
                 onChange={(e) => setMail(e.target.value)}
                 placeholder="E-mail"
                 />
+                
+              
+                <p className='text-tel'>Si vous renseigner un numéro un code de vérification sera 
+                                        envoyé à ce numéro.</p>
 
-                <input
-                type="tel"
-                value={telephone}
-                onChange={(e) => setTelephone(e.target.value)}
-                placeholder="Téléphone"
-                />
+              
+                
             </form>
             <div className="button-container">
                 

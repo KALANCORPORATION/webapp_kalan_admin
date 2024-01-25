@@ -1,5 +1,5 @@
 import React from "react";
-import BarcodeScannerComponent from "react-qr-barcode-scanner";
+// import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import "./asset/styles.css";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <BarcodeScannerComponent
+      {/* <BarcodeScannerComponent
         width={500}
         height={500}
         torch={torchOn}
@@ -16,7 +16,7 @@ function App() {
           if (result) setData(result.text);
           else setData("Not Found");
         }}
-      />
+      /> */}
       <p>{data}</p>
       <button onClick={() => setTorchOn(!torchOn)}>
         Switch Torch {torchOn ? "Off" : "On"}
