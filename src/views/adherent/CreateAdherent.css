@@ -50,7 +50,7 @@ body {
     flex-direction: row;
     font-family: 'Barlow', sans-serif; ;
     gap: 5px;
-    margin-top: 20px;
+    margin-top: -50px;
     margin-left: -37px;
 
   }
@@ -70,6 +70,12 @@ body {
     color: gray;
   }
 
+  .icon_email {
+    position: absolute;
+    margin-left: -40px;
+    margin-bottom: -40PX;
+  }
+
   .liste-title {
     font-family: 'Barlow', sans-serif; ;
     margin-left: -37px;
@@ -77,6 +83,37 @@ body {
 
   }
 
+  .block-button {
+    display: flex;
+    flex-direction: column;
+    margin-right: -100px;
+    margin-left: 260px;
+
+  }
+
+  .button {
+    height: 30px;
+    gap: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background: linear-gradient(#353F71, #AFEEEE);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 10px;
+    width: 80px;
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+
+  .icon {
+    background-color: white;
+    border-radius: 50%;
+  }
+
+  
   .logo_kalan {
     display: flex;
     justify-content: center;

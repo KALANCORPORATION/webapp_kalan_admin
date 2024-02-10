@@ -34,22 +34,32 @@ const ProfileAdherentPage = ({ match }) => {
       <main>
         <section>
           <div className="profile-info">
-            
-            <button className='add-button' onClick={""} type="submit">
-                <img className="icon-add-adherent" alt="" src="/ajouter-un-utilisateur 2.png" />
-                    Ajouter</button>
-            
-            <div className='nom-prenom'>
+            <div>
+              <div className='block-button'>
+              
+                    <img className="icon_email" alt="" src="/Group 250 (4).png" onClick={""} type="submit" />
+
+                <button className='button' onClick={""} type="submit">
+                    <img className="icon" alt="" src="/ajouter 1 (2).png" />
+                    emprunt
+                </button>
+                <button className='button' onClick={""} type="submit"> 
+                    <img className="icon" alt="" src="/ajouter 1 (2).png" />
+                    reservetion
+                </button>
+              </div>
+              <div className='nom-prenom'>
                 <p> {profileData.prenom}</p>
                 <p> {profileData.nom}</p>
-            </div>
-            <div>
+              </div>
+              <div>
                 <p className='email'> {profileData.email}</p>
                 <p className='date-naissance'>{profileData.dateNaissance}</p>
+              </div>
             </div>
-            <div className='liste-title'>
-              <h2>Liste des livres</h2>
-            </div>
+              <div className='liste-title'>
+                <h2>Liste des livres</h2>
+              </div>
           </div>
           <div>
             <hr className='divider'></hr>
