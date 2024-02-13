@@ -4,6 +4,7 @@ import Scanner from '../../controllers/Scanner';
 
 import '../../styles/ScanStyle.css';
 import addSpaceBookService from "../../services/addSpaceBookService";
+import VerifScanISBN from "./VerifScanISBN";
 const accessToken = localStorage.getItem('accessToken');
 const spaceId = localStorage.getItem('spaceId');
 
@@ -54,26 +55,7 @@ const App = () => {
         if (listOfIsbn.includes(result)) {
             console.log("Le scan est déjà présent : ", result);
         } else {
-            console.log("Le scan a été ajouté : ", result);
-            navigator.vibrate([1, 5, 100]);
-            listOfIsbn.push(result);
-
-            const spaceId = 1;
-            const isbnData = JSON.stringify({
-                isbn: result
-            });
-
-            // const accessToken2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidHlwZSI6InJlZmVyZW50IiwiaWF0IjoxNzA3ODIxMTYwLCJleHAiOjE3MDc4MjQ3NjB9.Od4a6_Ve7wAUHv-bjWyknbO9UyQNGuy8SD_mS2PQFXQ";
-            // const spaceId2 = 1;
-
-            console.log("******* Spaceid : " + spaceId + " | accesstoken : " + accessToken);
-            console.log("******* isbn : " + isbnData);
-            const message = await addSpaceBookService.addBookToSpaceByIsbn(spaceId, isbnData, accessToken);
-
-            console.log("Message add book to space : " + message);
-
-            // Display the scanned result in the UI
-            return document.querySelector(".results").innerHTML += `<li>${message}</li>`;
+           VerifScanISBN(result, accessToken,listOfIsbn);
         }
     }
 
