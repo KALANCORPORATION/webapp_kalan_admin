@@ -70,6 +70,8 @@ const App = () => {
             // const accessToken2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidHlwZSI6InJlZmVyZW50IiwiaWF0IjoxNzA3ODIxMTYwLCJleHAiOjE3MDc4MjQ3NjB9.Od4a6_Ve7wAUHv-bjWyknbO9UyQNGuy8SD_mS2PQFXQ";
             // const spaceId2 = 1;
 
+            console.log("******* Spaceid : " + spaceId + " | accesstoken : " + accessToken);
+            console.log("******* isbn : " + isbnData);
             const message = await addSpaceBookService.addBookToSpaceByIsbn(spaceId, isbnData, accessToken);
 
             // Display the scanned result in the UI

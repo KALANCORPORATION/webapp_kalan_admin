@@ -10,7 +10,7 @@ class AddSpaceBookService {
                     'Content-Type': 'application/json',
                     'x-access-token': accessToken,
                 },
-                body: JSON.stringify(isbn),
+                body: isbn,
             });
 
             if (response.ok) {
