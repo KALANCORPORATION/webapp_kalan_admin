@@ -684,11 +684,6 @@
     overflow: hidden;
 }
 .home-admin-parent {
-    position: relative;
-    width: 100%;
-    left: 40%;
-    height: 1299px;
-    text-align: center;
     font-size: var(--font-size-xs);
     color: var(--violet-scanner);
     font-family: var(--font-barlow);

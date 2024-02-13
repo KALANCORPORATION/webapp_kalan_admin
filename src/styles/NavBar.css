@@ -1,6 +1,5 @@
 div#popup-2 {
+    border-radius: 15px;
     text-align-last: center;
-    top: 21%;
-    left: 21%;
     position: fixed;
 }
