@@ -3,9 +3,7 @@ import Quagga from '@ericblade/quagga2';
 import Scanner from '../../controllers/Scanner';
 
 import '../../styles/ScanStyle.css';
-import CodeISBNService from "../../services/codeISBNService";
 import addSpaceBookService from "../../services/addSpaceBookService";
-import SpaceController from "../../controllers/spaceController";
 const accessToken = localStorage.getItem('accessToken');
 const spaceId = localStorage.getItem('spaceId');
 

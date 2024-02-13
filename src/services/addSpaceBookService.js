@@ -19,6 +19,9 @@ class AddSpaceBookService {
                 // return data.map(bookSpaceData => new BookSpace(bookSpaceData));
             } else {
                 const errorData = await response.json();
+                // return errorData;
+                console.log("ERROR DATA HERE :");
+                console.log(errorData)
                 throw new Error(errorData.message);
             }
         } catch (error) {

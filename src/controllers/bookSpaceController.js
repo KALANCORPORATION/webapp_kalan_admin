@@ -3,7 +3,7 @@ import BookSpaceService from '../services/bookSpaceService';
 class BookSpaceController {
     static async getRecentBooks(spaceId, listSize, accessToken) {
         try {
-            const recentBooks = await BookSpaceService.getRecentBooks(spaceId, listSize, accessToken);
+            const recentBooks = await BookSpaceService.getRecentBorrowedBooks(spaceId, listSize, accessToken);
             console.log('Liste des livres récemment ajoutés:', recentBooks);
             return recentBooks;
         } catch (error) {

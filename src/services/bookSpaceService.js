@@ -1,9 +1,9 @@
 import BookSpace from '../models/BookSpace';
 
 class BookSpaceService {
-    static async getRecentBooks(spaceId, listSize, accessToken) {
+    static async getRecentBorrowedBooks(spaceId, listSize, accessToken) {
         try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/recent-books?list_size=${listSize}`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/recent-borrowed-books?list_size=${listSize}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
