@@ -2,14 +2,14 @@
 import Referent from "../models/Referent";
 
 class ReferentService {
-    static async getRecentReferents(spaceId, listSize, accessToken) {
+    static async getRecentAddedReferents(spaceId, listSize, accessToken) {
         try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/recent-referents?list_size=${listSize}`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/recent-added-referents?list_size=${listSize}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'x-access-token': accessToken,
+                    'Authorization': `Bearer ${accessToken}`,
                 },
             });
 

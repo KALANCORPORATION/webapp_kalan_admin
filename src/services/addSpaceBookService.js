@@ -1,22 +1,27 @@
 import BookSpace from '../models/BookSpace';
 
-class BookSpaceService {
-    static async getRecentBorrowedBooks(spaceId, listSize, accessToken) {
+class AddSpaceBookService {
+    static async addBookToSpaceByIsbn(spaceId, isbn, accessToken) {
         try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/recent-borrowed-books?list_size=${listSize}`, {
-                method: 'GET',
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/isbn-books`, {
+                method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${accessToken}`,
                 },
+                body: isbn,
             });
 
             if (response.ok) {
                 const data = await response.json();
-                return data.map(bookSpaceData => new BookSpace(bookSpaceData));
+                return data;
+                // return data.map(bookSpaceData => new BookSpace(bookSpaceData));
             } else {
                 const errorData = await response.json();
+                // return errorData;
+                console.log("ERROR DATA HERE :");
+                console.log(errorData)
                 throw new Error(errorData.message);
             }
         } catch (error) {
@@ -25,4 +30,4 @@ class BookSpaceService {
     }
 }
 
-export default BookSpaceService;
+export default AddSpaceBookService;

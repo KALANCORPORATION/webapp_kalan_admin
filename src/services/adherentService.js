@@ -8,7 +8,7 @@ class AdherentService {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'x-access-token': accessToken,
+                    'Authorization': `Bearer ${accessToken}`,
                 },
             });
 
@@ -24,14 +24,14 @@ class AdherentService {
         }
     }
 
-    static async getRecentAdherents(spaceId, listSize, accessToken) {
+    static async getRecentAddedAdherents(spaceId, listSize, accessToken) {
         try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/recent-adherents?list_size=${listSize}`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/recent-added-adherents?list_size=${listSize}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'x-access-token': accessToken,
+                    'Authorization': `Bearer ${accessToken}`,
                 },
             });
 

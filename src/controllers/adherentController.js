@@ -11,7 +11,7 @@ class AdherentController {
 
     static async getRecentAdherents(spaceId, listSize, accessToken) {
         try {
-            return await AdherentService.getRecentAdherents(spaceId, listSize, accessToken);
+            return await AdherentService.getRecentAddedAdherents(spaceId, listSize, accessToken);
         } catch (error) {
             console.error('Erreur lors de la récupération des récents adhérents:', error.message);
         }
