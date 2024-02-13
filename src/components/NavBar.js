@@ -1,9 +1,12 @@
 import {Link} from "react-router-dom";
+import "../styles/NavBar.css";
+import Popup from "reactjs-popup";
+import Result from "../views/scan/Result";
+import React from "react";
 
 const Navbar = () => {
     return (
         <div className="sans-titre-6-1-group">
-            <img className="sans-titre-6-11" alt="" src="/sans-titre6-1@2x.png" />
             <div className="icons8-bibliothque-64-1-parent">
                 <img
                     className="icons8-bibliothque-64-1"
@@ -14,7 +17,7 @@ const Navbar = () => {
                     <div className="group-parent4">
                         <div className="group-parent5">
                             <div className="group-icon">
-                                <img className="group-icon" alt="" src="/group-131.svg" />
+                                <img className="group-icon" alt="" src="/group-131.svg"/>
                                 <div className="bibliothque-group">
                                     <div className="bibliothque1">Bibliothèque</div>
                                     <div className="bibliothque1">Bibliothèque</div>
@@ -27,6 +30,11 @@ const Navbar = () => {
                                         />
                                     </Link>
                                 </div>
+                                <Popup trigger={<img className="group-child14" alt="" src="/group-1461.svg"/>} modal>
+                                    {close => (
+                                        <Result/>
+                                    )}
+                                </Popup>
                                 <div className="accueil-group">
                                     <div className="accueil2">Accueil</div>
                                     <img
@@ -47,7 +55,7 @@ const Navbar = () => {
                                 <div className="adhrents2">Adhérents</div>
                             </div>
                         </div>
-                        <img className="group-child14" alt="" src="/group-1461.svg" />
+
                     </div>
                     <img
                         className="icons8-bibliothque-64-11"
