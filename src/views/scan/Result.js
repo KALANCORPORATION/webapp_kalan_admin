@@ -1,10 +1,12 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Quagga from '@ericblade/quagga2';
 import Scanner from '../../controllers/Scanner';
-import Result from '../../views/scan/Result';
 
 import '../../styles/ScanStyle.css';
 import CodeISBNService from "../../services/codeISBNService";
+import addSpaceBookService from "../../services/addSpaceBookService";
+import SpaceController from "../../controllers/spaceController";
+const accessToken = localStorage.getItem('accessToken');
 
 // Main component App
 const App = () => {
@@ -49,7 +51,7 @@ const App = () => {
     const listOfIsbn = [];
 
     // Function to add a scanned result to the list
-    function addResultToList(result) {
+    async function addResultToList(result) {
         if (listOfIsbn.includes(result)) {
             console.log("Le scan est déjà présent", result);
         } else {
@@ -59,16 +61,19 @@ const App = () => {
 
             // Call the CodeISBNService to handle the scanned ISBN
             CodeISBNService.code(result).then(r => console.log(r));
-            /**
-             * c'est ici que les requetes von etre faite
-             *
-             *CODE DE LA REQUETE
-             *
-             *
-             * @param {results} c'est l'ISBN.
-             */
+
+            const spaceId = await SpaceController.getSpaceId(accessToken);
+            const isbnData = JSON.stringify({
+                isbn: result
+            });
+
+            // const accessToken2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidHlwZSI6InJlZmVyZW50IiwiaWF0IjoxNzA3ODIxMTYwLCJleHAiOjE3MDc4MjQ3NjB9.Od4a6_Ve7wAUHv-bjWyknbO9UyQNGuy8SD_mS2PQFXQ";
+            // const spaceId2 = 1;
+
+            const message = await addSpaceBookService.addBookToSpaceByIsbn(spaceId, isbnData, accessToken);
+
             // Display the scanned result in the UI
-            return document.querySelector(".results").innerHTML += `<li>${result}</li>`;
+            return document.querySelector(".results").innerHTML += `<li>${message}</li>`;
         }
     }
 
@@ -76,7 +81,8 @@ const App = () => {
     return (
         <div id="cam">
             {/* Display camera initialization error, if any */}
-            {cameraError ? <p>ERROR INITIALIZING CAMERA ${JSON.stringify(cameraError)} -- DO YOU HAVE PERMISSION?</p> : null}
+            {cameraError ?
+                <p>ERROR INITIALIZING CAMERA ${JSON.stringify(cameraError)} -- DO YOU HAVE PERMISSION?</p> : null}
 
             {/* Display cameras dropdown if available */}
             {cameras.length === 0 ? <p>Enumerating Cameras, browser may be prompting for permissions beforehand</p> :
@@ -106,10 +112,11 @@ const App = () => {
                 <canvas className="drawingBuffer" style={{
                     position: 'absolute',
                     border: '3px solid green',
-                }} width="640" height="480" />
+                }} width="640" height="480"/>
 
                 {/* Render the scanner component if scanning is active */}
-                {scanning ? <Scanner scannerRef={scannerRef} cameraId={cameraId} onDetected={(result) => addResultToList(result)} /> : null}
+                {scanning ? <Scanner scannerRef={scannerRef} cameraId={cameraId}
+                                     onDetected={(result) => addResultToList(result)}/> : null}
             </div>
         </div>
     );
