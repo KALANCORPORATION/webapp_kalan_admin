@@ -30,6 +30,11 @@ const Navbar = () => {
                                         />
                                     </Link>
                                 </div>
+                                <Popup trigger={<img className="group-child14" alt="" src="/group-1461.svg"/>} modal>
+                                    {close => (
+                                        <Result/>
+                                    )}
+                                </Popup>
                                 <div className="accueil-group">
                                     <div className="accueil2">Accueil</div>
                                     <img
@@ -50,11 +55,6 @@ const Navbar = () => {
                                 <div className="adhrents2">Adhérents</div>
                             </div>
                         </div>
-                        <Popup trigger={<img className="group-child14" alt="" src="/group-1461.svg"/>} modal>
-                            {close => (
-                                <Result/>
-                            )}
-                        </Popup>
 
                     </div>
                     <img
