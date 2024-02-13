@@ -8,7 +8,7 @@ class BookSpaceService {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'x-access-token': accessToken,
+                    'Authorization': `Bearer ${accessToken}`,
                 },
             });
 

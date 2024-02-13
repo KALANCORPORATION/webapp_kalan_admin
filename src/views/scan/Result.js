@@ -7,6 +7,7 @@ import CodeISBNService from "../../services/codeISBNService";
 import addSpaceBookService from "../../services/addSpaceBookService";
 import SpaceController from "../../controllers/spaceController";
 const accessToken = localStorage.getItem('accessToken');
+const spaceId = localStorage.getItem('spaceId');
 
 // Main component App
 const App = () => {
@@ -53,16 +54,13 @@ const App = () => {
     // Function to add a scanned result to the list
     async function addResultToList(result) {
         if (listOfIsbn.includes(result)) {
-            console.log("Le scan est déjà présent", result);
+            console.log("Le scan est déjà présent : ", result);
         } else {
-            console.log("Le scan a été ajouté", result);
+            console.log("Le scan a été ajouté : ", result);
             navigator.vibrate([1, 5, 100]);
             listOfIsbn.push(result);
 
-            // Call the CodeISBNService to handle the scanned ISBN
-            CodeISBNService.code(result).then(r => console.log(r));
-
-            const spaceId = await SpaceController.getSpaceId(accessToken);
+            const spaceId = 1;
             const isbnData = JSON.stringify({
                 isbn: result
             });
@@ -73,6 +71,8 @@ const App = () => {
             console.log("******* Spaceid : " + spaceId + " | accesstoken : " + accessToken);
             console.log("******* isbn : " + isbnData);
             const message = await addSpaceBookService.addBookToSpaceByIsbn(spaceId, isbnData, accessToken);
+
+            console.log("Message add book to space : " + message);
 
             // Display the scanned result in the UI
             return document.querySelector(".results").innerHTML += `<li>${message}</li>`;

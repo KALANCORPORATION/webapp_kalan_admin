@@ -7,7 +7,7 @@ class CodeISBNService {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'x-access-token': accessToken,
+                    'Authorization': `Bearer ${accessToken}`,
                 },
             });
 
@@ -19,7 +19,7 @@ class CodeISBNService {
                 body: JSON.stringify({
                     "space_id": dataIdUser.space_id,
                     "isbn": isbn,
-                    'x-access-token': accessToken,
+                    'Authorization': `Bearer ${accessToken}`,
                 }),
             });
 
