@@ -50,6 +50,31 @@ class AdherentService {
             throw new Error(error.message);
         }
     }
+
+    static async getAdherentById(adherentId, accessToken) {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/adherents/${adherentId}`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'x-access-token': accessToken,
+                },
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message);
+            }
+
+            const adherentData = await response.json();
+            console.log('Adherent data:', adherentData);
+
+            return new Adherent(adherentData);
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
 }
 
 export default AdherentService;

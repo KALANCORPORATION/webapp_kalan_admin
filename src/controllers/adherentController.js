@@ -9,6 +9,15 @@ class AdherentController {
         }
     }
 
+    static async getAdherentById(adherentId, accessToken) {
+        try {
+            return await AdherentService.getAdherentById(adherentId, accessToken);
+        } catch (error) {
+            console.error('Erreur lors de la récupération de l\'adhérent par ID:', error.message);
+            throw error;
+        }
+    }
+
     static async getRecentAdherents(spaceId, listSize, accessToken) {
         try {
             return await AdherentService.getRecentAdherents(spaceId, listSize, accessToken);
