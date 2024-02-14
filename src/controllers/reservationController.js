@@ -1,4 +1,4 @@
-import ReservationService from '../services/ReservationService';
+import ReservationService from '../services/reservationService';
 
 class ReservationController {
     static async createReservation(spaceBookId, reservationData, accessToken) {

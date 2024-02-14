@@ -1,4 +1,4 @@
-import ResearchService from '../services/ResearchService';
+import ResearchService from '../services/researchService';
 
 class ResearchController {
     static async searchSpaces(queryParams, accessToken) {
