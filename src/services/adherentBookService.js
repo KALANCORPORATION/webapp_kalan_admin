@@ -148,6 +148,31 @@ class AdherentBookService {
             throw new Error(error.message);
         }
     }
+
+    static async addIsbnBookToAdherent(isbnData, accessToken) {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/adherent-books/isbn`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+                body: JSON.stringify(isbnData),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message);
+            }
+
+            const addedBook = await response.json();
+            return new AdherentBook(addedBook.id, addedBook.status, addedBook.adherent, addedBook.book);
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+
 }
 
 export default AdherentBookService;

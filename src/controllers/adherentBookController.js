@@ -63,6 +63,15 @@ class AdherentBookController {
             throw error;
         }
     }
+
+    static async addIsbnBookToAdherent(isbnData, accessToken) {
+        try {
+            return await AdherentBookService.addIsbnBookToAdherent(isbnData, accessToken);
+        } catch (error) {
+            console.error('Erreur lors de l\'ajout du livre par ISBN à l\'adhérent:', error.message);
+            throw error;
+        }
+    }
 }
 
 export default AdherentBookController;
