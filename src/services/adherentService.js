@@ -8,7 +8,7 @@ class AdherentService {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'x-access-token': accessToken,
+                    'Authorization': `Bearer ${accessToken}`,
                 },
             });
 
@@ -31,7 +31,7 @@ class AdherentService {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'x-access-token': accessToken,
+                    'Authorization': `Bearer ${accessToken}`,
                 },
             });
 
@@ -58,7 +58,7 @@ class AdherentService {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'x-access-token': accessToken,
+                    'Authorization': `Bearer ${accessToken}`,
                 },
             });
 
@@ -71,6 +71,27 @@ class AdherentService {
             console.log('Adherent data:', adherentData);
 
             return new Adherent(adherentData);
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+
+    static async deleteAdherent(adherentId, accessToken) {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/adherents/${adherentId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message);
+            }
+
         } catch (error) {
             throw new Error(error.message);
         }

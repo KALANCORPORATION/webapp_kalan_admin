@@ -25,6 +25,15 @@ class AdherentController {
             console.error('Erreur lors de la récupération des récents adhérents:', error.message);
         }
     }
+
+    static async removeAdherent(adherentId, accessToken) {
+        try {
+            return await AdherentService.getRecentAdherents(adherentId, accessToken);
+        } catch (error) {
+            console.error('Erreur lors de la suppression de l\'adhérent:', error.message);
+            throw error;
+        }
+    }
 }
 
 export default AdherentController;
