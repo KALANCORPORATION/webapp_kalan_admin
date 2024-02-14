@@ -26,4 +26,8 @@ video {
     align-content: center;
     justify-content: center;
     align-items: center;
+    width: -webkit-fill-available;
+}
+.drawingBuffer{
+    width: -webkit-fill-available;
 }
