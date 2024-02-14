@@ -14,6 +14,17 @@ class AuthController {
             console.error('Erreur de connexion:', error.message);
         }
     }
+
+    static async handleSignUp(userData, userType) {
+        try {
+            const { accessToken, refreshToken } = await AuthService.signUp(userData, userType);
+            console.log('Inscription réussie. Tokens:', accessToken, refreshToken);
+            return { accessToken, refreshToken };
+        } catch (error) {
+            console.error('Erreur d\'inscription:', error.message);
+            throw error;
+        }
+    }
 }
 
 export default AuthController;

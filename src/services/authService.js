@@ -21,6 +21,28 @@ class AuthService {
             throw new Error(error.message);
         }
     }
+
+    static async signUp(userData, userType) {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_URL}/auth/signup?type=${userType}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message);
+            }
+
+            const { accessToken, refreshToken } = await response.json();
+            return { accessToken, refreshToken };
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
 }
 
 export default AuthService;
