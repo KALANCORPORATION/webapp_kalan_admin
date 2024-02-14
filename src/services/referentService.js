@@ -29,6 +29,52 @@ class ReferentService {
             throw new Error(error.message);
         }
     }
+
+    static async getReferentById(referentId, accessToken) {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/referents/${referentId}`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'x-access-token': accessToken,
+                },
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message);
+            }
+
+            const referentData = await response.json();
+            console.log('Referent data:', referentData);
+
+            return new Referent(referentData);
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+
+    static async deleteReferent(referentId, accessToken) {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/referents/${referentId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'x-access-token': accessToken,
+                },
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message);
+            }
+
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
 }
 
 export default ReferentService;
