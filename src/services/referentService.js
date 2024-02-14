@@ -15,7 +15,7 @@ class ReferentService {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log('Response data:', data); // Ajoutez cette ligne pour journaliser les données de réponse
+                console.log('Response data:', data);
 
                 return data.map(recentReferentData => ({
                     id: recentReferentData.id,
@@ -71,6 +71,30 @@ class ReferentService {
                 throw new Error(errorData.message);
             }
 
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+
+
+    static async updateReferent(referentId, referentData, accessToken) {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_URL}/${referentId}`, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+                body: JSON.stringify(referentData),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message);
+            }
+
+            return await response.json();
         } catch (error) {
             throw new Error(error.message);
         }
