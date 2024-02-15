@@ -1,15 +1,9 @@
 import addSpaceBookService from "../../services/addSpaceBookService";
 import result from "./Result";
 
-function verifScanISBN(results,accessToken) {
+function verifScanISBN(results, accessToken, spaceId) {
     addIsbn(results).then(r => console.log(r));
 
-// Initialisation des variables
-    let lastIsbn = results;
-    let count = 0;
-    let isbnList = [];
-    let repeatedIsbnList = [];
-    let NBverifScanISBN = 3;
 
 // Fonction pour vérifier si une chaîne est un code ISBN
     function isIsbn(str) {
@@ -21,40 +15,27 @@ function verifScanISBN(results,accessToken) {
 // Fonction pour ajouter un code ISBN à la liste
     async function addIsbn(isbn) {
         if (isIsbn(isbn)) {
-            isbnList.push(isbn);
+            console.log("Le scan a été ajouté : ", result);
+            navigator.vibrate([1, 5, 100]);
 
-            if (isbn === lastIsbn) {
-                count++;
-            } else {
-                count = 1;
-                lastIsbn = isbn;
-            }
+            const isbnData = JSON.stringify({isbn: result});
 
-            if (count === NBverifScanISBN && !repeatedIsbnList.includes(isbn)) {
-                console.log("Le scan a été ajouté : ", result);
-                navigator.vibrate([1, 5, 100]);
-                listOfIsbn.push(result);
+            // const accessToken2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidHlwZSI6InJlZmVyZW50IiwiaWF0IjoxNzA3ODIxMTYwLCJleHAiOjE3MDc4MjQ3NjB9.Od4a6_Ve7wAUHv-bjWyknbO9UyQNGuy8SD_mS2PQFXQ";
+            // const spaceId2 = 1;
 
-                const spaceId = 1;
-                const isbnData = JSON.stringify({
-                    isbn: result
-                });
+            console.log("******* Spaceid : " + spaceId + " | accesstoken : " + accessToken);
+            console.log("******* isbn : " + isbnData);
+            //const message = await addSpaceBookService.addBookToSpaceByIsbn(spaceId, isbnData, accessToken);
 
-                // const accessToken2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidHlwZSI6InJlZmVyZW50IiwiaWF0IjoxNzA3ODIxMTYwLCJleHAiOjE3MDc4MjQ3NjB9.Od4a6_Ve7wAUHv-bjWyknbO9UyQNGuy8SD_mS2PQFXQ";
-                // const spaceId2 = 1;
+            console.log("Message add book to space : "/* + message*/);
 
-                console.log("******* Spaceid : " + spaceId + " | accesstoken : " + accessToken);
-                console.log("******* isbn : " + isbnData);
-                const message = await addSpaceBookService.addBookToSpaceByIsbn(spaceId, isbnData, accessToken);
+            // Display the scanned result in the UI
+            return document.querySelector(".results").innerHTML += `<li>${/*message.isbn*/" oui"}</li>`;
 
-                console.log("Message add book to space : " + message);
-
-                // Display the scanned result in the UI
-                return document.querySelector(".results").innerHTML += `<li>${message}</li>`;
-            }
         }
     }
 
 }
+
 // Export the function
 export default verifScanISBN;

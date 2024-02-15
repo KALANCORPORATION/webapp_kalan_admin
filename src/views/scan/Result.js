@@ -3,8 +3,7 @@ import Quagga from '@ericblade/quagga2';
 import Scanner from '../../controllers/Scanner';
 
 import '../../styles/ScanStyle.css';
-import addSpaceBookService from "../../services/addSpaceBookService";
-import VerifScanISBN from "./VerifScanISBN";
+import verifScanISBN from "./VerifScanISBN";
 const accessToken = localStorage.getItem('accessToken');
 const spaceId = localStorage.getItem('spaceId');
 
@@ -48,14 +47,23 @@ const App = () => {
     }, []);
 
     // List to store scanned ISBNs
-    const listOfIsbn = [];
+    let lastFiveISBNs = [];
 
-    // Function to add a scanned result to the list
-    async function addResultToList(result) {
-        if (listOfIsbn.includes(result)) {
-            console.log("Le scan est déjà présent : ", result);
+    function addResultToList(isbn) {
+        const isbnRegex = /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/;
+
+        if (isbnRegex.test(isbn)) {
+            if (lastFiveISBNs.length === 5) {
+                lastFiveISBNs.shift();
+            }
+            else {
+                console.log("Invalid ISBN.");
+            }
+            if (lastFiveISBNs.every(val => val === isbn && lastFiveISBNs.length === 5)) {
+                verifScanISBN(isbn,accessToken,spaceId);
+            }
         } else {
-           VerifScanISBN(result, accessToken,listOfIsbn);
+            console.log("Invalid ISBN.");
         }
     }
 
