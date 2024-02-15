@@ -49,13 +49,28 @@ const App = () => {
 
     // List to store scanned ISBNs
     const listOfIsbn = [];
+    const listOfIsbnAdded = [];
 
     // Function to add a scanned result to the list
     async function addResultToList(result) {
-        if (listOfIsbn.includes(result)) {
-            console.log("Le scan est déjà présent : ", result);
-        } else {
-           VerifScanISBN(result, accessToken,listOfIsbn);
+        listOfIsbn.push(result);
+        if (listOfIsbn.length < 5) {
+            console.log("La liste doit contenir 5 éléments.");
+        }
+        else {
+            // Extraire les 5 derniers éléments de la liste
+            const derniersElements = listOfIsbn.slice(-5);
+
+            // Vérifier si tous les éléments sont identiques
+            const premierElement = derniersElements[0];
+            const sontTousIdentiques = derniersElements.every((element) => element === premierElement);
+            if (sontTousIdentiques && !listOfIsbnAdded.includes(result)) {
+                console.log("Validation : Tous les éléments sont identiques !");
+                listOfIsbnAdded.push(result);
+                VerifScanISBN(result, accessToken, spaceId);
+            } else {
+                console.log("Les éléments ne sont pas tous identiques.");
+            }
         }
     }
 
