@@ -1,202 +1,13 @@
 class SpaceBookService {
-    static async addIsbnBookToSpace(spaceId, accessToken) {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/weekly-stats`, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-            });
-
-            if (response.ok) {
-                return await response.json();
-            } else {
-                const errorData = await response.json();
-                throw new Error(errorData.message);
-            }
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-
-    static async getUserSpace(accessToken) {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/api/user/space`, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-            });
-
-            if (response.ok) {
-                return await response.json();
-            } else {
-                const errorData = await response.json();
-                throw new Error(errorData.message);
-            }
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-
-    static async removeAdherentFromSpace(spaceId, adherentId, accessToken) {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/adherents/${adherentId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message);
-            }
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-
-    static async removeReferentFromSpace(spaceId, referentId, accessToken) {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/referents/${referentId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message);
-            }
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-
-    static async createAdherentInSpace(spaceId, adherentData, accessToken) {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/adherents`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-                body: JSON.stringify(adherentData),
-            });
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message);
-            }
-            return await response.json();
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-
-    static async getAllSpaceInvitations(spaceId, accessToken) {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/invitations`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-            });
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message);
-            }
-            return await response.json();
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-
-    static async getAllSpaceReservations(spaceId, accessToken) {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/reservations`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-            });
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message);
-            }
-            return await response.json();
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-
-    static async getSpaceCode(spaceId, accessToken) {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/space-code`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-            });
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message);
-            }
-            return await response.json();
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-
-    static async refreshSpaceCode(spaceId, accessToken) {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/refresh-code`, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-            });
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message);
-            }
-            return await response.json();
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-
-    static async addAdherentToSpace(spaceId, adherentId, accessToken) {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/adherents/${adherentId}`, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-            });
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message);
-            }
-            return await response.json();
-        } catch (error) {
-            throw new Error(error.message);
-        }
-    }
-
-    static async getAllSpaces(accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/`, {
-            method: 'GET',
+    static async addIsbnBookToSpace(spaceId, isbnData, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/isbn-books`, {
+            method: 'POST',
             headers: {
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${accessToken}`,
             },
+            body: JSON.stringify(isbnData),
         });
-
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.message);
@@ -204,14 +15,15 @@ class SpaceBookService {
         return await response.json();
     }
 
-    static async getSpaceById(spaceId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}`, {
-            method: 'GET',
+    static async addNewBookToSpace(spaceId, bookData, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/books`, {
+            method: 'POST',
             headers: {
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${accessToken}`,
             },
+            body: JSON.stringify(bookData),
         });
-
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.message);
@@ -219,14 +31,13 @@ class SpaceBookService {
         return await response.json();
     }
 
-    static async createSpace(data, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/`, {
+    static async setThumbnailImageToSpaceBook(spaceBookId, imageData, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/space-books/${spaceBookId}/thumbnail-image`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
-                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
+            body: imageData,
         });
         if (!response.ok) {
             const errorData = await response.json();
@@ -235,14 +46,12 @@ class SpaceBookService {
         return await response.json();
     }
 
-    static async updateSpace(spaceId, data, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}`, {
-            method: 'PUT',
+    static async getAllSpaceBooks(spaceId, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/books`, {
+            method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
-                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
         });
         if (!response.ok) {
             const errorData = await response.json();
@@ -251,8 +60,22 @@ class SpaceBookService {
         return await response.json();
     }
 
-    static async removeSpace(spaceId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}`, {
+    static async getSpaceBookById(spaceBookId, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/space-books/${spaceBookId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+        }
+        return await response.json();
+    }
+
+    static async removeSpaceBook(spaceBookId, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/space-books/${spaceBookId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -262,34 +85,6 @@ class SpaceBookService {
             const errorData = await response.json();
             throw new Error(errorData.message);
         }
-    }
-
-    static async getAllAdherentsForSpace(spaceId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/adherents`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-            },
-        });
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message);
-        }
-        return await response.json();
-    }
-
-    static async getAllReferentsForSpace(spaceId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/referents`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-            },
-        });
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message);
-        }
-        return await response.json();
     }
 }
 
