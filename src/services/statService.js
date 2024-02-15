@@ -1,6 +1,7 @@
 class StatService {
-    static async fetchStat(url, accessToken) {
-        const response = await fetch(url, {
+    static async getTopBorrowedBooks(spaceId, listSize, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/top-borrowed-books?list_size=${listSize}`, {
+            method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
             },
@@ -12,36 +13,102 @@ class StatService {
         return await response.json();
     }
 
-    static getTopBorrowedBooks(spaceId, accessToken) {
-        return this.fetchStat(`${process.env.REACT_APP_URL}/spaces/${spaceId}/top-borrowed-books`, accessToken);
+    static async getTopBorrowedBooksForMonth(spaceId, listSize, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/monthly-top-borrowed-books?list_size=${listSize}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+        }
+        return await response.json();
     }
 
-    static getTopBorrowedBooksForMonth(spaceId, accessToken) {
-        return this.fetchStat(`${process.env.REACT_APP_URL}/spaces/${spaceId}/monthly-top-borrowed-books`, accessToken);
+    static async getTopBorrowedBooksForWeek(spaceId, listSize, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/weekly-top-borrowed-books?list_size=${listSize}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+        }
+        return await response.json();
     }
 
-    static getTopBorrowedBooksForWeek(spaceId, accessToken) {
-        return this.fetchStat(`${process.env.REACT_APP_URL}/spaces/${spaceId}/weekly-top-borrowed-books`, accessToken);
+    static async getRecentBorrowedBooks(spaceId, listSize, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/recent-borrowed-books?list_size=${listSize}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+        }
+        return await response.json();
     }
 
-    static getRecentBorrowedBooks(spaceId, accessToken) {
-        return this.fetchStat(`${process.env.REACT_APP_URL}/spaces/${spaceId}/recent-borrowed-books`, accessToken);
+    static async getRecentAddedBooks(spaceId, listSize, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/recent-added-books?list_size=${listSize}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+        }
+        return await response.json();
     }
 
-    static getRecentAddedBooks(spaceId, accessToken) {
-        return this.fetchStat(`${process.env.REACT_APP_URL}/spaces/${spaceId}/recent-added-books`, accessToken);
+    static async getRecentAddedAdherents(spaceId, listSize, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/recent-added-adherents?list_size=${listSize}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+        }
+        return await response.json();
     }
 
-    static getRecentAddedAdherents(spaceId, accessToken) {
-        return this.fetchStat(`${process.env.REACT_APP_URL}/spaces/${spaceId}/recent-added-adherents`, accessToken);
+    static async getRecentAddedReferents(spaceId, listSize, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/recent-added-referents?list_size=${listSize}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+        }
+        return await response.json();
     }
 
-    static getRecentAddedReferents(spaceId, accessToken) {
-        return this.fetchStat(`${process.env.REACT_APP_URL}/spaces/${spaceId}/recent-added-referents`, accessToken);
-    }
-
-    static getWeeklyStats(spaceId, accessToken) {
-        return this.fetchStat(`${process.env.REACT_APP_URL}/spaces/${spaceId}/weekly-stats`, accessToken);
+    static async getWeeklyStats(spaceId, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/weekly-stats`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+        }
+        return await response.json();
     }
 }
 
