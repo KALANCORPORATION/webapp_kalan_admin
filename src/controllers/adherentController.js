@@ -28,7 +28,7 @@ class AdherentController {
 
     static async removeAdherent(adherentId, accessToken) {
         try {
-            return await AdherentService.getRecentAdherents(adherentId, accessToken);
+            return await AdherentService.deleteAdherent(adherentId, accessToken);
         } catch (error) {
             console.error('Erreur lors de la suppression de l\'adhérent:', error.message);
             throw error;
