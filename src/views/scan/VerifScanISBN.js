@@ -24,7 +24,6 @@ function verifScanISBN(results, accessToken, spaceId) {
     async function addIsbn(isbn) {
         if (isIsbn(isbn)) {
             console.log("Le scan a été ajouté : ", results);
-            navigator.vibrate([1, 5, 100]);
 
             const isbnData = JSON.stringify({isbn: results});
             console.log("******* isbnData : " + isbnData);
@@ -32,11 +31,13 @@ function verifScanISBN(results, accessToken, spaceId) {
             // const accessToken2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidHlwZSI6InJlZmVyZW50IiwiaWF0IjoxNzA3ODIxMTYwLCJleHAiOjE3MDc4MjQ3NjB9.Od4a6_Ve7wAUHv-bjWyknbO9UyQNGuy8SD_mS2PQFXQ";
             const spaceId2 = 3;
 
-            console.log("******* Spaceid : " + spaceId2 + " | accesstoken : " + accessToken);
+            console.log("******* Spaceid : " + spaceId + " | accesstoken : " + accessToken);
             console.log("******* isbn : " + isbnData);
             try {
                 const message = await addSpaceBookService.addBookToSpaceByIsbn(spaceId2, isbnData, accessToken);
                 console.log("Message add book to space : " + message.toString());
+                navigator.vibrate([1, 5, 100]);
+
                 return document.querySelector(".results").innerHTML += `<li>${message}</li>`;
             }
             catch (error) {
