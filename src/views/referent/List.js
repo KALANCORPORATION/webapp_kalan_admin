@@ -104,7 +104,11 @@ export const ListReferent = () => {
             </div>
 
             {filteredReferents.map((referent) => (
-                <div key={referent.id} className={styles.profileItem}>
+                <div
+                    key={referent.id}
+                     className={styles.profileItem}
+                    onClick={() => navigateTo(`/referent/${referent.id}`)}
+                >
                     <img className={styles.profileImage} alt={referent.pseudo} src={referent.profile_image || '/profileDefault2.png'} />
                     <div className={styles.profileInfo}>
                         <div className={styles.profileName}>{referent.first_name} {referent.last_name}</div>

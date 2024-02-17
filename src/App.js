@@ -19,7 +19,7 @@ const App = () => {
                 <Route path="/" element={<ConnexionAdminApp/>} />
                 <Route path="/adherents" element={<AdherentList/>} />
                 <Route path="/referents" element={<ListReferent/>} />
-                <Route path="/referent" element={<ProfileReferent/>} />
+                <Route path="/referent/:id" element={<ProfileReferent />} />
                 <Route path="/invitations" element={<ListInvitations/>} />
                 <Route path="/historique" element={<Historique />} />
                 <Route path="/homepage" element={<HomepageAdmin/>} />
