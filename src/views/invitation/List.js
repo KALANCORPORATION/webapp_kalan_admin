@@ -8,35 +8,51 @@ import { NavBarAdmin } from "../../components/NavBarAdmin";
 import SpaceController from '../../controllers/space/spaceController';
 import ReferentController from '../../controllers/referent/referentController';
 import InvitationController from '../../controllers/invitation/invitationController';
+import {useLocation, useNavigate} from "react-router-dom";
 
 export const ListInvitations = ({ userName, userHandle, joinDate, imagePath }) => {
     const [invitations, setInvitations] = useState([]);
-    const [referents, setReferents] = useState({});
+    const [searchTerm, setSearchTerm] = useState('');
     const token = localStorage.getItem('accessToken');
+    const [referentsDetails, setReferentsDetails] = useState({});
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const navigateTo = (path) => {
+        navigate(path);
+    };
 
     useEffect(() => {
-        const fetchInvitations = async () => {
-            try {
-                const spaceId = localStorage.getItem('spaceId');
-                const token = localStorage.getItem('accessToken');
-
-                const pendingInvitations = await SpaceController.getAllSpaceInvitations(spaceId, token);
-                const filteredInvitations = pendingInvitations.filter(invite => invite.status === 'pending');
-                setInvitations(filteredInvitations);
-
-                for (const invitation of filteredInvitations) {
-                    const referentData = await ReferentController.getReferentById(invitation.referent_id, token);
-                    setReferents(prevReferents => ({
-                        ...prevReferents,
-                        [invitation.referent_id]: referentData,
-                    }));
-                }
-            } catch (error) {
-                console.error('Erreur lors de la récupération des invitations:', error.message);
-            }
-        };
         fetchInvitations();
-    }, []);
+    }, [searchTerm]);
+
+    const fetchInvitations = async () => {
+        try {
+            const spaceId = localStorage.getItem('spaceId');
+            const pendingInvitations = await SpaceController.getAllSpaceInvitations(spaceId, token);
+
+            const referentsDetailsTemp = {};
+            for (const invitation of pendingInvitations) {
+                if (invitation.status === 'pending') {
+                    const referentData = await ReferentController.getReferentById(invitation.referent_id, token);
+                    referentsDetailsTemp[invitation.referent_id] = referentData;
+                }
+            }
+            setReferentsDetails(referentsDetailsTemp);
+
+            setInvitations(pendingInvitations.filter(invite => invite.status === 'pending'));
+        } catch (error) {
+            console.error('Erreur lors de la récupération des invitations:', error.message);
+        }
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const getTabStyle = (path) => {
+        return location.pathname === path ? `${styles.tab} ${styles.active}` : styles.tab;
+    };
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState(null);
@@ -61,16 +77,57 @@ export const ListInvitations = ({ userName, userHandle, joinDate, imagePath }) =
     return (
         <div>
             <Header />
-            <TabBar />
 
-            {invitations.map((invitation) => (
+            <div className={styles.container}>
+                <div className={styles.tabs}>
+                    <button
+                        className={getTabStyle('/referents')}
+                        onClick={() => navigateTo('/referents')}
+                    >
+                        Liste des référents
+                    </button>
+                    <button
+                        className={getTabStyle('/invitations')}
+                        onClick={() => navigateTo('/invitations')}
+                    >
+                        Invitations
+                    </button>
+                    <button
+                        className={getTabStyle('/historique')}
+                        onClick={() => navigateTo('/historique')}
+                    >
+                        Historique
+                    </button>
+                </div>
+                <div className={styles.searchBar}>
+                    <input
+                        className={styles.searchInput}
+                        placeholder="Rechercher un référent"
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                    />
+                    <button className={styles.searchButton}>
+                        <img src="loupe.png" alt="Search" className={styles.searchIcon} />
+                    </button>
+                </div>
+                <button className={styles.filterButton}>
+                    <img src="filtreLogo.svg" alt="Filter" className={styles.filterIcon} />
+                    Filtrer
+                </button>
+            </div>
+
+            {invitations.filter(invitation => {
+                const referent = referentsDetails[invitation.referent_id];
+                if (!searchTerm) return true;
+                return referent && (referent.pseudo.toLowerCase().includes(searchTerm.toLowerCase()) || `${referent.first_name} ${referent.last_name}`.toLowerCase().includes(searchTerm.toLowerCase()));
+            }).map((invitation) => (
                 <div key={invitation.id} className={styles.profileItem}>
-                    <img className={styles.profileImage} alt="Profile" src={referents[invitation.referent_id]?.profile_image || '/profileDefault2.png'} />
+                    <img className={styles.profileImage} alt="Profile" src={referentsDetails[invitation.referent_id]?.profile_image || '/profileDefault2.png'} />
                     <div className={styles.profileInfo}>
-                        <div className={styles.profileName}>{referents[invitation.referent_id]?.first_name} {referents[invitation.referent_id]?.last_name}</div>
+                        <div className={styles.profileName}>{referentsDetails[invitation.referent_id]?.first_name} {referentsDetails[invitation.referent_id]?.last_name}</div>
                         <p className={styles.profileHandle}>
                             <span className={styles.atSymbol}>@</span>
-                            {referents[invitation.referent_id]?.pseudo}
+                            {referentsDetails[invitation.referent_id]?.pseudo}
                         </p>
                         <div className={styles.joinDate}>Demande envoyée le {new Date(invitation.created_at.replace(/(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3")).toLocaleDateString('fr-FR', {day: '2-digit', month: '2-digit', year: 'numeric'}).replace(/\//g, '/')}</div>
                     </div>
