@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Redirect, Switch } from 'react-
 import ConnexionAdminApp from './views/login/ConnexionAdminApp';
 import AdherentList from './views/adherent/AdherentList';
 import { ListReferent } from './views/referent/List';
+import { ProfileReferent } from './views/referent/Profile';
 import { Historique } from './views/historique/List';
 import { ListInvitations } from './views/invitation/List';
 
@@ -18,6 +19,7 @@ const App = () => {
                 <Route path="/" element={<ConnexionAdminApp/>} />
                 <Route path="/adherents" element={<AdherentList/>} />
                 <Route path="/referents" element={<ListReferent/>} />
+                <Route path="/referent" element={<ProfileReferent/>} />
                 <Route path="/invitations" element={<ListInvitations/>} />
                 <Route path="/historique" element={<Historique />} />
                 <Route path="/homepage" element={<HomepageAdmin/>} />
