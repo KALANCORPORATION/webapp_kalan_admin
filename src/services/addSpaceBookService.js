@@ -1,4 +1,4 @@
-import BookSpace from '../models/BookSpace';
+import BookSpace from '../models/book/BookSpace';
 
 class AddSpaceBookService {
     static async addBookToSpaceByIsbn(spaceId, isbn, accessToken) {

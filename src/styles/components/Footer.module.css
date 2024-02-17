@@ -1,0 +1,28 @@
+.footer {
+    /*background-color: #yourColor; !* Couleur de votre choix *!*/
+    color: white;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer button {
+    background: none;
+    border: none;
+    color: white;
+}
+
+/* Media queries pour le responsive */
+@media (max-width: 768px) {
+    /* Styles pour tablettes */
+}
+
+@media (max-width: 480px) {
+    /* Styles pour mobiles */
+}

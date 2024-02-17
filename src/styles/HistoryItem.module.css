@@ -1,0 +1,22 @@
+.history-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.book-image {
+    width: 80px; /* Ajustez en fonction de votre design */
+    height: 120px; /* Ajustez en fonction de votre design */
+    background-color: #ddd; /* Couleur de fond pour l'image */
+    margin-right: 10px;
+}
+
+.book-info h3 {
+    font-size: 16px; /* Ajustez en fonction de votre design */
+}
+
+.book-info p {
+    font-size: 14px; /* Ajustez en fonction de votre design */
+}
+
+/* Ajoutez des styles pour les statuts des livres : emprunt, réservation, etc. */

@@ -1,0 +1,78 @@
+/* Dans ProfileItem.module.css */
+.profileItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, rgba(49, 178, 186, 1) 0%, rgba(21, 21, 76, 1) 100%);
+    border-radius: 26px;
+    margin: 10px;
+    padding: 16px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 10px;
+}
+
+.statusIcon {
+    width: 50px;
+    height: 50px;
+}
+
+.profileImage {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.profileInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.profileName {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.profileHandle {
+    color: #ffffff99;
+    font-weight: 600;
+}
+
+.atSymbol {
+    color: #ffffff;
+}
+
+.joinDate {
+    color: #ffffffb2;
+    font-size: 12px;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+    .profileItem {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profileImage {
+        margin-bottom: 8px;
+    }
+
+    .statusIcon {
+        align-self: center;
+        margin-top: 10px;
+    }
+
+    .icons {
+        margin-left: 0;
+        margin-top: 10px;
+        justify-content: center;
+    }
+}

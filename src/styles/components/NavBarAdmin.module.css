@@ -1,0 +1,55 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #000; /* Replace with your actual navbar color */
+    padding: 10px 0;
+    border-radius: 25px; /* Adjust as needed */
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navButton {
+    background: none;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    font: inherit;
+}
+
+.navItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.navIcon {
+    width: 24px;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .navIcon {
+        width: 20px; /* Smaller icons for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .navItem {
+        font-size: 12px; /* Smaller font for labels if necessary */
+    }
+}

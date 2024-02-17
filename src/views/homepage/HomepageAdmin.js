@@ -1,10 +1,10 @@
 import "../../styles/HomepageAdmin.css";
 import {useEffect, useState} from "react";
-import HomeController from "../../controllers/spaceController";
-import SpaceController from "../../controllers/spaceController";
-import AdherentController from "../../controllers/adherentController";
-import ReferentController from "../../controllers/referentController";
-import BookSpaceController from "../../controllers/bookSpaceController";
+import HomeController from "../../controllers/space/spaceController";
+import SpaceController from "../../controllers/space/spaceController";
+import AdherentController from "../../controllers/adherent/adherentController";
+import ReferentController from "../../controllers/referent/referentController";
+import BookSpaceController from "../../controllers/book/bookSpaceController";
 import RecentBooksComponent from "./RecentBooksComponent";
 import Navbar from "../../components/NavBar";
 

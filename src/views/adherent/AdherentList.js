@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import AdherentController from '../../controllers/adherentController';
+import AdherentController from '../../controllers/adherent/adherentController';
 import {Link, useLocation} from 'react-router-dom';
 
-import "../../styles/AdherentList.css";
+import "../../styles/adherent/AdherentList.css";
 
 const AdherentList = () => {
     const [adherents, setAdherents] = useState([]);

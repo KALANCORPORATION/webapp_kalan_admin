@@ -1,6 +1,6 @@
-import "../../styles/ConnexionAdminApp.css";
+import "../../styles/connexion/ConnexionAdminApp.css";
 import React, {useState} from 'react';
-import AuthController from '../../controllers/authController';
+import AuthController from '../../controllers/auth/authController';
 import {useNavigate} from 'react-router-dom';
 
 const ConnexionAdminApp = () => {

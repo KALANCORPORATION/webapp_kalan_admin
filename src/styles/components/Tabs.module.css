@@ -1,0 +1,18 @@
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.tabs button {
+    /*background-color: #yourColor; !* Couleur active du tab *!*/
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 20px;
+}
+
+.tabs button:not(:first-child) {
+    /*background-color: #yourColor; !* Couleur active du tab *!*/
+}

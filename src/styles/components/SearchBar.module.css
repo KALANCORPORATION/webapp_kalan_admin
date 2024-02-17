@@ -1,0 +1,14 @@
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin: 10px 0;
+    /*background-color: #yourColor; !* Couleur de fond de la barre de recherche *!*/
+    border-radius: 20px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+}

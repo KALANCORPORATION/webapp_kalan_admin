@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import "../styles/NavBar.css";
+import "../styles/components/NavBar.css";
 import Popup from "reactjs-popup";
 import Result from "../views/scan/Result";
 import React from "react";
