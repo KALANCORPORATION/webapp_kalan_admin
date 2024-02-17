@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from "../../styles/invitation/List.module.css";
+import Modal from "../../components/Modal";
 
 import { Header } from "../../components/Header";
 import { TabBar } from "../../components/TabBar";
@@ -37,13 +38,24 @@ export const ListInvitations = ({ userName, userHandle, joinDate, imagePath }) =
         fetchInvitations();
     }, []);
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState(null);
+
     const handleAccept = async (invitationId) => {
-        console.log(token);
         await InvitationController.acceptInvitation(invitationId, token);
+        showModal(<div className={styles.modalContent}><span className={styles.checkIcon}>✔</span> Invitation acceptée</div>);
+        setInvitations(prevInvitations => prevInvitations.filter(invite => invite.id !== invitationId));
     };
 
     const handleDeny = async (invitationId) => {
         await InvitationController.denyInvitation(invitationId, token);
+        showModal(<div className={styles.modalContent}><span className={styles.crossIcon}>✖</span> Invitation refusée</div>);
+        setInvitations(prevInvitations => prevInvitations.filter(invite => invite.id !== invitationId));
+    };
+
+    const showModal = (content) => {
+        setModalContent(content);
+        setIsModalOpen(true);
     };
 
     return (
@@ -72,6 +84,11 @@ export const ListInvitations = ({ userName, userHandle, joinDate, imagePath }) =
                     </div>
                 </div>
             ))}
+
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                {modalContent}
+            </Modal>
+
             <NavBarAdmin />
         </div>
     );

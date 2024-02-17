@@ -1,0 +1,18 @@
+.modalContent {
+    text-align: center;
+    padding: 20px;
+}
+
+.checkIcon {
+    font-size: 2rem;
+    display: block;
+    margin: 10px auto;
+    color: #198754;
+}
+
+.crossIcon {
+    font-size: 2rem;
+    display: block;
+    margin: 10px auto;
+    color: #dc3545;
+}
