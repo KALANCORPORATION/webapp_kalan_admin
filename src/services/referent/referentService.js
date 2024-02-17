@@ -46,10 +46,8 @@ class ReferentService {
                 throw new Error(errorData.message);
             }
 
-            const referentData = await response.json();
-            console.log('Referent data:', referentData);
+            return await response.json();
 
-            return new Referent(referentData);
         } catch (error) {
             throw new Error(error.message);
         }

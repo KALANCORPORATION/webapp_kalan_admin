@@ -55,9 +55,9 @@ class SpaceController {
         }
     }
 
-    static async getAllSpaceInvitations(spaceId, adherentId, accessToken) {
+    static async getAllSpaceInvitations(spaceId, accessToken) {
         try {
-            return await SpaceService.getAllSpaceInvitations(spaceId, adherentId, accessToken);
+            return await SpaceService.getAllSpaceInvitations(spaceId, accessToken);
         } catch (error) {
             console.error('Erreur lors de la récupération des invitations de l\'espace:', error.message);
             throw error;

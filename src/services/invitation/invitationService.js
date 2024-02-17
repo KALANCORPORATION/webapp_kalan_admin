@@ -1,6 +1,6 @@
 class InvitationService {
     static async acceptInvitation(invitationId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/api/${invitationId}/accept`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/invitations/${invitationId}/accept`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -14,7 +14,7 @@ class InvitationService {
     }
 
     static async denyInvitation(invitationId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/api/${invitationId}/deny`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/invitations/${invitationId}/deny`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
