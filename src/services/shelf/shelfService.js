@@ -1,6 +1,6 @@
 class ShelfService {
     static async createShelf(name, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/shelves`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/shelves`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -15,7 +15,7 @@ class ShelfService {
     }
 
     static async addAdherentBookToShelf(shelfId, adherentBookId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/shelves/${shelfId}/adherent-books`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/shelves/${shelfId}/adherent-books`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -30,7 +30,7 @@ class ShelfService {
     }
 
     static async getAdherentBooksInShelf(shelfId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/shelves/${shelfId}/adherent-books`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/shelves/${shelfId}/adherent-books`, {
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
             },
@@ -42,7 +42,7 @@ class ShelfService {
     }
 
     static async updateShelfName(shelfId, name, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/shelves/${shelfId}`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/shelves/${shelfId}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -58,7 +58,7 @@ class ShelfService {
 
 
     static async getAllShelvesOfAdherent(accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/shelves`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/shelves`, {
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
             },
@@ -70,7 +70,7 @@ class ShelfService {
     }
 
     static async removeAdherentBookFromShelf(shelfId, adherentBookId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/shelves/${shelfId}/adherent-books/${adherentBookId}`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/shelves/${shelfId}/adherent-books/${adherentBookId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,

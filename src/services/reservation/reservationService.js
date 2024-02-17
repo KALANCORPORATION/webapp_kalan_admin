@@ -1,6 +1,6 @@
 class ReservationService {
     static async createReservation(spaceBookId, reservationData, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/space-books/${spaceBookId}/reservation`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/space-books/${spaceBookId}/reservation`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -15,7 +15,7 @@ class ReservationService {
     }
 
     static async createBorrow(spaceBookId, borrowData, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/space-books/${spaceBookId}/borrow`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/space-books/${spaceBookId}/borrow`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -30,7 +30,7 @@ class ReservationService {
     }
 
     static async endBorrow(spaceBookId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/space-books/${spaceBookId}/end`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/space-books/${spaceBookId}/end`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -43,7 +43,7 @@ class ReservationService {
     }
 
     static async createBorrowWithReservation(reservationId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/reservations/${reservationId}/borrow`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/reservations/${reservationId}/borrow`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -56,7 +56,7 @@ class ReservationService {
     }
 
     static async endBorrowWithReservation(reservationId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/reservations/${reservationId}/end`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/reservations/${reservationId}/end`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,

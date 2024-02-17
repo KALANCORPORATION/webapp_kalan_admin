@@ -24,7 +24,7 @@ class AuthService {
 
     static async signUp(userData, userType) {
         try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/auth/signup?type=${userType}`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/auth/signup?type=${userType}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

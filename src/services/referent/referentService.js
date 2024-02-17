@@ -79,7 +79,7 @@ class ReferentService {
 
     static async updateReferent(referentId, referentData, accessToken) {
         try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/${referentId}`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/${referentId}`, {
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',

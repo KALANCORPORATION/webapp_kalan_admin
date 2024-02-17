@@ -1,7 +1,7 @@
 class ResearchService {
     static async searchSpaces(queryParams, accessToken) {
         const queryString = new URLSearchParams(queryParams).toString();
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/search/spaces/?${queryString}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search/spaces/?${queryString}`, {
             headers: { 'Authorization': `Bearer ${accessToken}` },
         });
         if (!response.ok) {
@@ -12,7 +12,7 @@ class ResearchService {
 
     static async searchUsers(queryParams, accessToken) {
         const queryString = new URLSearchParams(queryParams).toString();
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/search/users/?${queryString}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search/users/?${queryString}`, {
             headers: { 'Authorization': `Bearer ${accessToken}` },
         });
         if (!response.ok) {
@@ -23,7 +23,7 @@ class ResearchService {
 
     static async searchBooks(queryParams, accessToken) {
         const queryString = new URLSearchParams(queryParams).toString();
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/search/books/?${queryString}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search/books/?${queryString}`, {
             headers: { 'Authorization': `Bearer ${accessToken}` },
         });
         if (!response.ok) {
@@ -34,7 +34,7 @@ class ResearchService {
 
     static async searchSpaceBooks(spaceId, queryParams, accessToken) {
         const queryString = new URLSearchParams(queryParams).toString();
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/search/spaces/${spaceId}/space-books?${queryString}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search/spaces/${spaceId}/space-books?${queryString}`, {
             headers: { 'Authorization': `Bearer ${accessToken}` },
         });
         if (!response.ok) {
@@ -45,7 +45,7 @@ class ResearchService {
 
     static async searchAdherentBorrowedBooks(queryParams, accessToken) {
         const queryString = new URLSearchParams(queryParams).toString();
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/search/adherent-borrowed-books?${queryString}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search/adherent-borrowed-books?${queryString}`, {
             headers: { 'Authorization': `Bearer ${accessToken}` },
         });
         if (!response.ok) {
@@ -56,7 +56,7 @@ class ResearchService {
 
     static async searchAdherentBooks(adherentId, queryParams, accessToken) {
         const queryString = new URLSearchParams(queryParams).toString();
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/search/adherents/${adherentId}/adherent-books?${queryString}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search/adherents/${adherentId}/adherent-books?${queryString}`, {
             headers: { 'Authorization': `Bearer ${accessToken}` },
         });
         if (!response.ok) {

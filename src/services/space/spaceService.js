@@ -81,7 +81,7 @@ class SpaceService {
 
     static async createAdherentInSpace(spaceId, adherentData, accessToken) {
         try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/adherents`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/adherents`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ class SpaceService {
 
     static async getAllSpaceInvitations(spaceId, accessToken) {
         try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/invitations`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/invitations`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
@@ -119,7 +119,7 @@ class SpaceService {
 
     static async getAllSpaceReservations(spaceId, accessToken) {
         try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/reservations`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/reservations`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
@@ -137,7 +137,7 @@ class SpaceService {
 
     static async getSpaceCode(spaceId, accessToken) {
         try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/space-code`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/space-code`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
@@ -155,7 +155,7 @@ class SpaceService {
 
     static async refreshSpaceCode(spaceId, accessToken) {
         try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/refresh-code`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/refresh-code`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
@@ -173,7 +173,7 @@ class SpaceService {
 
     static async addAdherentToSpace(spaceId, adherentId, accessToken) {
         try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/adherents/${adherentId}`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/adherents/${adherentId}`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
@@ -190,7 +190,7 @@ class SpaceService {
     }
 
     static async getAllSpaces(accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -205,7 +205,7 @@ class SpaceService {
     }
 
     static async getSpaceById(spaceId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -220,7 +220,7 @@ class SpaceService {
     }
 
     static async createSpace(data, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -236,7 +236,7 @@ class SpaceService {
     }
 
     static async updateSpace(spaceId, data, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -252,7 +252,7 @@ class SpaceService {
     }
 
     static async removeSpace(spaceId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -265,7 +265,7 @@ class SpaceService {
     }
 
     static async getAllAdherentsForSpace(spaceId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/adherents`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/adherents`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -279,7 +279,7 @@ class SpaceService {
     }
 
     static async getAllReferentsForSpace(spaceId, accessToken) {
-        const response = await fetch(`${process.env.REACT_APP_URL}/spaces/${spaceId}/referents`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/referents`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,

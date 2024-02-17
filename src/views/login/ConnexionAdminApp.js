@@ -1,6 +1,7 @@
 import "../../styles/connexion/ConnexionAdminApp.css";
 import React, {useState} from 'react';
 import AuthController from '../../controllers/auth/authController';
+import SpaceController from '../../controllers/space/spaceController';
 import {useNavigate} from 'react-router-dom';
 
 const ConnexionAdminApp = () => {
@@ -12,7 +13,9 @@ const ConnexionAdminApp = () => {
     const handleLogin = async () => {
         try {
             const response = await AuthController.handleLogin(pseudo, password, setAccessToken);
+            const responseSpaceId = await SpaceController.getSpaceId(response.accessToken);
             localStorage.setItem('accessToken', response.accessToken);
+            localStorage.setItem('spaceId', responseSpaceId);
             console.log(response.accessToken);
             setAccessToken(response.accessToken);
             history(`/homepage`);
