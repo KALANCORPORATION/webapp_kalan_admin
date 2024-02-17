@@ -4,9 +4,15 @@ import NavBarAdmin from "../../components/NavBarAdmin";
 import styles from "../../styles/referent/Profile.module.css";
 import ReferentController from '../../controllers/referent/referentController';
 import {useParams} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import SpaceController from "../../controllers/space/spaceController";
+import Modal from "../../components/Modal";
 
 export const ProfileReferent = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
+    const [modalContent, setModalContent] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [referentProfile, setReferentProfile] = useState(null);
     const token = localStorage.getItem('accessToken');
@@ -22,6 +28,18 @@ export const ProfileReferent = () => {
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
             setIsDropdownOpen(false);
+        }
+    };
+
+    const handleRemoveReferent = async () => {
+        try {
+            await SpaceController.removeReferentFromSpace(referentProfile.space_id, referentProfile.id, token);
+            setModalContent('Le référent a bien été supprimé.');
+            setIsModalOpen(true);
+            setTimeout(() => navigate('/referents'));
+        } catch (error) {
+            setModalContent('Erreur lors de la suppression du référent. Veuillez réessayer.');
+            setIsModalOpen(true);
         }
     };
 
@@ -49,6 +67,11 @@ export const ProfileReferent = () => {
         return <div>Loading...</div>;
     }
 
+    const showModal = (content) => {
+        setModalContent(content);
+        setIsModalOpen(true);
+    };
+
     return (
         <div className={styles.profilePage}>
             <Header />
@@ -62,7 +85,12 @@ export const ProfileReferent = () => {
                     </button>
                     {isDropdownOpen && (
                         <div className={styles.dropdownMenu} ref={dropdownRef}>
-                            <button className={styles.dropdownItem}>Désinscrire de l'espace</button>
+                            <button onClick={handleRemoveReferent} className={styles.dropdownItem}>
+                                Désinscrire de l'espace
+                            </button>
+                            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                                <p>{modalContent}</p>
+                            </Modal>
                             <button className={styles.dropdownItem}>Afficher carte référent</button>
                             <button className={styles.dropdownItem}>Suspendre</button>
                         </div>
