@@ -9,6 +9,90 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+/* SearchTabs.module.css */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #F9F9F9; /* Based on assumption */
+    border-radius: 25px; /* Based on assumption */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.tab {
+    background: none;
+    border: none;
+    color: #000; /* Based on assumption */
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1rem; /* Based on assumption */
+}
+
+.active {
+    color: #007BFF; /* Based on assumption */
+    border-bottom: 2px solid #007BFF; /* Based on assumption */
+}
+
+.searchBar {
+    display: flex;
+    background: #FFF; /* Based on assumption */
+    border-radius: 15px; /* Based on assumption */
+    margin: 0 15px;
+}
+
+.searchInput {
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    width: 100%;
+}
+
+.searchButton {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.searchIcon, .filterIcon {
+    height: 1rem; /* Based on assumption */
+}
+
+.filterButton {
+    display: flex;
+    align-items: center;
+    background: #007BFF; /* Based on assumption */
+    color: white;
+    border: none;
+    border-radius: 15px; /* Based on assumption */
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1rem; /* Based on assumption */
+    gap: 5px; /* Based on assumption */
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tabs, .searchBar, .filterButton {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .searchInput {
+        flex-grow: 1; /* Allow input to fill space */
+    }
+}
+
 .icons {
     display: flex;
     align-items: center;
@@ -70,5 +154,14 @@
 
     .icons {
         margin-top: 10px;
+    }
+
+    .searchBar {
+        flex-direction: column;
+    }
+
+    .searchInput {
+        width: 100%;
+        margin-bottom: 10px;
     }
 }
