@@ -1,4 +1,4 @@
-.modalOverlay {
+.qrCodeModal {
     background-color: #2c3e50;
     color: white;
     padding: 20px;
@@ -6,40 +6,8 @@
     text-align: center;
 }
 
-.modal {
-    background-color: #1E1E1E;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 400px;
-    text-align: center;
-}
-
-.closeButton {
-    float: right;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5em;
-}
-
-.modalTitle {
-    color: white;
-    margin: 0;
-}
-
-.qrCodeContainer {
+.qrCode {
     width: 60%;
-    margin-bottom: 20px;
-}
-
-.qrCodeImage {
-    max-width: 100%;
-    height: auto;
-}
-
-.userInfo {
-    color: white;
     margin-bottom: 20px;
 }
 
@@ -55,19 +23,4 @@
 
 .printButton:hover {
     background-color: #138496;
-}
-
-@media (max-width: 768px) {
-    .modal {
-        width: 90%;
-        padding: 10px;
-    }
-
-    .closeButton {
-        font-size: 1em;
-    }
-
-    .printButton {
-        padding: 8px 16px;
-    }
 }
