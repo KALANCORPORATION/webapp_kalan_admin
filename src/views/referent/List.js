@@ -137,15 +137,17 @@ export const ListReferent = () => {
                         <img src="/qrCodeLogo.png" alt="QR Code Scan" className={styles.qrCodeIcon} />
                     </button>
                     {isCameraOpen && (
-                        <div className={styles.cameraPopup}>
-                            <QrReader
-                                delay={50}
-                                constraints={{ facingMode: 'environment', focusMode: 'continuous'}}
-                                onResult={handleScan}
-                                onError={handleError}
-                                style={{ width: '100%' }}
-                            />
-                            <button onClick={closeCameraPopup}>Fermer</button>
+                        <div className={styles.modal}>
+                            <div className={styles.cameraPopup}>
+                                <QrReader
+                                    delay={50}
+                                    constraints={{ facingMode: 'environment', focusMode: 'continuous'}}
+                                    onResult={handleScan}
+                                    onError={handleError}
+                                    style={{ width: '100%' }}
+                                />
+                                <button className={styles.closeButton} onClick={closeCameraPopup}>Fermer</button>
+                            </div>
                         </div>
                     )}
                 </div>
