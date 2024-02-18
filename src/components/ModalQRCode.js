@@ -18,6 +18,18 @@ const QRCodeModalContent = ({ referentProfile }) => {
     const [qrCodeImage, setQRCodeImage] = useState('/qrCodeDefault.png');
     const accessToken = localStorage.getItem('accessToken');
 
+    const handlePrint = () => {
+        const printWindow = window.open('', '_blank');
+        const imageElement = `<img src="${qrCodeImage}" alt="QR Code" style="max-width: 100%;" />`;
+
+        printWindow.document.write(`<html><head><title>Print QR Code</title></head><body>${imageElement}</body></html>`);
+        printWindow.document.close(); // Necessary for IE >= 10
+        printWindow.focus(); // Necessary for IE >= 10
+
+        printWindow.print();
+        printWindow.close();
+    };
+
     useEffect(() => {
         const fetchQRCode = async () => {
             try {
@@ -33,10 +45,14 @@ const QRCodeModalContent = ({ referentProfile }) => {
 
     return (
         <div className={styles.qrCodeModal}>
-            <img src={qrCodeImage} alt="QR Code" className={styles.qrCode} />
-            <h3>{referentProfile.first_name} {referentProfile.last_name}</h3>
-            <p>{age} ans ({referentProfile.birthday})</p>
-            <button className={styles.printButton} onClick={() => window.print()}>Imprimer</button>
+            <div className="print-only">
+                <img src={qrCodeImage} alt="QR Code" className={styles.qrCode} />
+            </div>
+            <div className="no-print">
+                <h3>{referentProfile.first_name} {referentProfile.last_name}</h3>
+                <p>{age} ans ({referentProfile.birthday})</p>
+                <button className={styles.printButton} onClick={handlePrint}>Imprimer</button>
+            </div>
         </div>
     );
 };
