@@ -7,12 +7,14 @@ import {useParams} from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import SpaceController from "../../controllers/space/spaceController";
 import Modal from "../../components/Modal";
+import QRCodeModalContent from "../../components/ModalQRCode";
 
 export const ProfileReferent = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [modalContent, setModalContent] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isQRCodeModalOpen, setIsQRCodeModalOpen] = useState(false);
 
     const [referentProfile, setReferentProfile] = useState(null);
     const token = localStorage.getItem('accessToken');
@@ -23,6 +25,14 @@ export const ProfileReferent = () => {
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
+    };
+
+    const showQRCodeModal = () => {
+        setIsQRCodeModalOpen(true);
+    };
+
+    const hideQRCodeModal = () => {
+        setIsQRCodeModalOpen(false);
     };
 
     const handleClickOutside = (event) => {
@@ -91,7 +101,12 @@ export const ProfileReferent = () => {
                             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                                 <p>{modalContent}</p>
                             </Modal>
-                            <button className={styles.dropdownItem}>Afficher carte référent</button>
+                            <button onClick={showQRCodeModal} className={styles.dropdownItem}>
+                                Afficher carte référent
+                            </button>
+                            <Modal isOpen={isQRCodeModalOpen} onClose={hideQRCodeModal}>
+                                <QRCodeModalContent referentProfile={referentProfile} />
+                            </Modal>
                             <button className={styles.dropdownItem}>Suspendre</button>
                         </div>
                     )}
