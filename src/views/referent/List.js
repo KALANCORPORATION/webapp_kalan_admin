@@ -6,6 +6,8 @@ import { NavBarAdmin } from "../../components/NavBarAdmin";
 import SpaceController from '../../controllers/space/spaceController';
 import SearchController from "../../controllers/research/researchController";
 import {useLocation, useNavigate} from "react-router-dom";
+import { QrReader } from 'react-qr-reader';
+import ReferentController from "../../controllers/referent/referentController";
 
 export const ListReferent = () => {
     const [referents, setReferents] = useState([]);
@@ -13,7 +15,10 @@ export const ListReferent = () => {
     const [searchResults, setSearchResults] = useState([]);
     const token = localStorage.getItem('accessToken');
     const location = useLocation();
+    const [data, setData] = useState('');
     const navigate = useNavigate();
+    const [scannedReferent, setScannedReferent] = useState(null);
+    const [isCameraOpen, setIsCameraOpen] = useState(false);
 
     const navigateTo = (path) => {
         navigate(path);
@@ -33,6 +38,35 @@ export const ListReferent = () => {
         }
     };
 
+    const handleScan = async (data) => {
+        if (data) {
+            let cleanedText = data.text.replace(/@/g, '');
+            try {
+                const qrData = JSON.parse(cleanedText);
+                if (qrData && qrData.user_type === 'referent') {
+                    const users = await SearchController.searchUsers(`pseudo=${qrData.pseudo}`, token);
+                    if (users.length > 0) {
+                        // Supposons que la recherche renvoie un tableau d'utilisateurs et que nous prenons le premier
+                        const referentData = await ReferentController.getReferentById(users[0].id, token);
+                        if (referentData) {
+                            navigate(`/referent/${referentData.id}`);
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Error processing QR code:', error);
+            }
+        }
+    };
+
+    const startScanning = () => {
+        setIsCameraOpen(true);
+    };
+
+    const handleError = (error) => {
+        console.error(error);
+    };
+
     const handleSearchChange = async (e) => {
         const value = e.target.value;
         setSearchTerm(value);
@@ -48,6 +82,10 @@ export const ListReferent = () => {
         } else {
             setSearchResults([]);
         }
+    };
+
+    const closeCameraPopup = () => {
+        setIsCameraOpen(false);
     };
 
     const getTabStyle = (path) => {
@@ -96,6 +134,21 @@ export const ListReferent = () => {
                     <button className={styles.searchButton}>
                         <img src="loupe.png" alt="Search" className={styles.searchIcon} />
                     </button>
+                    <button className={styles.qrButton} onClick={startScanning}>
+                        <img src="/qrCodeLogo.png" alt="QR Code Scan" className={styles.qrCodeIcon} />
+                    </button>
+                    {isCameraOpen && (
+                        <div className={styles.cameraPopup}>
+                            <QrReader
+                                delay={50}
+                                constraints={{ facingMode: 'environment', focusMode: 'continuous'}}
+                                onResult={handleScan}
+                                onError={handleError}
+                                style={{ width: '100%' }}
+                            />
+                            <button onClick={closeCameraPopup}>Fermer</button>
+                        </div>
+                    )}
                 </div>
                 <button className={styles.filterButton}>
                     <img src="filtreLogo.svg" alt="Filter" className={styles.filterIcon} />
