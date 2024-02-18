@@ -20,10 +20,9 @@ class GeneratorService {
         }
     }
 
-    static async generateUserQrCode(adherentId, accessToken) {
+    static async generateUserQrCode(accessToken) {
         try {
-            const queryParams = adherentId ? `?adherent_id=${adherentId}` : '';
-            const response = await fetch(`${process.env.REACT_APP_URL}/api/qr-code${queryParams}`, {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/qr-code`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
