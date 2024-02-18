@@ -46,7 +46,6 @@ export const ListReferent = () => {
                 if (qrData && qrData.user_type === 'referent') {
                     const users = await SearchController.searchUsers(`pseudo=${qrData.pseudo}`, token);
                     if (users.length > 0) {
-                        // Supposons que la recherche renvoie un tableau d'utilisateurs et que nous prenons le premier
                         const referentData = await ReferentController.getReferentById(users[0].id, token);
                         if (referentData) {
                             navigate(`/referent/${referentData.id}`);

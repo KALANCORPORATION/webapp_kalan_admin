@@ -6,6 +6,8 @@ import { NavBarAdmin } from "../../components/NavBarAdmin";
 import SpaceController from '../../controllers/space/spaceController';
 import SearchController from "../../controllers/research/researchController";
 import {useLocation, useNavigate} from "react-router-dom";
+import { QrReader } from 'react-qr-reader';
+import ReferentController from "../../controllers/referent/referentController";
 
 export const ListAdherents = () => {
     const [adherents, setAdherents] = useState([]);
@@ -14,6 +16,9 @@ export const ListAdherents = () => {
     const token = localStorage.getItem('accessToken');
     const location = useLocation();
     const navigate = useNavigate();
+    const [data, setData] = useState('');
+    const [scannedReferent, setScannedReferent] = useState(null);
+    const [isCameraOpen, setIsCameraOpen] = useState(false);
 
     const navigateTo = (path) => {
         navigate(path);
@@ -50,8 +55,40 @@ export const ListAdherents = () => {
         }
     };
 
+    const handleScan = async (data) => {
+        if (data) {
+            let cleanedText = data.text.replace(/@/g, '');
+            try {
+                const qrData = JSON.parse(cleanedText);
+                if (qrData && qrData.user_type === 'adherent') {
+                    const users = await SearchController.searchUsers(`pseudo=${qrData.pseudo}`, token);
+                    if (users.length > 0) {
+                        const adherentData = await ReferentController.getReferentById(users[0].id, token);
+                        if (adherentData) {
+                            navigate(`/adherent/${adherentData.id}`);
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Error processing QR code:', error);
+            }
+        }
+    };
+
+    const startScanning = () => {
+        setIsCameraOpen(true);
+    };
+
+    const handleError = (error) => {
+        console.error(error);
+    };
+
     const getTabStyle = (path) => {
         return location.pathname === path ? `${styles.tab} ${styles.active}` : styles.tab;
+    };
+
+    const closeCameraPopup = () => {
+        setIsCameraOpen(false);
     };
 
     const filteredAdherents = searchTerm.length > 0
@@ -76,6 +113,21 @@ export const ListAdherents = () => {
                     <button className={styles.searchButton}>
                         <img src="loupe.png" alt="Search" className={styles.searchIcon} />
                     </button>
+                    <button className={styles.qrButton} onClick={startScanning}>
+                        <img src="/qrCodeLogo.png" alt="QR Code Scan" className={styles.qrCodeIcon} />
+                    </button>
+                    {isCameraOpen && (
+                        <div className={styles.cameraPopup}>
+                            <QrReader
+                                delay={50}
+                                constraints={{ facingMode: 'environment', focusMode: 'continuous'}}
+                                onResult={handleScan}
+                                onError={handleError}
+                                style={{ width: '100%' }}
+                            />
+                            <button onClick={closeCameraPopup}>Fermer</button>
+                        </div>
+                    )}
                 </div>
                 <button className={styles.filterButton}>
                     <img src="filtreLogo.svg" alt="Filter" className={styles.filterIcon} />

@@ -104,6 +104,42 @@
     height: 50px;
 }
 
+qrButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.qrScanner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.qrCodeIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.cameraPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
 .profileImage {
     width: 48px;
     height: 48px;
@@ -134,6 +170,12 @@
 .joinDate {
     color: #ffffffb2;
     font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .qrScanner {
+        padding: 10px;
+    }
 }
 
 /* Media query for mobile devices */
