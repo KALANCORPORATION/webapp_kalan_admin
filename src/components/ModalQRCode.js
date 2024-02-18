@@ -22,9 +22,28 @@ const QRCodeModalContent = ({ referentProfile }) => {
         const printWindow = window.open('', '_blank');
         const imageElement = `<img src="${qrCodeImage}" alt="QR Code" style="max-width: 100%;" />`;
 
-        printWindow.document.write(`<html><head><title>Print QR Code</title></head><body>${imageElement}</body></html>`);
-        printWindow.document.close(); // Necessary for IE >= 10
-        printWindow.focus(); // Necessary for IE >= 10
+        printWindow.document.write(`
+            <html>
+                <head>
+                    <title>Print QR Code</title>
+                    <style>
+                        body {
+                            text-align: center;
+                        }
+                        img {
+                            margin-top: 50px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <img src="${qrCodeImage}" alt="QR Code" />
+                    <h3>${referentProfile.first_name} ${referentProfile.last_name}</h3>
+                    <p>${age} ans (${referentProfile.birthday})</p>
+                </body>
+            </html>
+        `);
+        printWindow.document.close();
+        printWindow.focus();
 
         printWindow.print();
         printWindow.close();
