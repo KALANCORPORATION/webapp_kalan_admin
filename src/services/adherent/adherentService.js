@@ -67,10 +67,7 @@ class AdherentService {
                 throw new Error(errorData.message);
             }
 
-            const adherentData = await response.json();
-            console.log('Adherent data:', adherentData);
-
-            return new Adherent(adherentData);
+            return await response.json();
         } catch (error) {
             throw new Error(error.message);
         }

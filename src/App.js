@@ -4,6 +4,7 @@ import ConnexionAdminApp from './views/login/ConnexionAdminApp';
 import { ListReferent } from './views/referent/List';
 import { ListAdherents } from './views/adherent/List';
 import { ProfileReferent } from './views/referent/Profile';
+import { ProfileAdherent } from './views/adherent/Profile';
 import { Historique } from './views/historique/List';
 import { ListInvitations } from './views/invitation/List';
 
@@ -18,6 +19,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<ConnexionAdminApp/>} />
                 <Route path="/adherents" element={<ListAdherents/>} />
+                <Route path="/adherent/:id" element={<ProfileAdherent />} />
                 <Route path="/referents" element={<ListReferent/>} />
                 <Route path="/referent/:id" element={<ProfileReferent />} />
                 <Route path="/invitations" element={<ListInvitations/>} />
