@@ -13,12 +13,18 @@ import Scan from "./views/scan/scan";
 import HomepageAdmin from "./views/homepage/HomepageAdmin";
 import BooksList from "./views/books/BooksList";
 import SplashScreen2 from "./views/splashscreen/splashScreen2";
+import UserTypeChoicePage from './views/inscription/userTypeChoicePage';
+import AdminRegistration from './views/inscription/admin';
+import ReferentRegistration from './views/inscription/referent';
 
 const App = () => {
     return (
         <div className="app">
             <Routes>
                 <Route path="/" element={<SplashScreen2/>} />
+                <Route path="/auth/signup/choice" element={<UserTypeChoicePage/>} />
+                <Route path="/auth/signup/admin" element={<AdminRegistration/>} />
+                <Route path="/auth/signup/referent" element={<ReferentRegistration/>} />
                 <Route path="/login" element={<ConnexionAdminApp/>} />
                 <Route path="/adherents" element={<ListAdherents/>} />
                 <Route path="/adherent/:id" element={<ProfileAdherent />} />

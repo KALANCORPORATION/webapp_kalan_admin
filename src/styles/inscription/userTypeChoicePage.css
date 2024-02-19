@@ -1,0 +1,64 @@
+.user-type-choice-page-screen {
+    text-align: center;
+}
+
+.user-type-choice-page-container {
+    background-color: white;
+    margin: 100px auto; /* Centrer le conteneur verticalement et horizontalement */
+    padding: 100px; /* Ajouter de l'espacement autour du contenu */
+    border-radius: 10px; /* Ajouter des coins arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajouter une ombre légère de tous les côtés */
+    width: 500px; /* Définir une largeur fixe pour le conteneur */
+    height: 600px; /* Définir une hauteur fixe pour le conteneur */
+}
+
+
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.user-type-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/*.user-type-button img {
+    width: 50px; /* Taille de l'icône qui doit être dans le bouton
+}*/
+
+button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 200px; /* Définission d'une largeur fixe pour tous les boutons */
+}
+
+
+h6 {
+    color: gray;
+    font-size: 14px;
+}
+
+.already-member {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+h4 {
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.login-link {
+    color: skyblue;
+    cursor: pointer;
+}

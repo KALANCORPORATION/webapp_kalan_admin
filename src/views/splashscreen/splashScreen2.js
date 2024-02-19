@@ -1,9 +1,13 @@
 import "../../styles/splashscreen/splashScreen2.css";
 import React from "react";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SplashScreen2 = () => {
     const history = useNavigate();
+
+    const handleSignupClick = () => {
+        history(`/auth/signup/choice`);
+    };
 
     const handleLoginClick = () => {
         history(`/login`);
@@ -17,7 +21,7 @@ const SplashScreen2 = () => {
             </div>
             <div className="welcome-title">Bienvenue !</div>
             <img className="welcome-logo" src="logoKalan2.png" alt="KALAN" />
-            <button className="welcome-button welcome-button-signup">S'inscrire</button>
+            <button className="welcome-button welcome-button-signup" onClick={handleSignupClick}>S'inscrire</button>
             <button className="welcome-button welcome-button-login" onClick={handleLoginClick}>Se connecter</button>
         </div>
     );
