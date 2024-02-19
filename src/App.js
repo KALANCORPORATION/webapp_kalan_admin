@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Redirect, Switch } from 'react-router-dom';
 import ConnexionAdminApp from './views/login/ConnexionAdminApp';
-import SplashScreen1 from './views/splashscreen/splashScreen1';
 import { ListReferent } from './views/referent/List';
 import { ListAdherents } from './views/adherent/List';
 import { ProfileReferent } from './views/referent/Profile';
@@ -13,12 +12,13 @@ import Result from "./views/scan/Result";
 import Scan from "./views/scan/scan";
 import HomepageAdmin from "./views/homepage/HomepageAdmin";
 import BooksList from "./views/books/BooksList";
+import SplashScreen2 from "./views/splashscreen/splashScreen2";
 
 const App = () => {
     return (
         <div className="app">
             <Routes>
-                <Route path="/" element={<SplashScreen1/>} />
+                <Route path="/" element={<SplashScreen2/>} />
                 <Route path="/login" element={<ConnexionAdminApp/>} />
                 <Route path="/adherents" element={<ListAdherents/>} />
                 <Route path="/adherent/:id" element={<ProfileAdherent />} />

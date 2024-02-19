@@ -1,0 +1,75 @@
+.welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    background-color: #31B2BA;
+    color: #000000;
+    position: relative;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.welcome-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    top: 1rem;
+}
+
+.welcome-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 2rem 0;
+}
+
+.welcome-logo {
+    max-width: 80%;
+    height: auto;
+}
+
+.welcome-slogan {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.welcome-button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 20px;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.welcome-button-signup {
+    background-color: #4ABDAC;
+    color: #FFF;
+}
+
+.welcome-button-login {
+    background-color: #FC4A1A;
+    color: #FFF;
+}
+
+.welcome-button:hover {
+    opacity: 0.9;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 1.5rem;
+    }
+
+    .welcome-slogan {
+        font-size: 0.8rem;
+    }
+
+    .welcome-button {
+        padding: 0.8rem 1.6rem;
+    }
+}
