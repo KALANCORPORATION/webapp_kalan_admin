@@ -18,7 +18,7 @@ const ConnexionAdminApp = () => {
             localStorage.setItem('spaceId', responseSpaceId);
             console.log(response.accessToken);
             setAccessToken(response.accessToken);
-            history(`/homepage`);
+            history(`/referents`);
         } catch (error) {
             console.error('Erreur de connexion:', error.message);
         }
