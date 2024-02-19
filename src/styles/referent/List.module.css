@@ -1,0 +1,209 @@
+/* Dans ProfileItem.module.css */
+.profileItem {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(49, 178, 186, 1) 0%, rgba(21, 21, 76, 1) 100%);
+    border-radius: 26px;
+    margin: 10px;
+    padding: 16px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.cameraPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+/* SearchTabs.module.css */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #F9F9F9; /* Based on assumption */
+    border-radius: 25px; /* Based on assumption */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.qrButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.qrScanner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.qrCodeIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.tab {
+    background: none;
+    border: none;
+    color: #000; /* Based on assumption */
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1rem; /* Based on assumption */
+}
+
+.active {
+    color: #007BFF; /* Based on assumption */
+    border-bottom: 2px solid #007BFF; /* Based on assumption */
+}
+
+.searchBar {
+    display: flex;
+    background: #FFF; /* Based on assumption */
+    border-radius: 15px; /* Based on assumption */
+    margin: 0 15px;
+}
+
+.searchInput {
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    width: 100%;
+}
+
+.searchButton {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.searchIcon, .filterIcon {
+    height: 1rem; /* Based on assumption */
+}
+
+.filterButton {
+    display: flex;
+    align-items: center;
+    background: #007BFF; /* Based on assumption */
+    color: white;
+    border: none;
+    border-radius: 15px; /* Based on assumption */
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1rem; /* Based on assumption */
+    gap: 5px; /* Based on assumption */
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tabs, .searchBar, .filterButton {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .searchInput {
+        flex-grow: 1; /* Allow input to fill space */
+    }
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.statusIcon {
+    width: 50px;
+    height: 50px;
+}
+
+.profileImage {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.profileInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.profileName {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.profileHandle {
+    color: #ffffff99;
+    font-weight: 600;
+}
+
+.atSymbol {
+    color: #ffffff;
+}
+
+.joinDate {
+    color: #ffffffb2;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .qrScanner {
+        padding: 10px;
+    }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+    .profileItem {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profileImage {
+        margin-bottom: 8px;
+    }
+
+    .statusIcon {
+        align-self: center;
+        margin-top: 10px;
+    }
+
+    .icons {
+        margin-top: 10px;
+    }
+
+    .searchBar {
+        flex-direction: column;
+    }
+
+    .searchInput {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

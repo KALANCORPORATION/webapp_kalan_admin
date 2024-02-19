@@ -1,0 +1,10 @@
+.country-select {
+    margin-top: 10px;
+    width: 20%;
+  }
+  
+  .country-flag {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }

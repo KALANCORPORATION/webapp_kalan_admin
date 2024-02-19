@@ -1,0 +1,165 @@
+.profilePage {
+    flex-direction: column;
+    display: flex;
+}
+
+.profileHeader {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+}
+
+
+.dropdownToggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.dropdownIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.dropdownMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.dropdownItem {
+    display: block;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+    background: #FFF;
+    color: #333;
+    text-align: left;
+    font-size: 14px;
+}
+
+.dropdownItem:hover {
+    background: #f6f6f6;
+}
+
+.dropdownItem:last-child {
+    border-bottom: none;
+}
+
+.profileImageContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid white;
+}
+
+.profileActionIcons {
+    /* Style for the container of icons (e.g., notifications, dropdown) */
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.username {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.handle {
+    margin: 0;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.bio {
+    margin-bottom: 16px;
+}
+
+.profileDates {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.joinDate .icon,
+.birthDate .icon {
+    margin-right: 5px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.tab {
+    background-color: #f0f0f0;
+    border: 1px solid transparent;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tab:hover {
+    background-color: #e0e0e0;
+}
+
+.active,
+.tab:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.bottomNav {
+}
+
+@media (max-width: 768px) {
+    .profileHeader {
+        padding: 10px;
+    }
+
+    .dropdownMenu {
+        right: 5px;
+    }
+
+    .username,
+    .handle {
+        font-size: 1rem;
+    }
+
+    .bio {
+        padding: 0 10px;
+    }
+
+    .profileDates {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,71 @@
+class ResearchService {
+    static async searchSpaces(queryParams, accessToken) {
+        const queryString = new URLSearchParams(queryParams).toString();
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/search/spaces/?${queryString}`, {
+            headers: { 'Authorization': `Bearer ${accessToken}` },
+        });
+        if (!response.ok) {
+            throw new Error('Erreur lors de la recherche des espaces');
+        }
+        return response.json();
+    }
+
+    static async searchUsers(queryParams, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/search/users?${queryParams}`, {
+            headers: {
+                method: 'GET',
+                'Authorization': `Bearer ${accessToken}`
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Erreur lors de la recherche des utilisateurs');
+        }
+        return response.json();
+    }
+
+    static async searchBooks(queryParams, accessToken) {
+        const queryString = new URLSearchParams(queryParams).toString();
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/search/books/?${queryString}`, {
+            headers: { 'Authorization': `Bearer ${accessToken}` },
+        });
+        if (!response.ok) {
+            throw new Error('Erreur lors de la recherche des livres');
+        }
+        return response.json();
+    }
+
+    static async searchSpaceBooks(spaceId, queryParams, accessToken) {
+        const queryString = new URLSearchParams(queryParams).toString();
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/search/spaces/${spaceId}/space-books?${queryString}`, {
+            headers: { 'Authorization': `Bearer ${accessToken}` },
+        });
+        if (!response.ok) {
+            throw new Error('Erreur lors de la recherche des livres dans l\'espace');
+        }
+        return response.json();
+    }
+
+    static async searchAdherentBorrowedBooks(queryParams, accessToken) {
+        const queryString = new URLSearchParams(queryParams).toString();
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/search/adherent-borrowed-books?${queryString}`, {
+            headers: { 'Authorization': `Bearer ${accessToken}` },
+        });
+        if (!response.ok) {
+            throw new Error('Erreur lors de la recherche des livres empruntés par l\'adhérent');
+        }
+        return response.json();
+    }
+
+    static async searchAdherentBooks(adherentId, queryParams, accessToken) {
+        const queryString = new URLSearchParams(queryParams).toString();
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/search/adherents/${adherentId}/adherent-books?${queryString}`, {
+            headers: { 'Authorization': `Bearer ${accessToken}` },
+        });
+        if (!response.ok) {
+            throw new Error('Erreur lors de la recherche des livres de l\'adhérent');
+        }
+        return response.json();
+    }
+}
+
+export default ResearchService;

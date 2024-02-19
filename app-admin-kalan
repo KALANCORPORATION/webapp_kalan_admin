@@ -1,0 +1,25 @@
+server {
+    listen 80;
+    server_name app-admin.espace-kalan.fr www.app-admin.espace-kalan.fr;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name app-admin.espace-kalan.fr www.app-admin.espace-kalan.fr;
+
+    ssl_certificate /etc/letsencrypt/live/app-admin.espace-kalan.fr/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/app-admin.espace-kalan.fr/privkey.pem;
+
+    location / {
+        root /home/debian/Workspace/webapp_kalan_admin/build;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+
+    error_page 404 /index.html;
+
+    location ~ /\. {
+        deny all;
+    }
+}

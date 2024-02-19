@@ -3,18 +3,14 @@ import React, { useState } from 'react';
 // import ReactDOM from 'react-dom';
 
 import { QrReader } from 'react-qr-reader';
+import { Header } from "../../components/Header";
+import  NavBar  from "../../components/NavBar";
 import CountryFlag from 'react-country-flag';
 import Calendar from 'react-calendar';
 import Select from 'react-select';
 
-
-
-
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faQrcode } from '@fortawesome/free-solid-svg-icons';
-//import { library } from '@fortawesome/fontawesome-svg-core';
 import AdherentController from '../../controllers/adherentController';
-import "./CreateAdherent.css"
+import "../../styles/adherent/CreateAdherent.css"
 
 //library.add(faQrcode);
 
@@ -97,12 +93,10 @@ const CreateAdherent = () => {
   return (
     <div className="container">
         
-            <header className="header">
+            {/* <header className="header">
                 <h1 >Inscription Adherent</h1>
-            </header>
-                <div>
-                    <img className="logo_kalan" alt="" src="/JustTheKK 1.png" />
-                </div>
+            </header> */}
+            <Header/>
         <main>
             <section>
                 <div>
@@ -183,13 +177,8 @@ const CreateAdherent = () => {
                 onChange={(e) => setMail(e.target.value)}
                 placeholder="E-mail"
                 />
-                
-              
                 <p className='text-tel'>Si vous renseigner un numéro un code de vérification sera 
-                                        envoyé à ce numéro.</p>
-
-              
-                
+                                        envoyé à ce numéro.</p> 
             </form>
             <div className="button-container">
                 
@@ -202,7 +191,7 @@ const CreateAdherent = () => {
       <div className="footer-bar">
       </div>
       {isScanning && <QrReader onScan={handleCodeScan} />}
-
+      <NavBar />
     </div>
   );
 };

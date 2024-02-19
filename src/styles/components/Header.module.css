@@ -1,0 +1,84 @@
+
+
+.logoKalan {
+    width: 48px;
+    object-fit: cover;
+}
+.textWrapper {
+    width: 100%;
+    text-align: center;
+    margin-left: 70px;
+    color: white;
+    font-family: "Barlow-SemiBold", Helvetica;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    white-space: nowrap;
+}
+
+.iconsRight {
+    display: flex;
+    align-items: center;
+}
+
+.notif {
+    /* If you want some space between the notification icon and the profile icon */
+    margin-right: 10px;
+}
+
+.logoKalan, .notif, .logoReferent {
+    object-fit: cover;
+}
+
+
+.notif,
+.logoReferent {
+    width: 46px; /* Fixed size for the image */
+    object-fit: cover;
+    margin-left: 50px; /* Adjust spacing between icons as needed */
+}
+
+.frame {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(52, 63, 113, 0.98) 15.1%, rgba(49, 178, 186, 0) 100%);
+    padding: 0 1rem;
+    height: 80px;
+    /* Other styles... */
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem; /* Padding */
+}
+
+.group {
+    width: 48px;
+}
+
+.time {
+    color: white;
+    font-family: "Poppins-Bold", sans-serif;
+    font-size: 14px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .frame {
+        flex-direction: column;
+        height: auto; /* Hauteur auto pour un affichage en colonne */
+    }
+    .header {
+        position: relative;
+    }
+    .group, .time {
+        width: auto; /* Taille auto pour s'adapter au layout en colonne */
+    }
+}
