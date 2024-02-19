@@ -29,7 +29,7 @@ const ConnexionAdminApp = () => {
         <div className="connexion-adminapp">
             <div className="login-card">
                 <img className="login-logo" src="/logoKalan.png" alt="Logo" />
-                <div className="login-title">Connexion</div>
+                <h1 className="login-title">Connexion</h1>
                 <input
                     className="login-input"
                     type="text"

@@ -3,42 +3,54 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Use full viewport height */
-    background-color: #f0f0f0; /* Adjust the background color as needed */
+    height: 100vh;
+    background-color: #f7f7f7; /* Light grey background */
 }
 
 .login-card {
     background: #fff;
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px; /* Maximum width of the card */
+    border-radius: 20px; /* Rounded corners for card */
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 450px; /* Maximum width of the card */
+    text-align: center; /* Center the content */
+}
+
+.login-logo {
+    display: block;
+    margin: 0 auto;
+    height: 120px; /* Larger logo for better visibility */
+    margin-bottom: 2rem; /* Space between logo and title */
 }
 
 .login-title {
-    text-align: center;
     margin-bottom: 2rem;
-    font-size: 1.5rem;
+    font-size: 2rem; /* Larger font size for the title */
     color: #333;
+    font-weight: bold; /* Make the title bold */
 }
 
 .login-input {
-    width: 100%;
-    padding: 0.5rem;
+    width: calc(100% - 2rem); /* Full width minus padding */
+    padding: 1rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px; /* Rounded borders for input fields */
+    font-size: 1rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
 }
 
 .login-button {
-    width: 100%;
-    padding: 0.5rem;
+    width: calc(100% - 2rem); /* Full width minus padding */
+    padding: 1rem;
     background-color: #333;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px; /* Rounded borders for button */
     cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem; /* Space above the button */
 }
 
 .login-button:hover {
@@ -46,19 +58,33 @@
 }
 
 .login-footer {
-    text-align: center;
-    margin-top: 1rem;
-}
-
-.login-logo {
-    display: block; /* Makes it a block element */
-    margin: 0 auto; /* Centers the logo */
-    height: 80px; /* Adjust as needed */
-    margin-bottom: 1rem; /* Space between logo and title */
+    margin-top: 2rem;
+    font-size: 0.9rem; /* Smaller font size for footer */
 }
 
 @media screen and (max-width: 768px) {
     .login-card {
-        padding: 1rem;
+        padding: 1.5rem; /* Slightly less padding on smaller screens */
+        border-radius: 15px; /* Smaller border radius for smaller screens */
+    }
+
+    .login-logo {
+        height: 100px; /* Smaller logo on smaller screens */
+    }
+
+    .login-title {
+        font-size: 1.5rem; /* Smaller title on smaller screens */
+    }
+
+    .login-input {
+        padding: 0.8rem; /* Less padding for input fields on smaller screens */
+    }
+
+    .login-button {
+        padding: 0.8rem; /* Less padding for button on smaller screens */
+    }
+
+    .login-footer {
+        margin-top: 1.5rem;
     }
 }
