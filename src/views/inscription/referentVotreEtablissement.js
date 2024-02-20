@@ -5,10 +5,6 @@ import {useNavigate} from 'react-router-dom';
 const ReferentRegistrationEstablishmentInformation = () => {
     const history = useNavigate();
 
-    const handleLoginClick = () => {
-        history(`/auth/signup/referent/votre-etablissement`);
-    };
-
     const handleNextClick = () => {
         history(`/auth/signup/referent/votre-identifiant`);
     };
@@ -25,7 +21,7 @@ const ReferentRegistrationEstablishmentInformation = () => {
 
             <hr className="separator" /> {/* Ajout du trait gris clair */}
 
-            {/* Ajout du texte h4 "Votre @nomdutilisateur est unique" */}
+            {/* Ajout du texte h4 "Votre code unique" */}
             <div className="info-text space bottom">
                 <h4>Veuillez renseigner le code unique de votre Espace KALAN afin de créer vos accès Référent.</h4>
             </div>
