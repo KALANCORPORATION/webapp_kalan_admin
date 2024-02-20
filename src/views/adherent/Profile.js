@@ -139,7 +139,7 @@ export const ProfileAdherent = () => {
                     )}
                 </div>
                 <div className={styles.profileImageContainer}>
-                    <img className={styles.profileImage} src={adherentProfile.profile_image} alt="Profile" />
+                    <img className={styles.profileImage} src={adherentProfile.profile_image || "/profileImageDefault.png"} alt="Profile" />
                 </div>
                 <h1 className={styles.username}>{adherentProfile.first_name} {adherentProfile.last_name}</h1>
                 <p className={styles.handle}>@{adherentProfile.pseudo}</p>

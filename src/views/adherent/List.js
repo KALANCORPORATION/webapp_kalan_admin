@@ -141,7 +141,7 @@ export const ListAdherents = () => {
                     className={styles.profileItem}
                     onClick={() => navigateTo(`/adherent/${adherent.id}`)}
                 >
-                    <img className={styles.profileImage} alt={adherent.pseudo} src={adherent.profile_image || '/profileDefault2.png'} />
+                    <img className={styles.profileImage} alt={adherent.pseudo} src={adherent.profile_image || '/profileImageDefault.png'} />
                     <div className={styles.profileInfo}>
                         <div className={styles.profileName}>{adherent.first_name} {adherent.last_name}</div>
                         <p className={styles.profileHandle}>

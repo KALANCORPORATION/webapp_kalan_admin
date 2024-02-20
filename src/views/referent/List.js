@@ -163,7 +163,7 @@ export const ListReferent = () => {
                      className={styles.profileItem}
                     onClick={() => navigateTo(`/referent/${referent.id}`)}
                 >
-                    <img className={styles.profileImage} alt={referent.pseudo} src={referent.profile_image || '/profileDefault2.png'} />
+                    <img className={styles.profileImage} alt={referent.pseudo} src={referent.profile_image || '/profileImageDefault.png'} />
                     <div className={styles.profileInfo}>
                         <div className={styles.profileName}>{referent.first_name} {referent.last_name}</div>
                         <p className={styles.profileHandle}>

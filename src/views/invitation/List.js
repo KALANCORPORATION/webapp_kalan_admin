@@ -122,7 +122,7 @@ export const ListInvitations = ({ userName, userHandle, joinDate, imagePath }) =
                 return referent && (referent.pseudo.toLowerCase().includes(searchTerm.toLowerCase()) || `${referent.first_name} ${referent.last_name}`.toLowerCase().includes(searchTerm.toLowerCase()));
             }).map((invitation) => (
                 <div key={invitation.id} className={styles.profileItem} onClick={() => navigateTo(`/referent/${referentsDetails.invitation.referent_id}`)}>
-                    <img className={styles.profileImage} alt="Profile" src={referentsDetails[invitation.referent_id]?.profile_image || '/profileDefault2.png'} />
+                    <img className={styles.profileImage} alt="Profile" src={referentsDetails[invitation.referent_id]?.profile_image || '/profileImageDefault.png'} />
                     <div className={styles.profileInfo}>
                         <div className={styles.profileName}>{referentsDetails[invitation.referent_id]?.first_name} {referentsDetails[invitation.referent_id]?.last_name}</div>
                         <p className={styles.profileHandle}>

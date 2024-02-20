@@ -112,7 +112,7 @@ export const ProfileReferent = () => {
                     )}
                 </div>
                 <div className={styles.profileImageContainer}>
-                    <img className={styles.profileImage} src={referentProfile.profile_image}alt="Profile" />
+                    <img className={styles.profileImage} src={referentProfile.profile_image || "/profileImageDefault.png"} alt="Profile" />
                 </div>
                 <h1 className={styles.username}>{referentProfile.first_name} {referentProfile.last_name}</h1>
                 <p className={styles.handle}>@{referentProfile.pseudo}</p>

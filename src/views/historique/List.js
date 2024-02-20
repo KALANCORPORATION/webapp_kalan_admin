@@ -11,7 +11,7 @@ export const Historique = ({ userName, userHandle, joinDate, imagePath }) => {
             <Header />
             <TabBar />
             <div className={styles.profileItem}>
-                <img className={styles.profileImage} alt="List" src="/profileDefault2.png" />
+                <img className={styles.profileImage} alt="List" src="/profileImageDefault.png" />
                 <div className={styles.profileInfo}>
                     <div className={styles.profileName}>fffffffffffff</div>
                     <p className={styles.profileHandle}>
