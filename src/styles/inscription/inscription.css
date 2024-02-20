@@ -159,7 +159,10 @@ select {
 @media (max-width: 768px) {
     .admin-registration-votre-identifiant-screen,
     .admin-registration-votre-espace-screen,
-    .admin-registration-votre-profil-screen {
+    .admin-registration-votre-profil-screen,
+    .referent-registration-votre-profil-screen, 
+    .referent-registration-votre-identifiant-screen,
+    .referent-registration-votre-etablissement-screen {
         width: 90%; /* Utilisation de 90% de la largeur disponible */
         max-width: none; /* Suppression de la limitation de la largeur maximale */
         margin: 50px auto; /* Centralisation horizontale avec une marge de 50px en haut et en bas */
