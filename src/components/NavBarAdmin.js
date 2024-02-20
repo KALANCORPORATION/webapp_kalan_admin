@@ -45,8 +45,8 @@ export const NavBarAdmin = () => {
                 <img src="/monEspace.png" alt="Mon espace" className={styles.navIcon} />
                 <span>Mon espace</span>
             </button>
-            <button onClick={() => navigateTo('/bibliotheque')}
-                    className={`${styles.navButton} ${isActive('/bibliotheque') ? styles.active : ''}`}>
+            <button onClick={() => navigateTo('/books')}
+                    className={`${styles.navButton} ${isActive('/books') ? styles.active : ''}`}>
                 <img src="/bibliotheque.svg" alt="Bibliothèque" className={styles.navIcon} />
                 <span>Bibliothèque</span>
             </button>

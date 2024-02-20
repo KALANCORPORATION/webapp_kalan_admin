@@ -1,0 +1,30 @@
+html {
+    display: inline-table;
+}body {
+     display: inline-table;
+ }
+.root{
+    display: inline-table;
+}
+.book-list {
+    width: fit-content;
+}
+img.book-cover {
+    margin: 10px;
+    height: 7em;
+    object-fit: cover;
+    width: 5em;
+}
+.book {
+    margin: 10px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.book-info {
+    margin: 10px;
+}
