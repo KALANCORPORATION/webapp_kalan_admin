@@ -10,9 +10,9 @@ class GeneratorController {
         }
     }
 
-    static async generateUserQrCode(accessToken) {
+    static async generateUserQrCode(accessToken, adherentId) {
         try {
-            return await GeneratorService.generateUserQrCode(accessToken);
+            return await GeneratorService.generateUserQrCode(accessToken, adherentId);
         } catch (error) {
             console.error('Error generating user QR code:', error.message);
             throw error;

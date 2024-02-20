@@ -8,6 +8,7 @@ import SearchController from "../../controllers/research/researchController";
 import {useLocation, useNavigate} from "react-router-dom";
 import { QrReader } from 'react-qr-reader';
 import ReferentController from "../../controllers/referent/referentController";
+import AdherentController from "../../controllers/adherent/adherentController";
 
 export const ListAdherents = () => {
     const [adherents, setAdherents] = useState([]);
@@ -60,13 +61,10 @@ export const ListAdherents = () => {
             let cleanedText = data.text.replace(/@/g, '');
             try {
                 const qrData = JSON.parse(cleanedText);
-                if (qrData && qrData.user_type === 'adherent') {
-                    const users = await SearchController.searchUsers(`pseudo=${qrData.pseudo}`, token);
-                    if (users.length > 0) {
-                        const adherentData = await ReferentController.getReferentById(users[0].id, token);
-                        if (adherentData) {
-                            navigate(`/adherent/${adherentData.id}`);
-                        }
+                if (qrData && qrData.user_id) {
+                    const adherentData = await AdherentController.getAdherentById(qrData.user_id, token);
+                   if (adherentData) {
+                       navigate(`/adherent/${adherentData.id}`);
                     }
                 }
             } catch (error) {
@@ -116,24 +114,25 @@ export const ListAdherents = () => {
                     <button className={styles.qrButton} onClick={startScanning}>
                         <img src="/qrCodeLogo.png" alt="QR Code Scan" className={styles.qrCodeIcon} />
                     </button>
-                    {isCameraOpen && (
-                        <div className={styles.cameraPopup}>
-                            <QrReader
-                                delay={50}
-                                constraints={{ facingMode: 'environment', focusMode: 'continuous'}}
-                                onResult={handleScan}
-                                onError={handleError}
-                                style={{ width: '100%' }}
-                            />
-                            <button onClick={closeCameraPopup}>Fermer</button>
-                        </div>
-                    )}
                 </div>
                 <button className={styles.filterButton}>
                     <img src="filtreLogo.svg" alt="Filter" className={styles.filterIcon} />
                     Filtrer
                 </button>
             </div>
+
+            {isCameraOpen && (
+                <div className={styles.cameraPopup}>
+                    <QrReader
+                        delay={50}
+                        constraints={{ facingMode: 'environment', focusMode: 'continuous'}}
+                        onResult={handleScan}
+                        onError={handleError}
+                        style={{ width: '100%' }}
+                    />
+                    <button onClick={closeCameraPopup}>Fermer</button>
+                </div>
+            )}
 
             {filteredAdherents.map((adherent) => (
                 <div

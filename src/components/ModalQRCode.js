@@ -52,7 +52,7 @@ const QRCodeModalContent = ({ referentProfile }) => {
     useEffect(() => {
         const fetchQRCode = async () => {
             try {
-                const base64Image = await GeneratorController.generateUserQrCode(accessToken);
+                const base64Image = await GeneratorController.generateUserQrCode(accessToken, referentProfile.id);
                 setQRCodeImage(base64Image);
             } catch (error) {
                 console.error('Error fetching QR code:', error.message);
