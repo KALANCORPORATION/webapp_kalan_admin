@@ -1,17 +1,58 @@
-.barcode-scanner {
+.popupContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    flex-direction: column;
+    z-index: 100;
 }
 
-.barcode-scanner video {
-    max-width: 100%;
-    max-height: 80vh;
+.scannerWindow {
+    width: 60%;
+    height: 60%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 10px;
+    padding: 20px;
 }
 
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.scanningLabel {
+    margin-top: 20px;
+    color: white;
+    font-size: 18px;
+}
+
+/* Add responsive design for smaller screens */
 @media (max-width: 768px) {
-    .barcode-scanner video {
-        max-height: 60vh;
+    .scannerWindow {
+        width: 80%;
+        height: 80%;
+    }
+
+    .closeButton {
+        font-size: 18px;
+    }
+
+    .scanningLabel {
+        font-size: 14px;
     }
 }

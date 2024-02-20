@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BarcodeScannerComponent from 'react-qr-barcode-scanner';
 import SpaceBookController from "../../controllers/space/spaceBookController";
+import styles from"../../styles/scan/BarcodeScannerPopup.module.css"
 
 const BarcodeScannerPopup = () => {
     const [isbn, setIsbn] = useState();
@@ -59,8 +60,15 @@ const BarcodeScannerPopup = () => {
     }, [isbn]);
 
     return (
-        <div className="barcode-scanner-popup">
-            <BarcodeScannerComponent onUpdate={handleUpdate} />
+        <div className={styles.popupContainer}>
+            <div className={styles.scannerWindow}>
+                <BarcodeScannerComponent
+                    width={500}
+                    height={500}
+                    onUpdate={handleUpdate}
+                />
+            </div>
+            <button className={styles.closeButton} onClick={() => navigate(-1)}>X</button>
             {scanning && <p>Scanning Book...</p>}
         </div>
     );

@@ -1,13 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from "../styles/components/NavBarAdmin.module.css";
 import { useNavigate, useLocation } from 'react-router-dom';
+import Modal from "./Modal";
+import BarcodeScannerPopup from "../views/scan/BarcodeScannerPopup";
+import ModalScan from "./ModalScan";
 
 export const NavBarAdmin = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const [isScannerModalOpen, setIsScannerModalOpen] = useState(false);
 
     const navigateTo = (path) => {
         navigate(path);
+    };
+
+    const openScannerModal = () => {
+        setIsScannerModalOpen(true);
+    };
+
+    const closeScannerModal = () => {
+        setIsScannerModalOpen(false);
     };
 
     const isActive = (path) => {
@@ -15,6 +27,7 @@ export const NavBarAdmin = () => {
     };
 
     return (
+        <>
         <nav className={styles.navbar}>
             <button onClick={() => navigateTo('/homepage')}
                     className={`${styles.navButton} ${isActive('/home') ? styles.active : ''}`}>
@@ -22,7 +35,7 @@ export const NavBarAdmin = () => {
                 <span>Accueil</span>
             </button>
             <div className={styles.scanButtonWrapper}>
-                <button onClick={() => navigateTo('/scanner')}
+                <button onClick={openScannerModal}
                         className={`${styles.scanButton} ${isActive('/scanner') ? styles.active : ''}`}>
                     <img src="/qrcodeLogo.svg" alt="Scanner" className={styles.scanIcon} />
                 </button>
@@ -43,6 +56,12 @@ export const NavBarAdmin = () => {
                 <span>Adhérents</span>
             </button>
         </nav>
+            {isScannerModalOpen && (
+                <ModalScan onClose={closeScannerModal}>
+                    <BarcodeScannerPopup />
+                </ModalScan>
+            )}
+        </>
     );
 };
 
