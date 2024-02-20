@@ -17,8 +17,8 @@ export const ListReferent = () => {
     const location = useLocation();
     const [data, setData] = useState('');
     const navigate = useNavigate();
-    // const [scannedReferent, setScannedReferent] = useState(null);
-    // const [isCameraOpen, setIsCameraOpen] = useState(false);
+    const [scannedReferent, setScannedReferent] = useState(null);
+    const [isCameraOpen, setIsCameraOpen] = useState(false);
 
     const navigateTo = (path) => {
         navigate(path);
@@ -38,26 +38,26 @@ export const ListReferent = () => {
         }
     };
 
-    // const handleScan = async (data) => {
-    //     if (data) {
-    //         let cleanedText = data.text.replace(/@/g, '');
-    //         try {
-    //             const qrData = JSON.parse(cleanedText);
-    //             if (qrData && qrData.user_id) {
-    //                 const referentData = await ReferentController.getReferentById(qrData.user_id, token);
-    //                 if (referentData) {
-    //                     navigate(`/referent/${referentData.id}`);
-    //                 }
-    //             }
-    //         } catch (error) {
-    //             console.error('Error processing QR code:', error);
-    //         }
-    //     }
-    // };
+    const handleScan = async (data) => {
+        if (data) {
+            let cleanedText = data.text.replace(/@/g, '');
+            try {
+                const qrData = JSON.parse(cleanedText);
+                if (qrData && qrData.user_id) {
+                    const referentData = await ReferentController.getReferentById(qrData.user_id, token);
+                    if (referentData) {
+                        navigate(`/referent/${referentData.id}`);
+                    }
+                }
+            } catch (error) {
+                console.error('Error processing QR code:', error);
+            }
+        }
+    };
 
-    // const startScanning = () => {
-    //     setIsCameraOpen(true);
-    // };
+    const startScanning = () => {
+        setIsCameraOpen(true);
+    };
 
     const handleError = (error) => {
         console.error(error);
@@ -80,9 +80,9 @@ export const ListReferent = () => {
         }
     };
 
-    // const closeCameraPopup = () => {
-    //     setIsCameraOpen(false);
-    // };
+    const closeCameraPopup = () => {
+        setIsCameraOpen(false);
+    };
 
     const getTabStyle = (path) => {
         return location.pathname === path ? `${styles.tab} ${styles.active}` : styles.tab;
@@ -130,23 +130,23 @@ export const ListReferent = () => {
                     <button className={styles.searchButton}>
                         <img src="loupe.png" alt="Search" className={styles.searchIcon} />
                     </button>
-                    {/*<button className={styles.qrButton} onClick={startScanning}>*/}
-                    {/*    <img src="/qrCodeLogo.png" alt="QR Code Scan" className={styles.qrCodeIcon} />*/}
-                    {/*</button>*/}
-                    {/*{isCameraOpen && (*/}
-                    {/*    <div className={styles.modal}>*/}
-                    {/*        <div className={styles.cameraPopup}>*/}
-                    {/*            <QrReader*/}
-                    {/*                delay={50}*/}
-                    {/*                constraints={{ facingMode: 'environment', focusMode: 'continuous'}}*/}
-                    {/*                onResult={handleScan}*/}
-                    {/*                onError={handleError}*/}
-                    {/*                style={{ width: '100%' }}*/}
-                    {/*            />*/}
-                    {/*            <button className={styles.closeButton} onClick={closeCameraPopup}>Fermer</button>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*)}*/}
+                    <button className={styles.qrButton} onClick={startScanning}>
+                        <img src="/qrCodeLogo.png" alt="QR Code Scan" className={styles.qrCodeIcon} />
+                    </button>
+                    {isCameraOpen && (
+                        <div className={styles.modal}>
+                            <div className={styles.cameraPopup}>
+                                <QrReader
+                                    delay={50}
+                                    constraints={{ facingMode: 'environment', focusMode: 'continuous'}}
+                                    onResult={handleScan}
+                                    onError={handleError}
+                                    style={{ width: '100%' }}
+                                />
+                                <button className={styles.closeButton} onClick={closeCameraPopup}>Fermer</button>
+                            </div>
+                        </div>
+                    )}
                 </div>
                 <button className={styles.filterButton}>
                     <img src="filtreLogo.svg" alt="Filter" className={styles.filterIcon} />
