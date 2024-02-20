@@ -41,6 +41,21 @@ const Modal = ({ isOpen, closeModal }) => {
         setBooks(books.filter(book => book.id !== bookId));
     };
 
+    // const addBookToSpace = async (isbn) => {
+    //     try {
+    //         const response = await SpaceBookController.addIsbnBookToSpace(spaceId, { isbn }, accessToken);
+    //         if (response.ok) {
+    //             console.log('Book added successfully', response);
+    //             navigate('/books');
+    //         } else {
+    //             navigate(`/book/isbn`);
+    //         }
+    //     } catch (error) {
+    //         console.error('Error adding book by ISBN to space:', error);
+    //         navigate(`/book/isbn`);
+    //     }
+    // };
+
     useEffect(() => {
         if (isbn != null && isbn.length === 13) { // ISBN-13 standard length
             setScanning(true);
