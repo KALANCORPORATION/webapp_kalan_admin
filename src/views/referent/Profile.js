@@ -14,7 +14,7 @@ export const ProfileReferent = () => {
     const navigate = useNavigate();
     const [modalContent, setModalContent] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isQRCodeModalOpen, setIsQRCodeModalOpen] = useState(false);
+    // const [isQRCodeModalOpen, setIsQRCodeModalOpen] = useState(false);
 
     const [referentProfile, setReferentProfile] = useState(null);
     const token = localStorage.getItem('accessToken');
@@ -26,14 +26,14 @@ export const ProfileReferent = () => {
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
-
-    const showQRCodeModal = () => {
-        setIsQRCodeModalOpen(true);
-    };
-
-    const hideQRCodeModal = () => {
-        setIsQRCodeModalOpen(false);
-    };
+    //
+    // const showQRCodeModal = () => {
+    //     setIsQRCodeModalOpen(true);
+    // };
+    //
+    // const hideQRCodeModal = () => {
+    //     setIsQRCodeModalOpen(false);
+    // };
 
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -101,12 +101,12 @@ export const ProfileReferent = () => {
                             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                                 <p>{modalContent}</p>
                             </Modal>
-                            <button onClick={showQRCodeModal} className={styles.dropdownItem}>
-                                Afficher carte référent
-                            </button>
-                            <Modal isOpen={isQRCodeModalOpen} onClose={hideQRCodeModal}>
-                                <QRCodeModalContent referentProfile={referentProfile} />
-                            </Modal>
+                            {/*<button onClick={showQRCodeModal} className={styles.dropdownItem}>*/}
+                            {/*    Afficher carte référent*/}
+                            {/*</button>*/}
+                            {/*<Modal isOpen={isQRCodeModalOpen} onClose={hideQRCodeModal}>*/}
+                            {/*    <QRCodeModalContent referentProfile={referentProfile} />*/}
+                            {/*</Modal>*/}
                             <button className={styles.dropdownItem}>Suspendre</button>
                         </div>
                     )}
