@@ -110,7 +110,13 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 50px;
+    margin-top: 0px;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
 }
 
 .tab {
@@ -161,5 +167,10 @@
 
     .tabs {
         flex-direction: column;
+    }
+
+    .buttonGroup {
+        margin-top: 50px;
+        justify-content: center;
     }
 }

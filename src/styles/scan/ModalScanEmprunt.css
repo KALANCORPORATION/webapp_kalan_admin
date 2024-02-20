@@ -1,0 +1,87 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.book-list {
+    display: flex;
+    flex-direction: column;
+    /* Ajoutez tout style supplémentaire pour la liste ici */
+}
+
+.book-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Ajustez l'espacement selon votre design */
+}
+
+.book-thumbnail {
+    width: 40px; /* Ajustez selon la taille de vos images */
+    height: 60px; /* Ajustez selon la taille de vos images */
+    object-fit: cover; /* Gardez les proportions de l'image */
+    margin-right: 10px; /* Ajustez l'espacement selon votre design */
+}
+
+.book-title {
+    flex-grow: 1;
+    /* Ajoutez tout style supplémentaire pour le titre ici */
+}
+
+.remove-book-button {
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 1.2rem; /* Ajustez la taille de la croix */
+    cursor: pointer;
+    /* Ajoutez tout style supplémentaire pour le bouton ici */
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.modal-body {
+    /* Styles du contenu de la modale */
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+}
+
+.action-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -7,6 +7,7 @@ import {useParams} from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import SpaceController from "../../controllers/space/spaceController";
 import Modal from "../../components/Modal";
+import ModalScanEmprunt from "../../components/ModalScanEmprunt";
 import QRCodeModalContent from "../../components/ModalQRCode";
 import ReferentController from "../../controllers/referent/referentController";
 
@@ -26,6 +27,14 @@ export const ProfileAdherent = () => {
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
+    };
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
     };
 
     const showQRCodeModal = () => {
@@ -130,6 +139,11 @@ export const ProfileAdherent = () => {
             </div>
 
             <main className={styles.profileMain}>
+                <div className={styles.buttonGroup}>
+                    <img src="/buttonEmprunt.png" alt="Emprunt" onClick={openModal} />
+                    <img src="/buttonReservation.png" alt="Reservation" />
+                </div>
+                <ModalScanEmprunt isOpen={isModalOpen} closeModal={closeModal} />
                 <div className={styles.tabs}>
                     <button className={`${styles.tab} ${styles.active}`}>Tous</button>
                     <button className={styles.tab}>Emprunts</button>
