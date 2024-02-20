@@ -4,13 +4,13 @@
 .admin-registration-votre-espace-screen, 
 .admin-registration-votre-identifiant-screen,
 .admin-registration-votre-profil-screen {
-    width: 600px; /* Taille précise du rectangle */
-    margin: 100px auto; /* Centre le rectangle horizontalement avec une marge de 100px en haut */
-    padding: 40px; /* Espacement à l'intérieur du rectangle */
-    background-color: white; /* Fond blanc */
-    border-radius: 10px; /* Coins arrondis */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Légère ombre sur tous les côtés */
-    text-align: center; /* Centrer le contenu à l'intérieur du rectangle */
+    width: 600px; 
+    margin: 100px auto;
+    padding: 40px; 
+    background-color: white; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
 }
 
 
@@ -21,7 +21,7 @@ h3 {
 }
 
 /*.back-arrow {
-    /* Styling de votre flèche retour
+    /* Styling de la flèche retour
 }*/
 
 h1 {
@@ -30,19 +30,19 @@ h1 {
 }
 
 .admin-image {
-    width: 300px; /* Ajuster la taille de votre image */
+    max-width: 100%; 
     margin-bottom: 20px;
 }
 
 .admin-registration-votre-espace-screen {
-    width: 90%; /* Utiliser 90% de la largeur disponible */
-    max-width: 600px; /* Limiter la largeur maximale */
-    margin: 100px auto; /* Centrer horizontalement avec une marge de 100px en haut et en bas */
-    padding: 40px; /* Espacement à l'intérieur du rectangle */
-    background-color: white; /* Fond blanc */
-    border-radius: 10px; /* Coins arrondis */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Légère ombre sur tous les côtés */
-    text-align: center; /* Centrer le contenu à l'intérieur du rectangle */
+    width: 90%;
+    max-width: 600px; 
+    margin: 100px auto; 
+    padding: 40px; 
+    background-color: white; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .form-group {
@@ -57,22 +57,24 @@ label {
 
 input[type="text"],
 select {
-    width: 100%; /* Remplir la largeur du parent */
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box; /* Inclure les bordures et le padding dans la largeur */
+    box-sizing: border-box;
 }
 
 .next-button {
-    width: 100%; /* Remplir la largeur du parent */
+    display: block;
     background-color: black;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 50px auto 0; /* Ajout d'une marge en haut et en bas, et centrage horizontal */
 }
+
 
 .select-field {
     position: relative;
@@ -111,7 +113,66 @@ select {
 
 .section-header h3 {
     margin-right: 10px;  /*Espacement entre le titre h3 et le trait */
-    color: black; /* Couleur du texte */
-    font-weight: bold; /* Texte en gras */
+    color: black;
+    font-weight: bold;
 }
 
+.info-text h4 {
+    color: gray;
+    font-size: 14px;
+    text-align: left;
+}
+
+.centered-text h4 {
+    text-align: center;
+    color: gray;
+    font-size: 14px;
+}
+
+.document-image {
+    width: 300px; 
+    margin: 20px auto;
+}
+
+.space-bottom {
+    margin-bottom: 20px; /* Espacement entre le h4 info-text et le libellé "Nom d'utilisateur" */
+}
+
+.space-document {
+    margin-bottom: 100px; /* Espacement entre le champ Nom d'utilisateur et l'image "document"*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* styles CSS pour cibler les écrans mobiles */
+@media (max-width: 768px) {
+    .admin-registration-votre-identifiant-screen,
+    .admin-registration-votre-espace-screen {
+        width: 90%; /* Utilisation de 90% de la largeur disponible */
+        max-width: none; /* Suppression de la limitation de la largeur maximale */
+        margin: 50px auto; /* Centralisation horizontale avec une marge de 50px en haut et en bas */
+        padding: 20px; /* Réduction de l'espacement à l'intérieur du rectangle */
+    }
+
+    .admin-image {
+        width: 100%; /* Ajustement de la largeur de l'image pour qu'elle remplisse son conteneur */
+        margin-bottom: 20px;
+    }
+
+    .next-button {
+        margin-top: 30px; /* Ajout d'une marge supplémentaire en haut du bouton */
+    }
+
+    .document-image {
+        width: 80%; /* Ajustement de la taille de l'image pour qu'elle remplisse 80% de la largeur */
+    }
+}
