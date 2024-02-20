@@ -2,26 +2,35 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
 }
 
 .scannerWindow {
-    width: 60%;
-    height: 60%;
-    background-color: #fff;
+    position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    border-radius: 10px;
+    background: white;
     padding: 20px;
+    border-radius: 10px;
+}
+
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .closeButton {
@@ -41,18 +50,24 @@
     font-size: 18px;
 }
 
-/* Add responsive design for smaller screens */
 @media (max-width: 768px) {
-    .scannerWindow {
+    .scannerOverlay {
         width: 80%;
-        height: 80%;
+        height: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .scannerOverlay {
+        width: 90%;
+        height: 60%;
+    }
+
+    .scannerStatus {
+        font-size: 14px;
     }
 
     .closeButton {
         font-size: 18px;
-    }
-
-    .scanningLabel {
-        font-size: 14px;
     }
 }

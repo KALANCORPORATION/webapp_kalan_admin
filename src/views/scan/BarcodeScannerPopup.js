@@ -63,12 +63,12 @@ const BarcodeScannerPopup = () => {
         <div className={styles.popupContainer}>
             <div className={styles.scannerWindow}>
                 <BarcodeScannerComponent
-                    width={500}
-                    height={500}
+                    width={300}
+                    height={300}
                     onUpdate={handleUpdate}
                 />
             </div>
-            <button className={styles.closeButton} onClick={() => navigate(-1)}>X</button>
+            <button className={styles.closeButton} onClick={() => navigate('/books')}>X</button>
             {scanning && <p>Scanning Book...</p>}
         </div>
     );
