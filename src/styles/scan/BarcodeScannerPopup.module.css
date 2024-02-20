@@ -1,0 +1,17 @@
+.barcode-scanner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.barcode-scanner video {
+    max-width: 100%;
+    max-height: 80vh;
+}
+
+@media (max-width: 768px) {
+    .barcode-scanner video {
+        max-height: 60vh;
+    }
+}
