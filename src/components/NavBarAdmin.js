@@ -21,6 +21,12 @@ export const NavBarAdmin = () => {
                 <img src="/homeLogo.svg" alt="Home" className={styles.navIcon} />
                 <span>Accueil</span>
             </button>
+            <div className={styles.scanButtonWrapper}>
+                <button onClick={() => navigateTo('/scanner')}
+                        className={`${styles.scanButton} ${isActive('/scanner') ? styles.active : ''}`}>
+                    <img src="/qrcodeLogo.svg" alt="Scanner" className={styles.scanIcon} />
+                </button>
+            </div>
             <button onClick={() => navigateTo('/referents')}
                     className={`${styles.navButton} ${isActive('/referents') ? styles.active : ''}`}>
                 <img src="/monEspace.png" alt="Mon espace" className={styles.navIcon} />

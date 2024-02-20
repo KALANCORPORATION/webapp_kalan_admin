@@ -47,29 +47,57 @@ class BookService {
         }
     }
 
-    static async addBook(bookData, accessToken) {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_URL}/api/books`, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-                body: JSON.stringify(bookData),
-            });
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message);
-            }
 
-            const addedBookData = await response.json();
-            return new Book(addedBookData);
-        } catch (error) {
-            throw new Error(error.message);
-        }
+    // static async addBook(bookData, accessToken) {
+    //     try {
+    //         const response = await fetch(`${process.env.REACT_APP_URL}/api/books`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json',
+    //                 'Authorization': `Bearer ${accessToken}`,
+    //             },
+    //             body: JSON.stringify(bookData),
+    //         });
+
+    //         if (!response.ok) {
+    //             const errorData = await response.json();
+    //             throw new Error(errorData.message);
+    //         }
+
+    //         const addedBookData = await response.json();
+    //         return new Book(addedBookData);
+    //     } catch (error) {
+    //         throw new Error(error.message);
+    //     }
+    // }
+
+     static async addBook(bookData, accessToken) {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_URL}/api/books`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(bookData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+
+      // Vous pouvez directement renvoyer la réponse JSON ici
+      const addedBookData = await response.json();
+      return addedBookData;
+    } catch (error) {
+      throw new Error(error.message);
     }
+  }
+
 
     static async deleteBook(bookId, accessToken) {
         try {

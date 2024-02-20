@@ -73,6 +73,30 @@ class AdherentService {
         }
     }
 
+    static async addAdherent(adherentData, accessToken) {
+        try {
+          const response = await fetch(`${process.env.REACT_APP_URL}/api/adherents`, {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${accessToken}`,
+            },
+            body: JSON.stringify(adherentData),
+          });
+    
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+          }
+    
+          const addedAdherentData = await response.json();
+          return addedAdherentData;
+        } catch (error) {
+          throw new Error(error.message);
+        }
+      }
+
     static async deleteAdherent(adherentId, accessToken) {
         try {
             const response = await fetch(`${process.env.REACT_APP_URL}/api/adherents/${adherentId}`, {

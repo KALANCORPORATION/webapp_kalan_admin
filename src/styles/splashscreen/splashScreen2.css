@@ -1,0 +1,82 @@
+.welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Assurez-vous que tout est centré verticalement */
+    height: 100vh;
+    background-color: #31B2BA;
+    color: #000000;
+    padding: 2rem;
+    box-sizing: border-box;
+    gap: 2vh; /* Ajoutez un espacement vertical entre les éléments */
+}
+
+.welcome-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    top: 1rem;
+}
+
+.welcome-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 2rem 0;
+}
+
+.welcome-logo {
+    max-width: 80%;
+    height: auto;
+}
+
+.welcome-slogan {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.welcome-button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80%; /* Définissez une largeur relative pour la réactivité */
+    max-width: 300px; /* Définissez une largeur maximale pour les grands écrans */
+    margin-bottom: 2vh; /* Espacement entre les boutons */
+}
+
+.welcome-button-signup {
+    background-color: #4ABDAC;
+    color: #FFF;
+}
+
+.welcome-button-login {
+    background-color: #FC4A1A;
+    color: #FFF;
+}
+
+.welcome-button:hover {
+    opacity: 0.9;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 1.5rem;
+    }
+
+    .welcome-slogan {
+        font-size: 0.8rem;
+    }
+
+    .welcome-button {
+        padding: 0.8rem 1.6rem;
+        width: 90%;
+    }
+
+    .welcome-screen {
+        gap: 1vh;
+    }
+}

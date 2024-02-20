@@ -8,35 +8,21 @@ import { ProfileReferent } from './views/referent/Profile';
 import { ProfileAdherent } from './views/adherent/Profile';
 import { Historique } from './views/historique/List';
 import { ListInvitations } from './views/invitation/List';
+import CreateAdherent from './views/adherent/AdherentByForm';
+import  AddBook   from './views/books/AddBooksByForm';
 
 import Result from "./views/scan/Result";
 import Scan from "./views/scan/scan";
 import HomepageAdmin from "./views/homepage/HomepageAdmin";
 import BooksList from "./views/books/BooksList";
-import "./styles/styles.css";
-
-  // return (  //   <>
-  //     {/* <BarcodeScannerComponent
-  //       width={500}
-  //       height={500}
-  //       torch={torchOn}
-  //       onUpdate={(err, result) => {
-  //         if (result) setData(result.text);
-  //         else setData("Not Found");
-  //       }}
-  //     /> */}
-  //     <p>{data}</p>
-  //     <button onClick={() => setTorchOn(!torchOn)}>
-  //       Switch Torch {torchOn ? "Off" : "On"}
-  //     </button>
-  //   </>
-  // );
+import SplashScreen2 from "./views/splashscreen/splashScreen2";
 
 const App = () => {
     return (
         <div className="app">
             <Routes>
-                <Route path="/" element={<ConnexionAdminApp/>} />
+                <Route path="/" element={<SplashScreen2/>} />
+                <Route path="/login" element={<ConnexionAdminApp/>} />
                 <Route path="/adherents" element={<ListAdherents/>} />
                 <Route path="/adherent/:id" element={<ProfileAdherent />} />
                 <Route path="/referents" element={<ListReferent/>} />
@@ -47,6 +33,11 @@ const App = () => {
                 <Route path="/scan" element={<Result />} />
                 <Route path="/test" element={<Scan />} />
                 <Route path="/books" element={<BooksList />} />
+                <Route path="/books/add" element={<AddBook />} />
+                <Route path="/adherent/add" element={<CreateAdherent/>} />
+
+                
+
             </Routes>
         </div>
     );

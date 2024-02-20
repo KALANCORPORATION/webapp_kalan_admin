@@ -18,6 +18,20 @@ class AdherentController {
         }
     }
 
+    static async addAdherent(bookData) {
+        console.log('token B')
+        try {
+          const token = localStorage.getItem('accessToken');
+          console.log('token A', token);
+    
+          return await AdherentService.addAdherent(bookData, token);
+
+        } catch (error) {
+          console.error('Erreur lors de l\'ajout d\'un nouveau livre:', error.message);
+          throw error;
+        }
+      }
+
     static async getRecentAdherents(spaceId, listSize, accessToken) {
         try {
             return await AdherentService.getRecentAddedAdherents(spaceId, listSize, accessToken);

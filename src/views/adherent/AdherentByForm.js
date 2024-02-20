@@ -9,8 +9,9 @@ import CountryFlag from 'react-country-flag';
 import Calendar from 'react-calendar';
 import Select from 'react-select';
 
-import AdherentController from '../../controllers/adherentController';
+import AdherentController from '../../controllers/adherent/adherentController';
 import "../../styles/adherent/CreateAdherent.css"
+import AuthController from '../../controllers/auth/authController'
 
 //library.add(faQrcode);
 
@@ -30,14 +31,16 @@ const defaultOption = { value: '+33', countryCode: 'FR' };
 
 
 const CreateAdherent = () => {
-  const [prenom, setPrenom] = useState('');
-  const [nom, setNom] = useState('');
-  const [dateNaissance, setDateNaissance] = useState(null);
+  const [first_name, setFirst_name] = useState('');
+  const [last_name, setLast_name] = useState('');
+  const [birthday, setBirthday] = useState(null);
   const [mail, setMail] = useState('');
-  const [telephone, setTelephone] = useState('');
+  const [phone_number, setPhone_number] = useState('');
   const [isScanning, setIsScanning] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedPrefixe, setSelectedPrefixe] = useState(defaultOption);
+  const token = localStorage.getItem('accessToken');
+
 
 
 
@@ -65,19 +68,36 @@ const CreateAdherent = () => {
 
   const handleDateChange = (date) => {
     const formattedDate = date.toLocaleDateString('fr-FR'); 
-     setDateNaissance(formattedDate);
+     setBirthday(formattedDate);
      setShowCalendar(false);
   };
 
-  const handleCreateAdherent = () => {
-    AdherentController.handleCreateAdherent(prenom, nom, dateNaissance, mail, `${selectedPrefixe.value}${telephone}`);
-};
+const handleCreateAdherent = async (formData) => {
+  try {
+      console.log('Access token:', token);
+      console.log('Form data:', formData);
+      return await AuthController.handleSignUp(formData, 'adherent');
+      
+  } catch (error) {
+      console.error('Error creating book:', error.message);
+  }
+}
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Ajoutez ici la logique pour soumettre le formulaire
-    console.log('Formulaire soumis :', { prenom, nom, dateNaissance, mail, telephone });
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const formData = {
+    first_name,
+    last_name,
+    birthday,
+    mail,
+    phone_number,
+
   };
+  console.log('form dtatt', formData)
+
+  handleCreateAdherent(formData);
+
+}
 
   const handleScanButtonClick = () => {
     setIsScanning(true);
@@ -117,23 +137,23 @@ const CreateAdherent = () => {
 
                 <input
                 type="text"
-                value={prenom}
-                onChange={(e) => setPrenom(e.target.value)}
+                value={first_name}
+                onChange={(e) => setFirst_name(e.target.value)}
                 placeholder="Prénom"
                 />
 
                 <input
                 type="text"
-                value={nom}
-                onChange={(e) => setNom(e.target.value)}
+                value={last_name}
+                onChange={(e) => setLast_name(e.target.value)}
                 placeholder="Nom"
                 />
 
             <div className="date-container">
                 <input
                     type="text"
-                    value={dateNaissance}
-                    onChange={(e) => setDateNaissance(e.target.value)}
+                    value={birthday}
+                    onChange={(e) => setBirthday(e.target.value)}
                     placeholder="Date de Naissance"
                 />
                 <img
@@ -144,13 +164,13 @@ const CreateAdherent = () => {
                 />
                 {showCalendar && (
                     <div className="calendar-popup">
-                      <Calendar onChange={handleDateChange} value={dateNaissance} />
+                      <Calendar onChange={handleDateChange} value={birthday} />
                     </div>
                 )}
               </div>
 
               <div className="phone-container">
-              <Select
+              {/* <Select
                 options={options}
                 value={selectedPrefixe}
                 onChange={(selectedOption) => setSelectedPrefixe(selectedOption)}
@@ -162,15 +182,15 @@ const CreateAdherent = () => {
                 }
                 styles={customStyles}
                 components={{ Option: CustomOption }}
-              />
+              /> */}
                 <input
                     type="tel"
-                    value={telephone}
-                    onChange={(e) => setTelephone(e.target.value)}
+                    value={phone_number}
+                    onChange={(e) => setPhone_number(e.target.value)}
                     placeholder="Téléphone"
                 />
               </div>
-                
+
                 <input
                 type="email"
                 value={mail}
@@ -182,7 +202,7 @@ const CreateAdherent = () => {
             </form>
             <div className="button-container">
                 
-                <button className='add-button' onClick={handleCreateAdherent} type="submit">
+                <button className='add-button' onClick={handleSubmit} type="submit">
                 <img className="icon-add-adherent" alt="" src="/ajouter-un-utilisateur 2.png" />
                     Ajouter</button>
             </div>

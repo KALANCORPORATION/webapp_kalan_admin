@@ -1,7 +1,7 @@
 import AuthService from '../services/authService';
 
 class AdherentController {
-    static async handleCreateAdherent(prenom, nom, dateNaissance, telephone) {
+    static async addAdherent(prenom, nom, dateNaissance, telephone) {
         try {
             const newAdherent = await AuthService.createAdherent(prenom, nom, dateNaissance, telephone);
             // Perform actions after successful profile creation
