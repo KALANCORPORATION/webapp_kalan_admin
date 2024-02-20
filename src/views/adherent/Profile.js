@@ -10,6 +10,7 @@ import Modal from "../../components/Modal";
 import ModalScanEmprunt from "../../components/ModalScanEmprunt";
 import QRCodeModalContent from "../../components/ModalQRCode";
 import ReferentController from "../../controllers/referent/referentController";
+import ModalScanResitution from "../../components/ModalScanResitution";
 
 export const ProfileAdherent = () => {
     const { id } = useParams();
@@ -17,6 +18,7 @@ export const ProfileAdherent = () => {
     const [modalContent, setModalContent] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isQRCodeModalOpen, setIsQRCodeModalOpen] = useState(false);
+    const [isModalScanRestitutionOpen, setIsModalScanRestitutionOpen] = useState(false);
 
     const [adherentProfile, setAdherentProfile] = useState(null);
     const token = localStorage.getItem('accessToken');
@@ -39,6 +41,14 @@ export const ProfileAdherent = () => {
 
     const showQRCodeModal = () => {
         setIsQRCodeModalOpen(true);
+    };
+
+    const openModalScanRestitution = () => {
+        setIsModalScanRestitutionOpen(true);
+    };
+
+    const closeModalScanRestitution = () => {
+        setIsModalScanRestitutionOpen(false);
     };
 
     const hideQRCodeModal = () => {
@@ -115,10 +125,16 @@ export const ProfileAdherent = () => {
                             <button onClick={showQRCodeModal} className={styles.dropdownItem}>
                                 Afficher carte adhérent
                             </button>
+                            <button className={styles.dropdownItem}>
+                                Modifier le profil
+                            </button>
                             <Modal isOpen={isQRCodeModalOpen} onClose={hideQRCodeModal}>
                                 <QRCodeModalContent referentProfile={adherentProfile} />
                             </Modal>
-                            <button className={styles.dropdownItem}>Suspendre</button>
+                            <button onClick={openModalScanRestitution} className={styles.dropdownItem}>
+                                Faire une restitution
+                            </button>
+                            <ModalScanResitution id={id} isOpen={isModalScanRestitutionOpen} closeModal={closeModalScanRestitution} />
                         </div>
                     )}
                 </div>

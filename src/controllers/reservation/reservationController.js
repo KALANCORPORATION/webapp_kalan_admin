@@ -19,9 +19,9 @@ class ReservationController {
         }
     }
 
-    static async endBorrow(spaceBookId, accessToken) {
+    static async endBorrow(spaceBookId, endBorrowData, accessToken) {
         try {
-            return await ReservationService.endBorrow(spaceBookId, accessToken);
+            return await ReservationService.endBorrow(spaceBookId, endBorrowData, accessToken);
         } catch (error) {
             console.error('Erreur lors de la fin de l\'emprunt:', error);
             throw error;

@@ -29,12 +29,13 @@ class ReservationService {
         return response.json();
     }
 
-    static async endBorrow(spaceBookId, accessToken) {
+    static async endBorrow(spaceBookId, endBorrowData, accessToken) {
         const response = await fetch(`${process.env.REACT_APP_URL}/api/space-books/${spaceBookId}/end`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
             },
+            body: JSON.stringify(endBorrowData),
         });
         if (!response.ok) {
             throw new Error('Erreur lors de la fin de l\'emprunt');
