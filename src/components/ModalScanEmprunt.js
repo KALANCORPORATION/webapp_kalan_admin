@@ -15,6 +15,7 @@ const Modal = ({id, isOpen, closeModal }) => {
     const navigate = useNavigate();
     const spaceId = localStorage.getItem('spaceId');
     const accessToken = localStorage.getItem('accessToken');
+    const [endDates, setEndDates] = useState({});
 
     const handleUpdate = (err, result) => {
         if (result) {
@@ -42,18 +43,21 @@ const Modal = ({id, isOpen, closeModal }) => {
         setBooks(books.filter(book => book.book.id !== bookId));
     };
 
+    const reformatDate = (dateString) => {
+        const [year, month, day] = dateString.split('-');
+        return `${day}/${month}/${year}`;
+    };
+
     const handleBorrow = async () => {
         try {
-            // Map each book to a borrow creation promise
             const borrowPromises = books.map(book => {
-                const borrowData = { adherent_id: id, end_date: "28/02/2024" }; // Replace with your actual adherent_id data structure
+                const formattedEndDate = endDates[book.book.id] ? reformatDate(endDates[book.book.id]) : "default_date";
+                const borrowData = { adherent_id: id, end_date: formattedEndDate };
                 return ReservationController.createBorrow(book.id, borrowData, accessToken);
             });
 
-            // Wait for all borrow attempts to complete
             const results = await Promise.all(borrowPromises);
 
-            // Handle the results of each promise (success or failure)
             results.forEach((result, index) => {
                 if (result.success) {
                     console.log(`Borrowed book successfully: ${books[index].title}`);
@@ -62,13 +66,10 @@ const Modal = ({id, isOpen, closeModal }) => {
                 }
             });
 
-            // All done, navigate or close modal as needed
             console.log('All borrows processed');
-            closeModal(); // Close the modal if needed
-            // navigate('/path-after-borrowing'); // Navigate to another page if needed
+            closeModal();
         } catch (error) {
             console.error('Error during borrowing process:', error);
-            // Handle error, maybe set an error state and show a message to the user
         }
     };
 
@@ -110,17 +111,19 @@ const Modal = ({id, isOpen, closeModal }) => {
                         />
                     </div>
                     <div className="book-list">
-                        {/* Exemple de bouton de liste */}
-                        <div className="book-list">
-                            {books.map((book, index) => (
-                                <div key={book.book.id} className="book-list-item">
-                                    <img src={book.book.thumbnail_image} alt="Book Thumbnail" className="book-thumbnail" />
-                                    <span className="book-title">{book.book.title}</span>
-                                    <button onClick={() => removeBookFromList(book.book.id)} className="remove-book-button">×</button>
-                                </div>
-                            ))}
-                        </div>
-                        {/* Répétez pour chaque élément de la liste */}
+                        {books.map((book, index) => (
+                            <div key={book.book.id} className="book-list-item">
+                                <img src={book.book.thumbnail_image} alt="Book Thumbnail" className="book-thumbnail" />
+                                <span className="book-title">{book.book.title}</span>
+                                <input
+                                    type="date"
+                                    value={endDates[book.book.id] || ''}
+                                    onChange={(e) => setEndDates({ ...endDates, [book.book.id]: e.target.value })}
+                                    className="date-picker"
+                                />
+                                <button onClick={() => removeBookFromList(book.book.id)} className="remove-book-button">×</button>
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <div className="modal-footer">

@@ -77,6 +77,13 @@
     padding-top: 20px;
 }
 
+.date-picker {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    /* Add any additional styling here */
+}
+
 .action-button {
     background-color: #007bff;
     color: white;
