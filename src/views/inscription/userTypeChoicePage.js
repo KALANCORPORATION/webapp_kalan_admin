@@ -6,11 +6,11 @@ const UserTypeChoicePage = () => {
     const history = useNavigate();
 
     const handleAdminClick = () => {
-        history(`/auth/signup/admin`);
+        history(`/auth/signup/admin/votre-espace`);
     };
 
     const handleReferentClick = () => {
-        history(`/auth/signup/referent`);
+        history(`/auth/signup/referent/votre-etablissement`);
     };
 
     return (

@@ -1,0 +1,96 @@
+.referent-registration-votre-profil-screen, 
+.referent-registration-votre-identifiant-screen,
+.referent-registration-votre-etablissement-screen,
+.admin-registration-votre-espace-screen, 
+.admin-registration-votre-identifiant-screen,
+.admin-registration-votre-profil-screen {
+    width: 600px; /* Taille précise du rectangle */
+    margin: 100px auto; /* Centre le rectangle horizontalement avec une marge de 100px en haut */
+    padding: 40px; /* Espacement à l'intérieur du rectangle */
+    background-color: white; /* Fond blanc */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Légère ombre sur tous les côtés */
+    text-align: center; /* Centrer le contenu à l'intérieur du rectangle */
+}
+
+
+
+h3 {
+    color: gray;
+    font-size: 14px;
+}
+
+/*.back-arrow {
+    /* Styling de votre flèche retour
+}*/
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.admin-image {
+    width: 100px; /* Ajuster la taille de votre image */
+    margin-bottom: 20px;
+}
+
+.admin-registration-votre-espace-screen {
+    width: 90%; /* Utiliser 90% de la largeur disponible */
+    max-width: 600px; /* Limiter la largeur maximale */
+    margin: 100px auto; /* Centrer horizontalement avec une marge de 100px en haut et en bas */
+    padding: 40px; /* Espacement à l'intérieur du rectangle */
+    background-color: white; /* Fond blanc */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Légère ombre sur tous les côtés */
+    text-align: center; /* Centrer le contenu à l'intérieur du rectangle */
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+select {
+    width: 100%; /* Remplir la largeur du parent */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Inclure les bordures et le padding dans la largeur */
+}
+
+.next-button {
+    width: 100%; /* Remplir la largeur du parent */
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.select-field {
+    position: relative;
+}
+
+.select-field::before {
+    content: 'Choisir un type d\'établissement';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px; /* Ajuste la position */
+    color: gray;
+    pointer-events: none; /* Empêche les interactions de la souris avec l'élément */
+}
+
+
+.country-flag {
+    max-width: 20px; /* Largeur maximale du drapeau */
+    max-height: 20px; /* Hauteur maximale du drapeau */
+    margin-right: 5px; /* Espacement à droite du drapeau */
+}

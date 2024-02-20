@@ -14,8 +14,13 @@ import HomepageAdmin from "./views/homepage/HomepageAdmin";
 import BooksList from "./views/books/BooksList";
 import SplashScreen2 from "./views/splashscreen/splashScreen2";
 import UserTypeChoicePage from './views/inscription/userTypeChoicePage';
-import AdminRegistration from './views/inscription/admin';
-import ReferentRegistration from './views/inscription/referent';
+import AdminRegistrationSpaceInformation from './views/inscription/adminVotreEspace';
+import AdminRegistrationIdInformation from './views/inscription/adminVotreIdentifiant';
+import AdminRegistrationProfilInformation from './views/inscription/adminVotreProfil';
+
+import ReferentRegistrationEstablishmentInformation from './views/inscription/referentVotreEtablissement';
+import ReferentRegistrationIdInformation from './views/inscription/referentVotreIdentifiant';
+import ReferentRegistrationProfilInformation from './views/inscription/referentVotreProfil';
 
 const App = () => {
     return (
@@ -23,8 +28,14 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<SplashScreen2/>} />
                 <Route path="/auth/signup/choice" element={<UserTypeChoicePage/>} />
-                <Route path="/auth/signup/admin" element={<AdminRegistration/>} />
-                <Route path="/auth/signup/referent" element={<ReferentRegistration/>} />
+                <Route path="/auth/signup/admin/votre-espace" element={<AdminRegistrationSpaceInformation/>} />
+                <Route path="/auth/signup/admin/votre-identifiant" element={<AdminRegistrationIdInformation/>} />
+                <Route path="/auth/signup/admin/votre-profil" element={<AdminRegistrationProfilInformation/>} />
+
+                <Route path="/auth/signup/referent/votre-etablissement" element={<ReferentRegistrationEstablishmentInformation/>} />
+                <Route path="/auth/signup/referent/votre-identifiant" element={<ReferentRegistrationIdInformation/>} />
+                <Route path="/auth/signup/referent/votre-profil" element={<ReferentRegistrationProfilInformation/>} />                
+
                 <Route path="/login" element={<ConnexionAdminApp/>} />
                 <Route path="/adherents" element={<ListAdherents/>} />
                 <Route path="/adherent/:id" element={<ProfileAdherent />} />
