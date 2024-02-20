@@ -24,6 +24,20 @@ class BookService {
         }
     }
 
+    static async getBookByIsbn(isbn, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/books/isbn/${isbn}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Error fetching book by ISBN.');
+        }
+        return await response.json();
+    }
+
     static async getBookById(bookId, accessToken) {
         try {
             const response = await fetch(`${process.env.REACT_APP_URL}/api/books/${bookId}`, {

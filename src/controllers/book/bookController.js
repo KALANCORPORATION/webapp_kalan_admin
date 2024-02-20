@@ -19,6 +19,16 @@ class BookController {
         }
     }
 
+
+    static async getBookByIsbn(isbn, accessToken) {
+        try {
+            return await BookService.getBookByIsbn(isbn, accessToken);
+        } catch (error) {
+            console.error('Erreur lors de la récupération du livre par ISBN:', error.message);
+            throw error;
+        }
+    }
+
     static async addBook(bookData, accessToken) {
         try {
             return await BookService.addBook(bookData, accessToken);

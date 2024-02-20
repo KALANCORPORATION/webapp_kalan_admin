@@ -4,8 +4,9 @@ import styles from "../styles/scan/BarcodeScannerPopup.module.css";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import {useNavigate} from "react-router-dom";
 import SpaceBookController from "../controllers/space/spaceBookController";
+import ReservationController from "../controllers/reservation/reservationController";
 
-const Modal = ({ isOpen, closeModal }) => {
+const Modal = ({id, isOpen, closeModal }) => {
     if (!isOpen) return null;
 
     const [isbn, setIsbn] = useState();
@@ -27,7 +28,7 @@ const Modal = ({ isOpen, closeModal }) => {
             if (allBooksResponse) {
                 const existingBook = allBooksResponse.find(book => book.book.isbn === isbn);
                 if (existingBook) {
-                    setBooks(prevBooks => [...prevBooks, existingBook.book]);
+                    setBooks(prevBooks => [...prevBooks, existingBook]);
                 } else {
                     console.log('Book does not exist.');
                 }
@@ -38,7 +39,37 @@ const Modal = ({ isOpen, closeModal }) => {
     };
 
     const removeBookFromList = (bookId) => {
-        setBooks(books.filter(book => book.id !== bookId));
+        setBooks(books.filter(book => book.book.id !== bookId));
+    };
+
+    const handleBorrow = async () => {
+        try {
+            // Map each book to a borrow creation promise
+            const borrowPromises = books.map(book => {
+                const borrowData = { adherent_id: id, end_date: "28/02/2024" }; // Replace with your actual adherent_id data structure
+                return ReservationController.createBorrow(book.id, borrowData, accessToken);
+            });
+
+            // Wait for all borrow attempts to complete
+            const results = await Promise.all(borrowPromises);
+
+            // Handle the results of each promise (success or failure)
+            results.forEach((result, index) => {
+                if (result.success) {
+                    console.log(`Borrowed book successfully: ${books[index].title}`);
+                } else {
+                    console.error(`Failed to borrow book: ${books[index].title}`);
+                }
+            });
+
+            // All done, navigate or close modal as needed
+            console.log('All borrows processed');
+            closeModal(); // Close the modal if needed
+            // navigate('/path-after-borrowing'); // Navigate to another page if needed
+        } catch (error) {
+            console.error('Error during borrowing process:', error);
+            // Handle error, maybe set an error state and show a message to the user
+        }
     };
 
     // const addBookToSpace = async (isbn) => {
@@ -82,10 +113,10 @@ const Modal = ({ isOpen, closeModal }) => {
                         {/* Exemple de bouton de liste */}
                         <div className="book-list">
                             {books.map((book, index) => (
-                                <div key={book.id} className="book-list-item">
-                                    <img src={book.thumbnail_image} alt="Book Thumbnail" className="book-thumbnail" />
-                                    <span className="book-title">{book.title}</span>
-                                    <button onClick={() => removeBookFromList(book.id)} className="remove-book-button">×</button>
+                                <div key={book.book.id} className="book-list-item">
+                                    <img src={book.book.thumbnail_image} alt="Book Thumbnail" className="book-thumbnail" />
+                                    <span className="book-title">{book.book.title}</span>
+                                    <button onClick={() => removeBookFromList(book.book.id)} className="remove-book-button">×</button>
                                 </div>
                             ))}
                         </div>
@@ -93,7 +124,7 @@ const Modal = ({ isOpen, closeModal }) => {
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <button className="action-button">
+                    <button onClick={handleBorrow} className="action-button">
                         Faire l'emprunt
                     </button>
                 </div>

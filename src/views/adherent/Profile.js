@@ -143,7 +143,7 @@ export const ProfileAdherent = () => {
                     <img src="/buttonEmprunt.png" alt="Emprunt" onClick={openModal} />
                     <img src="/buttonReservation.png" alt="Reservation" />
                 </div>
-                <ModalScanEmprunt isOpen={isModalOpen} closeModal={closeModal} />
+                <ModalScanEmprunt id={id} isOpen={isModalOpen} closeModal={closeModal} />
                 <div className={styles.tabs}>
                     <button className={`${styles.tab} ${styles.active}`}>Tous</button>
                     <button className={styles.tab}>Emprunts</button>
