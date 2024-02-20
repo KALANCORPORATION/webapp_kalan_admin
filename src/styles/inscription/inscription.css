@@ -30,7 +30,7 @@ h1 {
 }
 
 .admin-image {
-    width: 100px; /* Ajuster la taille de votre image */
+    width: 300px; /* Ajuster la taille de votre image */
     margin-bottom: 20px;
 }
 
@@ -94,3 +94,24 @@ select {
     max-height: 20px; /* Hauteur maximale du drapeau */
     margin-right: 5px; /* Espacement à droite du drapeau */
 }
+
+.space {
+    margin-bottom: 30px; /* Espacement entre l'image et le premier champ*/
+}
+
+.space-above {
+    margin-top: 50px; /* Espacement au-dessus de l'image */
+}
+
+
+.section-header {
+    display: flex;
+    align-items: center;
+}
+
+.section-header h3 {
+    margin-right: 10px;  /*Espacement entre le titre h3 et le trait */
+    color: black; /* Couleur du texte */
+    font-weight: bold; /* Texte en gras */
+}
+

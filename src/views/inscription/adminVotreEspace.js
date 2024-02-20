@@ -44,7 +44,16 @@ const AdminRegistrationSpaceInformation = () => {
     return (
         <div className="admin-registration-votre-espace-screen">
             <h1>Vous êtes Administrateur</h1>
-            <img className="admin-image" src="chemin/vers/votre/image.png" alt="Administrateur" />
+            <img className="admin-image" src="/assets/page1.png" alt="image de la barre d'étape" />
+
+        
+            {/* Ajout du titre "Votre Espace" */}
+            <div className="section-header space-above">
+                <h3>Votre Espace</h3>
+            </div>
+
+            <hr className="separator" /> {/* Ajout du trait gris clair */}
+            <div className="space"></div> {/* Ajout de l'espace */}
 
             <div className="form-group">
                 <label>Nom de l'espace KALAN</label>
