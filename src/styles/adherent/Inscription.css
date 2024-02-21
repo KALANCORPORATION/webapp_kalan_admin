@@ -1,0 +1,91 @@
+.inscription-container {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.inscription-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #eceff1;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.inscription-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.inscription-form label {
+    color: #555;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.inscription-form input {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.inscription-form input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.submit-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submit-button {
+    width: auto; /* Change to 'auto' for a more traditional button width */
+    padding: 10px 25px; /* Reduced padding */
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: inline-block; /* For auto width */
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.submit-button:active {
+    background-color: #004494;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .inscription-container {
+        width: 90%;
+        margin: 10px;
+    }
+
+    .inscription-header {
+        padding: 8px;
+    }
+
+    .inscription-form input, .submit-button {
+        padding: 10px;
+    }
+
+    .submit-button {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+}

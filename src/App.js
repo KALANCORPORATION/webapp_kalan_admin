@@ -14,6 +14,7 @@ import Scan from "./views/scan/scan";
 import HomepageAdmin from "./views/homepage/HomepageAdmin";
 import BooksList from "./views/books/BooksList";
 import SplashScreen2 from "./views/splashscreen/splashScreen2";
+import InscriptionForm from "./views/adherent/Inscription";
 
 const App = () => {
     return (
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path="/login" element={<ConnexionAdminApp/>} />
                 <Route path="/scanner" element={<BarcodeScannerPopup/>} />
                 <Route path="/adherents" element={<ListAdherents/>} />
+                <Route path="/adherent/add" element={<InscriptionForm/>} />
                 <Route path="/adherent/:id" element={<ProfileAdherent />} />
                 <Route path="/referents" element={<ListReferent/>} />
                 <Route path="/referent/:id" element={<ProfileReferent />} />

@@ -91,15 +91,6 @@ class SpaceController {
         }
     }
 
-    static async getAllSpaces(accessToken) {
-        try {
-            return await SpaceService.addAdherentToSpace(accessToken);
-        } catch (error) {
-            console.error('Erreur lors de la récupération de tous les espaces :', error.message);
-            throw error;
-        }
-    }
-
     static async getSpaceById(spaceId, accessToken) {
         try {
             return await SpaceService.getSpaceById(spaceId, accessToken);
