@@ -34,6 +34,15 @@ class AdherentController {
             throw error;
         }
     }
+
+    static async updateAdherent(adherentId, adherentData, accessToken) {
+        try {
+            return await AdherentService.updateAdherent(adherentId, adherentData, accessToken);
+        } catch (error) {
+            console.error(`Erreur lors de la mise à jour de l'adhérent ${adherentId}:`, error.message);
+            throw error;
+        }
+    }
 }
 
 export default AdherentController;

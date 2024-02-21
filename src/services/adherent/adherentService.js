@@ -93,6 +93,24 @@ class AdherentService {
             throw new Error(error.message);
         }
     }
+
+    static async updateAdherent(adherentId, adherentData, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/adherents/${adherentId}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(adherentData),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Erreur lors de la mise à jour de l\'adhérent');
+        }
+
+        return await response.json();
+    }
 }
 
 export default AdherentService;

@@ -79,6 +79,10 @@ export const ProfileAdherent = () => {
         }
     };
 
+    const handleEditProfileClick = () => {
+        navigate(`/adherent/${id}/update`);
+    };
+
     useEffect(() => {
         const fetchAdherentProfile = async () => {
             try {
@@ -130,7 +134,7 @@ export const ProfileAdherent = () => {
                             <button onClick={showQRCodeModal} className={styles.dropdownItem}>
                                 Afficher carte adhérent
                             </button>
-                            <button className={styles.dropdownItem}>
+                            <button onClick={handleEditProfileClick} className={styles.dropdownItem}>
                                 Modifier le profil
                             </button>
                             <Modal isOpen={isQRCodeModalOpen} onClose={hideQRCodeModal}>

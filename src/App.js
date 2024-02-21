@@ -6,6 +6,7 @@ import { ListReferent } from './views/referent/List';
 import { ListAdherents } from './views/adherent/List';
 import { ProfileReferent } from './views/referent/Profile';
 import { ProfileAdherent } from './views/adherent/Profile';
+import Update from './views/adherent/Update';
 import { Historique } from './views/historique/List';
 import { ListInvitations } from './views/invitation/List';
 
@@ -26,6 +27,7 @@ const App = () => {
                 <Route path="/adherents" element={<ListAdherents/>} />
                 <Route path="/adherent/add" element={<InscriptionForm/>} />
                 <Route path="/adherent/:id" element={<ProfileAdherent />} />
+                <Route path="/adherent/:id/update" element={<Update />} />
                 <Route path="/referents" element={<ListReferent/>} />
                 <Route path="/referent/:id" element={<ProfileReferent />} />
                 <Route path="/invitations" element={<ListInvitations/>} />
