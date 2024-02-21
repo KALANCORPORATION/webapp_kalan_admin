@@ -43,21 +43,28 @@
 }
 
 .submit-section {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
 }
 
+.qr-code-icon {
+    margin-left: 15px;
+}
+
 .submit-button {
-    width: auto; /* Change to 'auto' for a more traditional button width */
-    padding: 10px 25px; /* Reduced padding */
+    width: auto;
+    padding: 10px 25px;
     color: white;
     background-color: #007bff;
+    margin-right: 15px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.1s ease;
-    display: inline-block; /* For auto width */
+    display: inline-block;
 }
 
 .submit-button:hover {
