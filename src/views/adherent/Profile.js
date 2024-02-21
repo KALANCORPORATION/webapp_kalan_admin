@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import SpaceController from "../../controllers/space/spaceController";
 import Modal from "../../components/Modal";
 import ModalScanEmprunt from "../../components/ModalScanEmprunt";
+import ModalScanReservation from "../../components/ModalScanReservation";
 import QRCodeModalContent from "../../components/ModalQRCode";
 import ReferentController from "../../controllers/referent/referentController";
 import ModalScanResitution from "../../components/ModalScanResitution";
@@ -19,6 +20,7 @@ export const ProfileAdherent = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isQRCodeModalOpen, setIsQRCodeModalOpen] = useState(false);
     const [isModalScanRestitutionOpen, setIsModalScanRestitutionOpen] = useState(false);
+    const [isModalScanReservationOpen, setIsModalScanReservationOpen] = useState(false);
 
     const [adherentProfile, setAdherentProfile] = useState(null);
     const token = localStorage.getItem('accessToken');
@@ -42,6 +44,9 @@ export const ProfileAdherent = () => {
     const showQRCodeModal = () => {
         setIsQRCodeModalOpen(true);
     };
+
+    const openModalScanReservation = () => setIsModalScanReservationOpen(true);
+    const closeModalScanReservation = () => setIsModalScanReservationOpen(false);
 
     const openModalScanRestitution = () => {
         setIsModalScanRestitutionOpen(true);
@@ -157,9 +162,10 @@ export const ProfileAdherent = () => {
             <main className={styles.profileMain}>
                 <div className={styles.buttonGroup}>
                     <img src="/buttonEmprunt.png" alt="Emprunt" onClick={openModal} />
-                    <img src="/buttonReservation.png" alt="Reservation" />
+                    <img src="/buttonReservation.png" alt="Reservation" onClick={openModalScanReservation} />
                 </div>
                 <ModalScanEmprunt id={id} isOpen={isModalOpen} closeModal={closeModal} />
+                <ModalScanReservation id={id} isOpen={isModalScanReservationOpen} closeModal={closeModalScanReservation} />
                 <div className={styles.tabs}>
                     <button className={`${styles.tab} ${styles.active}`}>Tous</button>
                     <button className={styles.tab}>Emprunts</button>
