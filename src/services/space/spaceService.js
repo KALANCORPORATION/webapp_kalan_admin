@@ -291,6 +291,42 @@ class SpaceService {
         }
         return await response.json();
     }
+
+    static async suspendReferentFromSpace(spaceId, referentId, accessToken) {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/referents/${referentId}/suspend`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message);
+            }
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
+
+    static async resubscribeReferentInSpace(spaceId, referentId, accessToken) {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_URL}/api/spaces/${spaceId}/referents/${referentId}/resubscribe`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message);
+            }
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }
 }
 
 export default SpaceService;

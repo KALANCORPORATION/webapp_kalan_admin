@@ -144,6 +144,26 @@ class SpaceController {
             throw error;
         }
     }
+
+    static async suspendReferentFromSpace(spaceId, referentId, accessToken) {
+        try {
+            await SpaceService.suspendReferentFromSpace(spaceId, referentId, accessToken);
+            console.log('Référent suspendu avec succès');
+        } catch (error) {
+            console.error('Erreur lors de la suspension du référent:', error.message);
+            throw error;
+        }
+    }
+
+    static async resubscribeReferentInSpace(spaceId, referentId, accessToken) {
+        try {
+            await SpaceService.resubscribeReferentInSpace(spaceId, referentId, accessToken);
+            console.log('Référent réinscrit avec succès');
+        } catch (error) {
+            console.error('Erreur lors de la réinscription du référent:', error.message);
+            throw error;
+        }
+    }
 }
 
 export default SpaceController;

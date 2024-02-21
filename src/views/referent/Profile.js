@@ -13,6 +13,7 @@ export const ProfileReferent = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [modalContent, setModalContent] = useState(null);
+    const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     // const [isQRCodeModalOpen, setIsQRCodeModalOpen] = useState(false);
 
@@ -73,6 +74,18 @@ export const ProfileReferent = () => {
         };
     }, [id, token]);
 
+    const handleSuspendReferent = async () => {
+        try {
+            await SpaceController.suspendReferentFromSpace(referentProfile.space_id, id, token);
+            alert('Référent suspendu avec succès');
+            setIsConfirmationModalOpen(false);
+            navigate('/referents');
+        } catch (error) {
+            console.error('Erreur lors de la suspension du référent:', error.message);
+            setIsConfirmationModalOpen(false);
+        }
+    };
+
     if (!referentProfile) {
         return <div>Loading...</div>;
     }
@@ -89,6 +102,15 @@ export const ProfileReferent = () => {
                 className={styles.profileHeader}
                 style={{ backgroundImage: `url(${backgroundImage})` }}
             >
+
+                <Modal isOpen={isConfirmationModalOpen} onClose={() => setIsConfirmationModalOpen(false)}>
+                    <div>
+                        <p>Souhaitez-vous vraiment suspendre ce référent ?</p>
+                        <button onClick={handleSuspendReferent}>Oui</button>
+                        <button onClick={() => setIsConfirmationModalOpen(false)}>Non</button>
+                    </div>
+                </Modal>
+
                 <div className={styles.profileActionIcons}>
                     <button onClick={toggleDropdown} className={styles.dropdownToggle}>
                         <img src="/dropDownIcon.png" alt="Dropdown" className={styles.dropdownIcon} />
@@ -107,7 +129,9 @@ export const ProfileReferent = () => {
                             {/*<Modal isOpen={isQRCodeModalOpen} onClose={hideQRCodeModal}>*/}
                             {/*    <QRCodeModalContent referentProfile={referentProfile} />*/}
                             {/*</Modal>*/}
-                            <button className={styles.dropdownItem}>Suspendre</button>
+                            <button className={styles.dropdownItem} onClick={() => setIsConfirmationModalOpen(true)}>
+                                Suspendre
+                            </button>
                         </div>
                     )}
                 </div>
