@@ -23,9 +23,10 @@ const InscriptionForm = () => {
     const populateFormWithAdherentData = (adherentData) => {
         setPrenom(adherentData.first_name);
         setNom(adherentData.last_name);
-        setDateNaissance(adherentData.birthday || '');
         setEmail(adherentData.mail);
         setTelephone(adherentData.phone_number);
+        const formattedDate = adherentData.birthday.split('/').reverse().join('-');
+        setDateNaissance(formattedDate);
     };
 
     const handleSubmit = async (event) => {
