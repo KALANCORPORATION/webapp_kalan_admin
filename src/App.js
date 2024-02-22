@@ -16,26 +16,30 @@ import HomepageAdmin from "./views/homepage/HomepageAdmin";
 import List from "./views/books/List";
 import SplashScreen2 from "./views/splashscreen/splashScreen2";
 import InscriptionForm from "./views/adherent/Inscription";
+import BookISBNForm from './views/books/BookISBNForm';
+import AddBook from './views/books/Add';
 
 const App = () => {
     return (
         <div className="app">
             <Routes>
                 <Route path="/" element={<SplashScreen2/>} />
-                <Route path="/login" element={<ConnexionAdminApp/>} />
-                <Route path="/scanner" element={<BarcodeScannerPopup/>} />
+                <Route path="/homepage" element={<HomepageAdmin/>} />
                 <Route path="/adherents" element={<ListAdherents/>} />
                 <Route path="/adherent/add" element={<InscriptionForm/>} />
                 <Route path="/adherent/:id" element={<ProfileAdherent />} />
                 <Route path="/adherent/:id/update" element={<Update />} />
+                <Route path="/historique" element={<Historique />} />
+                <Route path="/invitations" element={<ListInvitations/>} />
+                <Route path="/login" element={<ConnexionAdminApp/>} />
+                <Route path="/books" element={<List />} />
+                <Route path="/book/isbn" element={<BookISBNForm/>} />
+                <Route path="/book/add" element={<AddBook/>} />
                 <Route path="/referents" element={<ListReferent/>} />
                 <Route path="/referent/:id" element={<ProfileReferent />} />
-                <Route path="/invitations" element={<ListInvitations/>} />
-                <Route path="/historique" element={<Historique />} />
-                <Route path="/homepage" element={<HomepageAdmin/>} />
+                <Route path="/scanner" element={<BarcodeScannerPopup/>} />
                 <Route path="/scan" element={<Result />} />
                 <Route path="/test" element={<Scan />} />
-                <Route path="/books" element={<List />} />
             </Routes>
         </div>
     );

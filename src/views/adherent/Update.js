@@ -63,7 +63,7 @@ const Update = () => {
             mail: email,
             first_name: prenom,
             last_name: nom,
-            birthday: dateNaissance.split('-').reverse().join('/'), // Assuming you keep the reformatting
+            birthday: dateNaissance.split('-').reverse().join('/'),
             phone_number: telephone || null,
             pseudo: pseudo,
             bio: bio,

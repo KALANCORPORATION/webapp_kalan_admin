@@ -175,7 +175,6 @@ export const ProfileAdherent = () => {
                     <button className={styles.tab}>Emprunts</button>
                     <button className={styles.tab}>Réservés</button>
                 </div>
-                {/* Main content, dynamic content goes here */}
             </main>
             <NavBarAdmin />
         </div>
