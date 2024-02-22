@@ -72,8 +72,9 @@ const List = () => {
                         <div className="book-info">
                             <h3 className="book-title">{book.title}</h3>
                             <p className="book-author">De: {book.author}</p>
+                            <p className="book-description">L'étranger est un roman écrit par Albert Camus...</p> {/* Ajout de la description */}
                             <p className={`book-status ${book.available ? 'available' : 'unavailable'}`}>
-                                {book.available ? 'disponible' : 'indisponible'}
+                                {book.available ? 'disponible le 18/02/22' : 'indisponible'} {/* Mise à jour du statut */}
                             </p>
                         </div>
                     </div>
