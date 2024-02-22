@@ -45,16 +45,13 @@ const List = () => {
     return (
         <div className="library-container">
             <Header />
-            <div className="category-bar">
-                <h2 className="library-title"><b>Les livres de l'Espace</b></h2>
-                <div className="categories">
-                    <button className="category active">Tous</button>
-                    <button className="category">Empruntés</button>
-                    <button className="category">Réservés</button>
+            <div className="library-title-bar">
+                <h1 className="library-title"><b>Les livres de l'Espace</b></h1>
+                <div className="tab-bar">
+                    <button className="tab active">Tous</button>
+                    <button className="tab">Empruntés</button>
+                    <button className="tab">Réservés</button>
                 </div>
-                <button className="filter-button">
-                    <img src="filtreLogo.svg" alt="Filter" className="filter-icon" />
-                </button>
             </div>
             <div className={styles.container}>
                 <div className={styles.searchBar}>

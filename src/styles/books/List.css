@@ -10,58 +10,11 @@
     align-items: center;
     background: #eceff1;
     padding: 10px;
+    /* Ajoutez ici les styles pour votre barre de recherche et l'icône de profil */
 }
 
 .book-list {
     padding: 10px;
-}
-
-.library-title {
-    font-size: 1.25rem;
-    color: #333;
-    margin: 10px 0;
-    text-align: center;
-}
-
-.category-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #eceff1;
-    padding: 10px;
-}
-
-.categories {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-}
-
-.category {
-    background: transparent;
-    border: 2px solid #ccc;
-    padding: 5px 15px;
-    border-radius: 20px;
-    margin: 0 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.category.active {
-    border-color: #007bff;
-    background-color: #007bff;
-    color: white;
-}
-
-.filter-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-
-.filter-icon {
-    width: 24px;
-    /* Assurez-vous que le chemin de l'image est correct */
 }
 
 .book-item {
@@ -75,6 +28,7 @@
     width: 80px;
     height: 100px;
     border-radius: 5px 0 0 5px;
+    /* Assurez-vous que le chemin de l'image est correct */
 }
 
 .book-info {
@@ -92,6 +46,54 @@
     font-size: 0.8rem;
     color: #666666;
 }
+/* Ajoutez ce CSS à List.css */
+
+.library-title-bar {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.library-title {
+    font-size: 1.5rem; /* Ajustez la taille de la police si nécessaire */
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.tab-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espace entre les boutons */
+}
+
+.tab {
+    border: none;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tab:hover {
+    background-color: #e2e2e2;
+}
+
+.tab.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Styles existants... */
+
+@media (max-width: 768px) {
+    .library-title {
+        font-size: 1.2rem; /* Taille plus petite sur les petits écrans */
+    }
+
+    .tab {
+        padding: 3px 10px; /* Padding réduit pour les petits écrans */
+    }
+}
 
 .book-description {
     font-size: 0.8rem;
@@ -100,7 +102,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
 .book-status {
     font-size: 0.8rem;
     font-weight: bold;
@@ -121,19 +122,14 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+    /* Ajoutez ici les styles pour votre navigation */
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .library-container {
         max-width: 100%;
     }
 
-    .library-title {
-        font-size: 1rem; /* Taille plus petite pour les petits écrans */
-    }
-
-    .category {
-        padding: 3px 10px; /* Padding réduit pour les petits écrans */
-        font-size: 0.8rem; /* Taille de police réduite */
-    }
+    /* Adaptez les styles pour les éléments spécifiques pour les petits écrans */
 }
