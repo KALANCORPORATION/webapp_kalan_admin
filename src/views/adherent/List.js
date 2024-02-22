@@ -133,7 +133,7 @@ export const ListAdherents = () => {
                     <button onClick={closeCameraPopup}>Fermer</button>
                 </div>
             )}
-
+            <div className={styles.listContainer}>
             {filteredAdherents.map((adherent) => (
                 <div
                     key={adherent.id}
@@ -150,6 +150,7 @@ export const ListAdherents = () => {
                     </div>
                 </div>
             ))}
+            </div>
             <NavBarAdmin />
         </div>
     );

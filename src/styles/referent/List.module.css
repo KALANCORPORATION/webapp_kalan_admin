@@ -39,6 +39,8 @@
     border-radius: 25px; /* Based on assumption */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
+    flex-direction: column;
+
 }
 
 .modal {
@@ -123,6 +125,10 @@
     height: 1rem; /* Based on assumption */
 }
 
+.listContainer {
+    padding-bottom: 160px; /* Adjust this value to match the height of your navbar */
+}
+
 .filterButton {
     display: flex;
     align-items: center;
@@ -141,6 +147,10 @@
         flex-direction: column;
         align-items: stretch;
     }
+    .listContainer {
+        padding-bottom: 120px; /* Adjust this value to match the height of your navbar */
+    }
+
 
     .tabs, .searchBar, .filterButton {
         width: 100%;
