@@ -1,22 +1,39 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "../../styles/books/List.css";
 import {Header} from "../../components/Header";
 import NavBarAdmin from "../../components/NavBarAdmin";
 import styles from "../../styles/referent/List.module.css";
-import {QrReader} from "react-qr-reader";
-import SearchController from "../../controllers/research/researchController"; // Assurez-vous que le chemin est correct
+import BookSpaceController from "../../controllers/space/spaceBookController";
+import SearchController from "../../controllers/research/researchController";
+import AuthorController from "../../controllers/author/authorController";
 
 const List = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
+    const [books, setBooks] = useState([]);
     const token = localStorage.getItem('accessToken');
+    const spaceId = localStorage.getItem('spaceId');
 
-    const books = [
-        { id: 1, title: "Penser l'Afrique qui vient", author: "Nicolas Sarkozy", available: true },
-        { id: 1, title: "Penser l'Afrique qui vient", author: "Nicolas Sarkozy", available: true },
+    useEffect(() => {
+        const fetchBooksAndAuthors = async () => {
+            try {
+                const fetchedBooks = await BookSpaceController.getAllSpaceBooks(spaceId, token);
+                const booksWithAuthors = await Promise.all(fetchedBooks.map(async (book) => {
+                    try {
+                        const author = await AuthorController.getAuthorById(book.book.author_id, token);
+                        return { ...book, book: { ...book.book, author_name: author.name } };
+                    } catch (error) {
+                        console.error('Erreur lors de la récupération de l\'auteur:', error);
+                        return book;
+                    }
+                }));
+                setBooks(booksWithAuthors);
+            } catch (error) {
+                console.error('Erreur lors de la récupération des livres de l\'espace:', error);
+            }
+        };
 
-        // Ajoutez d'autres livres ici
-    ];
+        fetchBooksAndAuthors();
+    }, [token, spaceId]);
 
     const handleSearchChange = async (e) => {
         const value = e.target.value;
@@ -57,7 +74,7 @@ const List = () => {
                 <div className={styles.searchBar}>
                     <input
                         className={styles.searchInput}
-                        placeholder="Rechercher un référent"
+                        placeholder="Rechercher un livre"
                         value={searchTerm}
                         onChange={handleSearchChange}
                     />
@@ -70,16 +87,14 @@ const List = () => {
 
 
             <div className="book-list">
-                {books.map((book) => (
-                    <div key={book.id} className="book-item">
-                        <img src={`/img_5.png`} alt={book.title} className="book-cover" />
+                {books.map((item) => (
+                    <div key={item.book.id} className="book-item">
+                        <img src={item.book.thumbnail_image || `/img_5.png`} alt={item.book.title} className="book-cover" />
                         <div className="book-info">
-                            <h3 className="book-title">{book.title}</h3>
-                            <p className="book-author">De: {book.author}</p>
-                            <p className="book-description">L'étranger est un roman écrit par Albert Camus...</p> {/* Ajout de la description */}
-                            <p className={`book-status ${book.available ? 'available' : 'unavailable'}`}>
-                                {book.available ? 'disponible le 18/02/22' : 'indisponible'} {/* Mise à jour du statut */}
-                            </p>
+                            <h3 className="book-title">{item.book.title}</h3>
+                            <p className="book-author">De: {item.book.author_name}</p>
+                            <p className="book-description">{item.book.description}</p>
+                            {/* Display availability and other book details */}
                         </div>
                     </div>
                 ))}
