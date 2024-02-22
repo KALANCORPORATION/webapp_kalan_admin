@@ -9,6 +9,9 @@ import styles from "../../styles/referent/List.module.css";
 import CountryController from "../../controllers/country/countryController";
 import EditionController from "../../controllers/edition/editionController";
 import GenreController from "../../controllers/genre/genreController";
+import BarcodeScannerPopup from "../../views/scan/BarcodeScannerPopup";
+import ModalScan from "../../components/ModalScan";
+import BarcodeScannerSearchBooks from "../scan/BarcodeScannerSearchBooks";
 
 const List = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -16,6 +19,15 @@ const List = () => {
     const token = localStorage.getItem('accessToken');
     const spaceId = localStorage.getItem('spaceId');
     const [searchResults, setSearchResults] = useState([]);
+    const [isScannerModalOpen, setIsScannerModalOpen] = useState(false);
+
+    const openScannerModal = () => {
+        setIsScannerModalOpen(true);
+    };
+
+    const closeScannerModal = () => {
+        setIsScannerModalOpen(false);
+    };
 
     useEffect(() => {
         const fetchBooksAndAuthors = async () => {
@@ -99,8 +111,9 @@ const List = () => {
                         <img src="loupe.png" alt="Search" className="searchIcon" />
                     </button>
                 </div>
-                <button className={styles.qrButton}>
-                    <img src="/qrCodeLogo.png" alt="QR Code Scan" className={styles.qrCodeIcon} />
+                <button onClick={openScannerModal}
+                        className="qrButton">
+                    <img src="/qrcodeLogo.svg" alt="Scanner" className="qrCodeIcon" />
                 </button>
             </div>
 
@@ -130,6 +143,11 @@ const List = () => {
                     </div>
                 ))}
             </div>
+            {isScannerModalOpen && (
+                <ModalScan onClose={closeScannerModal}>
+                    <BarcodeScannerSearchBooks />
+                </ModalScan>
+            )}
             <NavBarAdmin />
         </div>
     );
