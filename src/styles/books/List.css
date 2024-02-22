@@ -1,0 +1,80 @@
+.library-container {
+    font-family: 'Arial', sans-serif;
+    margin: auto;
+    background: #ffffff;
+}
+
+.library-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #eceff1;
+    padding: 10px;
+    /* Ajoutez ici les styles pour votre barre de recherche et l'icône de profil */
+}
+
+.book-list {
+    padding: 10px;
+}
+
+.book-item {
+    display: flex;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+.book-cover {
+    width: 80px;
+    height: 100px;
+    border-radius: 5px 0 0 5px;
+    /* Assurez-vous que le chemin de l'image est correct */
+}
+
+.book-info {
+    padding: 5px;
+    flex-grow: 1;
+}
+
+.book-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.book-author {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.book-status {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.available {
+    color: green;
+}
+
+.unavailable {
+    color: red;
+}
+
+.library-nav {
+    display: flex;
+    justify-content: space-around;
+    background: #eceff1;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* Ajoutez ici les styles pour votre navigation */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .library-container {
+        max-width: 100%;
+    }
+
+    /* Adaptez les styles pour les éléments spécifiques pour les petits écrans */
+}

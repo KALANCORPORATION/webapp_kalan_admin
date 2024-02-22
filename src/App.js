@@ -13,7 +13,7 @@ import { ListInvitations } from './views/invitation/List';
 import Result from "./views/scan/Result";
 import Scan from "./views/scan/scan";
 import HomepageAdmin from "./views/homepage/HomepageAdmin";
-import BooksList from "./views/books/BooksList";
+import List from "./views/books/List";
 import SplashScreen2 from "./views/splashscreen/splashScreen2";
 import InscriptionForm from "./views/adherent/Inscription";
 
@@ -35,7 +35,7 @@ const App = () => {
                 <Route path="/homepage" element={<HomepageAdmin/>} />
                 <Route path="/scan" element={<Result />} />
                 <Route path="/test" element={<Scan />} />
-                <Route path="/books" element={<BooksList />} />
+                <Route path="/books" element={<List />} />
             </Routes>
         </div>
     );
