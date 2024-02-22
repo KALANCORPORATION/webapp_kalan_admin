@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import "../../styles/books/List.css";
 import {Header} from "../../components/Header";
 import NavBarAdmin from "../../components/NavBarAdmin";
-import styles from "../../styles/referent/List.module.css";
 import BookSpaceController from "../../controllers/space/spaceBookController";
 import SearchController from "../../controllers/research/researchController";
 import AuthorController from "../../controllers/author/authorController";
@@ -70,16 +69,16 @@ const List = () => {
                     <button className="tab">Réservés</button>
                 </div>
             </div>
-            <div className={styles.container}>
-                <div className={styles.searchBar}>
+            <div className="container">
+                <div className="searchBar">
                     <input
-                        className={styles.searchInput}
+                        className="searchInput"
                         placeholder="Rechercher un livre"
                         value={searchTerm}
                         onChange={handleSearchChange}
                     />
-                    <button className={styles.searchButton}>
-                        <img src="loupe.png" alt="Search" className={styles.searchIcon} />
+                    <button className="searchButton">
+                        <img src="loupe.png" alt="Search" className="searchIcon" />
                     </button>
 
                 </div>
