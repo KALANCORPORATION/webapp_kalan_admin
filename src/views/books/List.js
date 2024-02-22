@@ -5,12 +5,17 @@ import NavBarAdmin from "../../components/NavBarAdmin";
 import SearchController from "../../controllers/research/researchController";
 import AuthorController from "../../controllers/author/authorController";
 import SpaceBookController from "../../controllers/space/spaceBookController";
+import styles from "../../styles/referent/List.module.css";
+import CountryController from "../../controllers/country/countryController";
+import EditionController from "../../controllers/edition/editionController";
+import GenreController from "../../controllers/genre/genreController";
 
 const List = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [books, setBooks] = useState([]);
     const token = localStorage.getItem('accessToken');
     const spaceId = localStorage.getItem('spaceId');
+    const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
         const fetchBooksAndAuthors = async () => {
@@ -19,15 +24,18 @@ const List = () => {
                 const booksWithAuthorsAndAvailability = await Promise.all(fetchedBooks.map(async (book) => {
                     try {
                         const author = await AuthorController.getAuthorById(book.book.author_id, token);
+                        const country = await CountryController.getCountryById(book.book.country_id, token);
+                        const edition = await EditionController.getEditionById(book.book.edition_id, token);
+                        const genre = await GenreController.getGenreById(book.book.genre_id, token);
                         let nextAvailability = null;
                         if (book.status !== 'available') {
                             const availability = await SpaceBookController.getSpaceBookNextAvailability(book.id, token);
                             nextAvailability = availability.next_available_date;
                         }
-                        return { ...book, book: { ...book.book, author_name: author.name }, nextAvailability };
+                        return { ...book, book: { ...book.book, author_name: author.name, country_name: country.name, edition_name: edition.name, genre_name: genre.name }, nextAvailability };
                     } catch (error) {
                         console.error('Erreur lors de la récupération des informations supplémentaires:', error);
-                        return book; // Retourne le livre sans modification si une erreur survient
+                        return book;
                     }
                 }));
                 setBooks(booksWithAuthorsAndAvailability);
@@ -45,8 +53,8 @@ const List = () => {
 
         if (value.length > 2) {
             try {
-                const pseudoParams = `pseudo=${value}`;
-                const users = await SearchController.searchUsers(pseudoParams, token);
+                const queryParams = `title=${value}&description=${value}&author=${value}&country=${value}&genre=${value}&edition=${value}&isbn=${value}`;
+                const users = await SearchController.searchBooks(queryParams, token);
                 setSearchResults(users);
             } catch (error) {
                 console.error('Erreur lors de la recherche:', error);
@@ -56,12 +64,17 @@ const List = () => {
         }
     };
 
-    // const filteredReferents = searchTerm.length > 0
-    //     ? referents.filter(r =>
-    //         r.pseudo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    //         `${r.first_name} ${r.last_name}`.toLowerCase().includes(searchTerm.toLowerCase())
-    //     )
-    //     : referents;
+    const filteredBooks = searchTerm.length > 0
+        ? books.filter(book =>
+            book.book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            book.book.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            book.book.isbn.includes(searchTerm) ||
+            book.book.author_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            book.book.country_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            book.book.edition_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            book.book.genre_name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        : books;
 
     return (
         <div className="library-container">
@@ -85,13 +98,14 @@ const List = () => {
                     <button className="searchButton">
                         <img src="loupe.png" alt="Search" className="searchIcon" />
                     </button>
-
                 </div>
+                <button className={styles.qrButton}>
+                    <img src="/qrCodeLogo.png" alt="QR Code Scan" className={styles.qrCodeIcon} />
+                </button>
             </div>
 
-
             <div className="book-list">
-                {books.map((item) => (
+                {filteredBooks.map((item) => (
                     <div key={item.book.id} className="book-item">
                         <img src={item.book.thumbnail_image || `/img_5.png`} alt={item.book.title} className="book-cover" />
                         <div className="book-details">
