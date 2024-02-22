@@ -10,7 +10,18 @@
     align-items: center;
     background: #eceff1;
     padding: 10px;
-    /* Ajoutez ici les styles pour votre barre de recherche et l'icône de profil */
+}
+
+.book-details {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.book-status-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .book-list {
@@ -19,16 +30,24 @@
 
 .book-item {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 10px;
     background: #f9f9f9;
     border-radius: 5px;
+}
+
+.borrowed-icon {
+    width: 24px;
+    margin-left: 10px; /* Add space between the text and the icon */
+    height: 24px;
+    margin-right: 10px;
 }
 
 .book-cover {
     width: 80px;
     height: 100px;
     border-radius: 5px 0 0 5px;
-    /* Assurez-vous que le chemin de l'image est correct */
 }
 
 .book-info {
@@ -46,15 +65,18 @@
     font-size: 0.8rem;
     color: #666666;
 }
-/* Ajoutez ce CSS à List.css */
 
 .library-title-bar {
     text-align: center;
     margin: 20px 0;
 }
 
+.book-status-text {
+    text-align: right; /* Align text to the right */
+}
+
 .library-title {
-    font-size: 1.5rem; /* Ajustez la taille de la police si nécessaire */
+    font-size: 1.5rem;
     color: #333;
     margin-bottom: 15px;
 }
@@ -62,7 +84,7 @@
 .tab-bar {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Espace entre les boutons */
+    gap: 10px;
 }
 
 .tab {
@@ -83,18 +105,6 @@
     color: white;
 }
 
-/* Styles existants... */
-
-@media (max-width: 768px) {
-    .library-title {
-        font-size: 1.2rem; /* Taille plus petite sur les petits écrans */
-    }
-
-    .tab {
-        padding: 3px 10px; /* Padding réduit pour les petits écrans */
-    }
-}
-
 .book-description {
     font-size: 0.8rem;
     color: #999999;
@@ -105,6 +115,11 @@
 .book-status {
     font-size: 0.8rem;
     font-weight: bold;
+}
+
+.book-status-info {
+    display: flex;
+    align-items: center;
 }
 
 .available {
@@ -122,10 +137,8 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    /* Ajoutez ici les styles pour votre navigation */
 }
 
-/* Dans ProfileItem.module.css */
 .profileItem {
     display: flex;
     align-items: center;
@@ -142,7 +155,7 @@
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     text-align: center;
-    width: 500px; /* Set a fixed width or max-width */
+    width: 500px;
     position: relative;
 }
 
@@ -162,8 +175,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #F9F9F9; /* Based on assumption */
-    border-radius: 25px; /* Based on assumption */
+    background: #F9F9F9;
+    border-radius: 25px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
 }
@@ -214,21 +227,21 @@
 .tab {
     background: none;
     border: none;
-    color: #000; /* Based on assumption */
+    color: #000;
     padding: 5px 10px;
     cursor: pointer;
-    font-size: 1rem; /* Based on assumption */
+    font-size: 1rem;
 }
 
 .active {
-    color: #007BFF; /* Based on assumption */
-    border-bottom: 2px solid #007BFF; /* Based on assumption */
+    color: #007BFF;
+    border-bottom: 2px solid #007BFF;
 }
 
 .searchBar {
     display: flex;
-    background: #FFF; /* Based on assumption */
-    border-radius: 15px; /* Based on assumption */
+    background: #FFF;
+    border-radius: 15px;
     margin: 0 15px;
 }
 
@@ -247,36 +260,20 @@
 }
 
 .searchIcon, .filterIcon {
-    height: 1rem; /* Based on assumption */
+    height: 1rem;
 }
 
 .filterButton {
     display: flex;
     align-items: center;
-    background: #007BFF; /* Based on assumption */
+    background: #007BFF;
     color: white;
     border: none;
-    border-radius: 15px; /* Based on assumption */
+    border-radius: 15px;
     padding: 5px 10px;
     cursor: pointer;
-    font-size: 1rem; /* Based on assumption */
-    gap: 5px; /* Based on assumption */
-}
-
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .tabs, .searchBar, .filterButton {
-        width: 100%;
-        margin-top: 5px;
-    }
-
-    .searchInput {
-        flex-grow: 1; /* Allow input to fill space */
-    }
+    font-size: 1rem;
+    gap: 5px;
 }
 
 .icons {
@@ -322,13 +319,6 @@
     font-size: 12px;
 }
 
-@media (max-width: 768px) {
-    .qrScanner {
-        padding: 10px;
-    }
-}
-
-/* Media query for mobile devices */
 @media (max-width: 600px) {
     .profileItem {
         flex-direction: column;
@@ -358,11 +348,56 @@
     }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
+    .qrScanner {
+        padding: 10px;
+    }
+
+    .library-title {
+        font-size: 1.2rem;
+    }
+
+    .tab {
+        padding: 3px 10px;
+    }
+
+    .book-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .book-details {
+        flex-direction: column;
+    }
+
+    .book-status-container {
+        margin-top: 10px; /* Add some space between book details and status on smaller screens */
+        justify-content: center; /* Center align on smaller screens */
+    }
+
+    .borrowed-icon {
+        margin-left: 0; /* Remove margin on smaller screens */
+    }
+
+    .book-status-text {
+        text-align: center; /* Center align text on smaller screens */
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tabs, .searchBar, .filterButton {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .searchInput {
+        flex-grow: 1;
+    }
+
     .library-container {
         max-width: 100%;
     }
-
-    /* Adaptez les styles pour les éléments spécifiques pour les petits écrans */
 }

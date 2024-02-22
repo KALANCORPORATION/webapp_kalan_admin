@@ -94,17 +94,27 @@ const List = () => {
                 {books.map((item) => (
                     <div key={item.book.id} className="book-item">
                         <img src={item.book.thumbnail_image || `/img_5.png`} alt={item.book.title} className="book-cover" />
-                        <div className="book-info">
-                            <h3 className="book-title">{item.book.title}</h3>
-                            <p className="book-author">De: {item.book.author_name}</p>
-                            <p className="book-description">{item.book.description}</p>
-                            {item.nextAvailability ? (
-                                <p className="book-next-availability">
-                                    Prochaine disponibilité: {item.nextAvailability}
-                                </p>
-                            ) : (
-                                <p className="book-status available">Disponible</p>
-                            )}
+                        <div className="book-details">
+                            <div className="book-info">
+                                <h3 className="book-title">{item.book.title}</h3>
+                                <p className="book-author">De: {item.book.author_name}</p>
+                                <p className="book-description">{item.book.description}</p>
+                            </div>
+                            <div className="book-status-container">
+                                {item.status === 'borrowed' && (
+                                    <img src="/borrowedLogo.png" alt="Emprunté" className="borrowed-icon" />
+                                )}
+                                <div className="book-status-text">
+                                    <p className={`book-status ${item.status === 'available' ? 'available' : 'unavailable'}`}>
+                                        {item.status === 'available' ? 'Disponible' : 'Emprunté'}
+                                    </p>
+                                    {item.nextAvailability && (
+                                        <p className="book-next-availability">
+                                            Prochaine disponibilité: {item.nextAvailability}
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 ))}
