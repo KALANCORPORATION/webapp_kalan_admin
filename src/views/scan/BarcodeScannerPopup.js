@@ -4,7 +4,7 @@ import BarcodeScannerComponent from 'react-qr-barcode-scanner';
 import SpaceBookController from "../../controllers/space/spaceBookController";
 import styles from"../../styles/scan/BarcodeScannerPopup.module.css"
 
-const BarcodeScannerPopup = () => {
+const BarcodeScannerPopup = ({ onClose }) => {
     const [isbn, setIsbn] = useState();
     const [scanning, setScanning] = useState(false);
     const navigate = useNavigate();
@@ -68,7 +68,7 @@ const BarcodeScannerPopup = () => {
                     onUpdate={handleUpdate}
                 />
             </div>
-            <button className={styles.closeButton} onClick={() => navigate('/books')}>X</button>
+            <button className={styles.closeButton} onClick={onClose}>X</button>
             {scanning && <p>Scanning Book...</p>}
         </div>
     );

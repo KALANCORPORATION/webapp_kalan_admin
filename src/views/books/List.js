@@ -145,7 +145,7 @@ const List = () => {
             </div>
             {isScannerModalOpen && (
                 <ModalScan onClose={closeScannerModal}>
-                    <BarcodeScannerSearchBooks />
+                    <BarcodeScannerSearchBooks onClose={closeScannerModal} />
                 </ModalScan>
             )}
             <NavBarAdmin />

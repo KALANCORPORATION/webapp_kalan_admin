@@ -58,7 +58,7 @@ export const NavBarAdmin = () => {
         </nav>
             {isScannerModalOpen && (
                 <ModalScan onClose={closeScannerModal}>
-                    <BarcodeScannerPopup />
+                    <BarcodeScannerPopup onClose={closeScannerModal} />
                 </ModalScan>
             )}
         </>
