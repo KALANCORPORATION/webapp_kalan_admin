@@ -120,7 +120,7 @@ const List = () => {
             <div className="book-list">
                 {filteredBooks.map((item) => (
                     <div key={item.book.id} className="book-item">
-                        <img src={item.book.thumbnail_image || `/img_5.png`} alt={item.book.title} className="book-cover" />
+                        <img src={item.book.thumbnail_image || `/bookImageDefault.png`} alt={item.book.title} className="book-cover" />
                         <div className="book-details">
                             <div className="book-info">
                                 <h3 className="book-title">{item.book.title}</h3>
