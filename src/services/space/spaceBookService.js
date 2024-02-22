@@ -86,6 +86,20 @@ class SpaceBookService {
             throw new Error(errorData.message);
         }
     }
+
+    static async getSpaceBookNextAvailability(spaceBookId, accessToken) {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/space-books/${spaceBookId}/next-availability`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+        }
+        return await response.json();
+    }
 }
 
 export default SpaceBookService;

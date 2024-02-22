@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import "../../styles/books/List.css";
 import {Header} from "../../components/Header";
 import NavBarAdmin from "../../components/NavBarAdmin";
-import BookSpaceController from "../../controllers/space/spaceBookController";
 import SearchController from "../../controllers/research/researchController";
 import AuthorController from "../../controllers/author/authorController";
+import SpaceBookController from "../../controllers/space/spaceBookController";
 
 const List = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -15,17 +15,22 @@ const List = () => {
     useEffect(() => {
         const fetchBooksAndAuthors = async () => {
             try {
-                const fetchedBooks = await BookSpaceController.getAllSpaceBooks(spaceId, token);
-                const booksWithAuthors = await Promise.all(fetchedBooks.map(async (book) => {
+                const fetchedBooks = await SpaceBookController.getAllSpaceBooks(spaceId, token);
+                const booksWithAuthorsAndAvailability = await Promise.all(fetchedBooks.map(async (book) => {
                     try {
                         const author = await AuthorController.getAuthorById(book.book.author_id, token);
-                        return { ...book, book: { ...book.book, author_name: author.name } };
+                        let nextAvailability = null;
+                        if (book.status !== 'available') {
+                            const availability = await SpaceBookController.getSpaceBookNextAvailability(book.id, token);
+                            nextAvailability = availability.next_available_date;
+                        }
+                        return { ...book, book: { ...book.book, author_name: author.name }, nextAvailability };
                     } catch (error) {
-                        console.error('Erreur lors de la récupération de l\'auteur:', error);
-                        return book;
+                        console.error('Erreur lors de la récupération des informations supplémentaires:', error);
+                        return book; // Retourne le livre sans modification si une erreur survient
                     }
                 }));
-                setBooks(booksWithAuthors);
+                setBooks(booksWithAuthorsAndAvailability);
             } catch (error) {
                 console.error('Erreur lors de la récupération des livres de l\'espace:', error);
             }
@@ -93,7 +98,13 @@ const List = () => {
                             <h3 className="book-title">{item.book.title}</h3>
                             <p className="book-author">De: {item.book.author_name}</p>
                             <p className="book-description">{item.book.description}</p>
-                            {/* Display availability and other book details */}
+                            {item.nextAvailability ? (
+                                <p className="book-next-availability">
+                                    Prochaine disponibilité: {item.nextAvailability}
+                                </p>
+                            ) : (
+                                <p className="book-status available">Disponible</p>
+                            )}
                         </div>
                     </div>
                 ))}

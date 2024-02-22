@@ -65,6 +65,17 @@ class SpaceBookController {
             throw error;
         }
     }
+
+    static async getSpaceBookNextAvailability(spaceBookId, accessToken) {
+        try {
+            const response = await SpaceBookService.getSpaceBookNextAvailability(spaceBookId, accessToken);
+            console.log('Next availability fetched successfully', response);
+            return response;
+        } catch (error) {
+            console.error('Error fetching next availability of space book:', error);
+            throw error;
+        }
+    }
 }
 
 export default SpaceBookController;
