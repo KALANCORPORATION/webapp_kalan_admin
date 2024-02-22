@@ -16,6 +16,54 @@
     padding: 10px;
 }
 
+.library-title {
+    font-size: 1.25rem;
+    color: #333;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.category-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #eceff1;
+    padding: 10px;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.category {
+    background: transparent;
+    border: 2px solid #ccc;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.category.active {
+    border-color: #007bff;
+    background-color: #007bff;
+    color: white;
+}
+
+.filter-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.filter-icon {
+    width: 24px;
+    /* Assurez-vous que le chemin de l'image est correct */
+}
+
 .book-item {
     display: flex;
     margin-bottom: 10px;
@@ -78,5 +126,14 @@
 @media (max-width: 768px) {
     .library-container {
         max-width: 100%;
+    }
+
+    .library-title {
+        font-size: 1rem; /* Taille plus petite pour les petits écrans */
+    }
+
+    .category {
+        padding: 3px 10px; /* Padding réduit pour les petits écrans */
+        font-size: 0.8rem; /* Taille de police réduite */
     }
 }
