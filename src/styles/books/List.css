@@ -25,7 +25,7 @@
 }
 
 .book-list {
-    padding: 10px;
+    padding-bottom: 160px; /* Adjust this value to match the height of your navbar */
 }
 
 .book-item {
@@ -110,7 +110,6 @@
     color: #999999;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
 }
 .book-status {
     font-size: 0.8rem;
