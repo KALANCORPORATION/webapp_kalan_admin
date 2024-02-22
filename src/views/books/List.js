@@ -101,9 +101,6 @@ const List = () => {
                                 <p className="book-description">{item.book.description}</p>
                             </div>
                             <div className="book-status-container">
-                                {item.status === 'borrowed' && (
-                                    <img src="/borrowedLogo.png" alt="Emprunté" className="borrowed-icon" />
-                                )}
                                 <div className="book-status-text">
                                     <p className={`book-status ${item.status === 'available' ? 'available' : 'unavailable'}`}>
                                         {item.status === 'available' ? 'Disponible' : 'Emprunté'}
