@@ -12,6 +12,7 @@ import ModalScanReservation from "../../components/ModalScanReservation";
 import QRCodeModalContent from "../../components/ModalQRCode";
 import ReferentController from "../../controllers/referent/referentController";
 import ModalScanResitution from "../../components/ModalScanResitution";
+import SpaceBookController from "../../controllers/space/spaceBookController";
 
 export const ProfileAdherent = () => {
     const { id } = useParams();
@@ -119,7 +120,7 @@ export const ProfileAdherent = () => {
         return (
             <div className={styles.bookCard}>
                 <div className={styles.bookCoverContainer}>
-                    <img className={styles.bookCover} src="/img_5.png" alt={reservation.title} />
+                    <img className={styles.bookCover} src="/img_5.png" alt={reservation.title}/>
                 </div>
                 <div className={styles.bookInfo}>
                     <h2 className={styles.bookTitle}>{reservation.title}</h2>
@@ -129,7 +130,7 @@ export const ProfileAdherent = () => {
                         {reservation.status}
                     </span>
                         <span className={styles.bookDate}>
-                        {reservation.status.toLowerCase() === 'reserved' ? `réserver le ${reservation.reserveDate}` : ''}
+                        {reservation.status.toLowerCase() === 'reserved' ? `réserver le ${reservation.start_date}` : ''}
                             {reservation.status.toLowerCase() === 'borrowed' ? `à rendre le ${reservation.end_date}` : ''}
                     </span>
                         <span className={styles.bookCreated}>
