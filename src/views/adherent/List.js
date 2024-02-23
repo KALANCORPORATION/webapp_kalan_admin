@@ -119,6 +119,12 @@ export const ListAdherents = () => {
                     <img src="filtreLogo.svg" alt="Filter" className={styles.filterIcon} />
                     Filtrer
                 </button>
+                <button
+                    className={styles.addButton}
+                    onClick={() => navigateTo('/adherent/add')}
+                >
+                    Ajouter un adhérent
+                </button>
             </div>
 
             {isCameraOpen && (

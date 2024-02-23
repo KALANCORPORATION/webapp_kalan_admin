@@ -129,6 +129,22 @@
     padding-bottom: 160px; /* Adjust this value to match the height of your navbar */
 }
 
+.addButton {
+    background-color: #4CAF50; /* or any color you prefer */
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* or the size you prefer */
+    transition: background-color 0.3s;
+}
+
+.addButton:hover {
+    background-color: #45a049; /* a slightly darker green for hover effect */
+}
+
 .filterButton {
     display: flex;
     align-items: center;
