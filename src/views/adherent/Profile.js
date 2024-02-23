@@ -24,6 +24,7 @@ export const ProfileAdherent = () => {
     const [isModalScanReservationOpen, setIsModalScanReservationOpen] = useState(false);
     const [reservations, setReservations] = useState([]);
     const spaceId = localStorage.getItem('spaceId');
+    const [bookDetails, setBookDetails] = useState({});
 
     const [adherentProfile, setAdherentProfile] = useState(null);
     const token = localStorage.getItem('accessToken');
@@ -97,6 +98,27 @@ export const ProfileAdherent = () => {
     };
 
     useEffect(() => {
+        const fetchBookDetails = async () => {
+            const details = {};
+
+            for (const reservation of reservations) {
+                try {
+                    const spaceBook = await SpaceBookController.getSpaceBookById(reservation.space_book_id, token);
+                    details[reservation.space_book_id] = spaceBook;
+                } catch (error) {
+                    console.error('Error fetching book details for ID:', reservation.space_book_id, error);
+                }
+            }
+
+            setBookDetails(details);
+        };
+
+        if (reservations.length > 0) {
+            fetchBookDetails();
+        }
+    }, [reservations, token]);
+
+    useEffect(() => {
         const fetchAdherentProfile = async () => {
             try {
                 const profileData = await AdherentController.getAdherentById(id, token);
@@ -117,14 +139,17 @@ export const ProfileAdherent = () => {
     }, [id, token]);
 
     const renderReservationCard = (reservation) => {
+        const book = bookDetails[reservation.space_book_id];
+        console.log("Boiooook" , book);
+        if (!book) {
+            return <div>Loading book details...</div>;
+        }
+
         return (
             <div className={styles.bookCard}>
-                <div className={styles.bookCoverContainer}>
-                    <img className={styles.bookCover} src="/img_5.png" alt={reservation.title}/>
-                </div>
                 <div className={styles.bookInfo}>
-                    <h2 className={styles.bookTitle}>{reservation.title}</h2>
-                    <p className={styles.bookAuthor}>De : {reservation.author}</p>
+                    <h2 className={styles.bookTitle}>{book.book.title}</h2>
+                    <p className={styles.bookAuthor}>De : {book.book.author.name}</p>
                     <div className={styles.bookStatusContainer}>
                     <span className={`${styles.bookStatus} ${styles[reservation.status.toLowerCase()]}`}>
                         {reservation.status}
