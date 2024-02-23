@@ -2,18 +2,31 @@ import React, {useEffect, useState} from 'react';
 import "../../styles/books/Details.module.css";
 import NavBarAdmin from "../../components/NavBarAdmin";
 import {Header} from "../../components/Header";
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import SpaceBookController from "../../controllers/space/spaceBookController";
 
 const BookDetails = () => {
     const { id } = useParams();
     const [bookDetails, setBookDetails] = useState(null);
     const accessToken = localStorage.getItem('accessToken');
+    const navigate = useNavigate();
 
     const [readMore, setReadMore] = useState(false);
 
     const handleReadMoreToggle = () => {
         setReadMore(!readMore);
+    };
+
+    const handleDeleteBook = async () => {
+        if (window.confirm('Are you sure you want to delete this book?')) {
+            try {
+                await SpaceBookController.removeSpaceBook(id, accessToken);
+                alert('Book deleted successfully');
+                navigate('/books');
+            } catch (error) {
+                alert('Error deleting book:', error);
+            }
+        }
     };
 
     useEffect(() => {
@@ -50,6 +63,9 @@ const BookDetails = () => {
                     {/*<p className="book-availability">{bookDetails.availableDate}</p>*/}
                 </div>
             </div>
+            <button className="delete-button" onClick={handleDeleteBook}>
+                Supprimer
+            </button>
             <NavBarAdmin />
         </div>
     );
