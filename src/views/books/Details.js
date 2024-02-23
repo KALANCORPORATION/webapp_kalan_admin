@@ -46,6 +46,7 @@ const BookDetails = () => {
                     <p className="book-summary">{bookDetails.book.description}</p>
                     <p className="book-language">Langue: {bookDetails.book.country.name}</p>
                     <p className="book-publisher">Éditeur: {bookDetails.book.edition.name}</p>
+                    <p className="book-publisher">Genre: {bookDetails.book.genre.name}</p>
                     {/*<p className="book-availability">{bookDetails.availableDate}</p>*/}
                 </div>
             </div>

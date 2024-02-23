@@ -4,13 +4,15 @@ import {Header} from "../../components/Header";
 import NavBarAdmin from "../../components/NavBarAdmin";
 import styles from "../../styles/referent/List.module.css";
 import {QrReader} from "react-qr-reader";
+import {useNavigate} from "react-router-dom";
 
 function BookISBNForm() {
     const [isbn, setIsbn] = useState('');
+    const navigate = useNavigate(); // Initialize useNavigate
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(isbn);
+        navigate(`/book/add?isbn=${isbn}`);
     };
 
     return (
@@ -22,7 +24,7 @@ function BookISBNForm() {
                 <input type="text" id="prenom" name="prenom" required value={isbn} onChange={e => setIsbn(e.target.value)} />
 
                 <div className="submit-section">
-                    <button type="submit" className="submit-button">Ajouter</button>
+                    <button type="submit" className="submit-button">Suivant</button>
                 </div>
             </form>
 
