@@ -12,6 +12,7 @@ import GenreController from "../../controllers/genre/genreController";
 import BarcodeScannerPopup from "../../views/scan/BarcodeScannerPopup";
 import ModalScan from "../../components/ModalScan";
 import BarcodeScannerSearchBooks from "../scan/BarcodeScannerSearchBooks";
+import {useNavigate} from "react-router-dom";
 
 const List = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -20,9 +21,14 @@ const List = () => {
     const spaceId = localStorage.getItem('spaceId');
     const [searchResults, setSearchResults] = useState([]);
     const [isScannerModalOpen, setIsScannerModalOpen] = useState(false);
+    const navigate = useNavigate();
 
     const openScannerModal = () => {
         setIsScannerModalOpen(true);
+    };
+
+    const navigateTo = (path) => {
+        navigate(path);
     };
 
     const closeScannerModal = () => {
@@ -119,7 +125,7 @@ const List = () => {
 
             <div className="book-list">
                 {filteredBooks.map((item) => (
-                    <div key={item.book.id} className="book-item">
+                    <div key={item.id} className="book-item" onClick={() =>  navigateTo(`/book/${item.id}`)}>
                         <img src={item.book.thumbnail_image || `/bookImageDefault.png`} alt={item.book.title} className="book-cover" />
                         <div className="book-details">
                             <div className="book-info">

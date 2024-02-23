@@ -14,6 +14,7 @@ import Result from "./views/scan/Result";
 import Scan from "./views/scan/scan";
 import HomepageAdmin from "./views/homepage/HomepageAdmin";
 import List from "./views/books/List";
+import BookDetails from "./views/books/Details";
 import SplashScreen2 from "./views/splashscreen/splashScreen2";
 import InscriptionForm from "./views/adherent/Inscription";
 import BookISBNForm from './views/books/BookISBNForm';
@@ -33,6 +34,7 @@ const App = () => {
                 <Route path="/invitations" element={<ListInvitations/>} />
                 <Route path="/login" element={<ConnexionAdminApp/>} />
                 <Route path="/books" element={<List />} />
+                <Route path="/book/:id" element={<BookDetails />} />
                 <Route path="/book/isbn" element={<BookISBNForm/>} />
                 <Route path="/book/add" element={<AddBook/>} />
                 <Route path="/referents" element={<ListReferent/>} />

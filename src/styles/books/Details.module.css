@@ -1,0 +1,61 @@
+.book-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.book-cover-container {
+    position: relative;
+}
+
+.book-cover {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.book-info {
+    padding: 1rem;
+}
+
+.book-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.book-author {
+    font-size: 1rem;
+    color: #666;
+}
+
+.book-summary {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.book-publication,
+.book-language,
+.book-publisher,
+.book-availability {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .book-info {
+        padding: 0.5rem;
+    }
+
+    .book-title {
+        font-size: 1rem;
+    }
+
+    .book-author,
+    .book-summary,
+    .book-publication,
+    .book-language,
+    .book-publisher,
+    .book-availability {
+        font-size: 0.8rem;
+    }
+}
