@@ -99,11 +99,11 @@ const List = () => {
             <Header />
             <div className="library-title-bar">
                 <h1 className="library-title"><b>Les livres de l'Espace</b></h1>
-                <div className="tab-bar">
-                    <button className="tab active">Tous</button>
-                    <button className="tab">Empruntés</button>
-                    <button className="tab">Réservés</button>
-                </div>
+                {/*<div className="tab-bar">*/}
+                {/*    <button className="tab active">Tous</button>*/}
+                {/*    <button className="tab">Empruntés</button>*/}
+                {/*    <button className="tab">Réservés</button>*/}
+                {/*</div>*/}
             </div>
             <div className="container">
                 <div className="searchBar">

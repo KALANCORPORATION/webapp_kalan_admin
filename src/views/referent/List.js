@@ -148,10 +148,10 @@ export const ListReferent = () => {
                         </div>
                     )}
                 </div>
-                <button className={styles.filterButton}>
-                    <img src="filtreLogo.svg" alt="Filter" className={styles.filterIcon} />
-                    Filtrer
-                </button>
+                {/*<button className={styles.filterButton}>*/}
+                {/*    <img src="filtreLogo.svg" alt="Filter" className={styles.filterIcon} />*/}
+                {/*    Filtrer*/}
+                {/*</button>*/}
             </div>
 
             {filteredReferents.map((referent) => (

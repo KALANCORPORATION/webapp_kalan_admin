@@ -29,11 +29,11 @@ export const NavBarAdmin = () => {
     return (
         <>
         <nav className={styles.navbar}>
-            <button onClick={() => navigateTo('/homepage')}
-                    className={`${styles.navButton} ${isActive('/home') ? styles.active : ''}`}>
-                <img src="/homeLogo.svg" alt="Home" className={styles.navIcon} />
-                <span>Accueil</span>
-            </button>
+            {/*<button onClick={() => navigateTo('/homepage')}*/}
+            {/*        className={`${styles.navButton} ${isActive('/home') ? styles.active : ''}`}>*/}
+            {/*    <img src="/homeLogo.svg" alt="Home" className={styles.navIcon} />*/}
+            {/*    <span>Accueil</span>*/}
+            {/*</button>*/}
             <div className={styles.scanButtonWrapper}>
                 <button onClick={openScannerModal}
                         className={`${styles.scanButton} ${isActive('/scanner') ? styles.active : ''}`}>
