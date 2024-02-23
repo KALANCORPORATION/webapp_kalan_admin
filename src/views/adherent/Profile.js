@@ -21,6 +21,8 @@ export const ProfileAdherent = () => {
     const [isQRCodeModalOpen, setIsQRCodeModalOpen] = useState(false);
     const [isModalScanRestitutionOpen, setIsModalScanRestitutionOpen] = useState(false);
     const [isModalScanReservationOpen, setIsModalScanReservationOpen] = useState(false);
+    const [reservations, setReservations] = useState([]);
+    const spaceId = localStorage.getItem('spaceId');
 
     const [adherentProfile, setAdherentProfile] = useState(null);
     const token = localStorage.getItem('accessToken');
@@ -79,6 +81,16 @@ export const ProfileAdherent = () => {
         }
     };
 
+    const fetchAndFilterReservations = async () => {
+        try {
+            const allReservations = await SpaceController.getAllSpaceReservations(spaceId, token);
+            const filteredReservations = allReservations.filter(reservation => reservation.adherent_id === parseInt(id));
+            setReservations(filteredReservations);
+        } catch (error) {
+            console.error('Error fetching reservations:', error.message);
+        }
+    };
+
     const handleEditProfileClick = () => {
         navigate(`/adherent/${id}/update`);
     };
@@ -102,6 +114,30 @@ export const ProfileAdherent = () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [id, token]);
+
+    const renderReservationCard = (reservation) => {
+        return (
+            <div className={styles.bookCard}>
+                <div className={styles.bookCoverContainer}>
+                    <img className={styles.bookCover} src={reservation.book_cover} alt={reservation.title} />
+                </div>
+                <div className={styles.bookInfo}>
+                    <h2 className={styles.bookTitle}>{reservation.title}</h2>
+                    <p className={styles.bookAuthor}>De : {reservation.author}</p>
+                    <div className={styles.bookStatusContainer}>
+                    <span className={`${styles.bookStatus} ${styles[reservation.status.toLowerCase()]}`}>
+                        {reservation.status}
+                    </span>
+                        <span className={styles.bookDate}>
+                        {reservation.status.toLowerCase() === 'reserved' ? `réserver le ${reservation.reserveDate}` : ''}
+                            {reservation.status.toLowerCase() === 'borrowed' ? `à rendre le ${reservation.end_date}` : ''}
+                    </span>
+                    </div>
+
+                </div>
+            </div>
+        );
+    };
 
     if (!adherentProfile) {
         return <div>Loading...</div>;
@@ -171,9 +207,14 @@ export const ProfileAdherent = () => {
                 <ModalScanEmprunt id={id} isOpen={isModalOpen} closeModal={closeModal} />
                 <ModalScanReservation id={id} isOpen={isModalScanReservationOpen} closeModal={closeModalScanReservation} />
                 <div className={styles.tabs}>
-                    <button className={`${styles.tab} ${styles.active}`}>Tous</button>
+                    <button className={`${styles.tab} ${styles.active}`} onClick={fetchAndFilterReservations}>Tous</button>
                     <button className={styles.tab}>Emprunts</button>
                     <button className={styles.tab}>Réservés</button>
+                </div>
+                <div className={styles.reservationList}>
+                    {reservations.map(reservation => (
+                        renderReservationCard(reservation)
+                    ))}
                 </div>
             </main>
             <NavBarAdmin />
