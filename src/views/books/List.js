@@ -121,6 +121,12 @@ const List = () => {
                         className="qrButton">
                     <img src="/qrcodeLogo.svg" alt="Scanner" className="qrCodeIcon" />
                 </button>
+                <button
+                    className={styles.addButton}
+                    onClick={() => navigateTo('/book/isbn')}
+                >
+                    Ajouter un livre
+                </button>
             </div>
 
             <div className="book-list">
