@@ -132,6 +132,8 @@ export const ProfileAdherent = () => {
             fetchAdherentProfile();
         }
 
+        fetchAndFilterReservations()
+
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
@@ -234,11 +236,13 @@ export const ProfileAdherent = () => {
                 </div>
                 <ModalScanEmprunt id={id} isOpen={isModalOpen} closeModal={closeModal} />
                 <ModalScanReservation id={id} isOpen={isModalScanReservationOpen} closeModal={closeModalScanReservation} />
-                <div className={styles.tabs}>
-                    <button className={`${styles.tab} ${styles.active}`} onClick={fetchAndFilterReservations}>Tous</button>
-                    <button className={styles.tab}>Emprunts</button>
-                    <button className={styles.tab}>Réservés</button>
-                </div>
+                {/*<div className={styles.tabs}>*/}
+                {/*    <button className={`${styles.tab} ${styles.active}`} onClick={fetchAndFilterReservations}>Tous</button>*/}
+                {/*    <button className={styles.tab}>Emprunts</button>*/}
+                {/*    <button className={styles.tab}>Réservés</button>*/}
+                {/*</div>*/}
+                <h2 className={styles.booksListTitle}>Liste des livres</h2>
+
                 <div className={styles.reservationList}>
                     {reservations.map(reservation => (
                         renderReservationCard(reservation)
