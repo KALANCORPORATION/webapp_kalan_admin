@@ -32,7 +32,8 @@ export const ListReferent = () => {
         try {
             const spaceId = localStorage.getItem('spaceId');
             const referentsData = await SpaceController.getAllReferentsForSpace(spaceId, token);
-            setReferents(referentsData);
+            const authorizedReferents = referentsData.filter(referent => referent.authorized === true);
+            setReferents(authorizedReferents);
         } catch (error) {
             console.error(error);
         }
