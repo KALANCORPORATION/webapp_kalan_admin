@@ -44,7 +44,6 @@ const BookDetails = () => {
                     <h1 className="book-title">{bookDetails.book.title}</h1>
                     <h2 className="book-author">De: {bookDetails.book.author.name}</h2>
                     <p className="book-summary">{bookDetails.book.description}</p>
-                    <p className="book-publication">Date de publication: {bookDetails.book.publicationDate}</p>
                     <p className="book-language">Langue: {bookDetails.book.country.name}</p>
                     <p className="book-publisher">Éditeur: {bookDetails.book.edition.name}</p>
                     {/*<p className="book-availability">{bookDetails.availableDate}</p>*/}
